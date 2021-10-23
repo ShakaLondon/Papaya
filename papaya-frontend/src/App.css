@@ -1,0 +1,294 @@
+/* NAVBAR */
+
+#navbar-strip-top {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#papaya-logo-nav {
+  width: 5rem;
+  height: 5rem;
+}
+
+#main-nav-bar-icon {
+  color: #ef7c53;
+  font-size: 3rem;
+}
+
+/* SIDE NAV */
+
+#side-nav-jumbo {
+  height: 100vh;
+  width: 25vw;
+  /* margin-top: 125px; */
+  margin-right: 0;
+  background-color: #ffd800;
+  /* padding-top: 130px;
+  padding-bottom: 100px; */
+  /* transition: right 20s;
+  -webkit-transition: right 20s; */
+  overflow-y: scroll;
+  /* transform: translateX();
+  -webkit-transform: translateX(); */
+}
+
+@media only screen and (min-height: 80vh) {
+  #side-menu-row {
+    margin-top: 125px !important;
+    height: 75%;
+  };
+}
+
+/* @media only screen and (min-height: 100vh) {
+  #side-menu-row {
+    margin-top: 30vh !important;
+    margin-bottom: 30vh !important;
+    height: 75%;
+  };
+} */
+
+
+.display-6 {
+  color: white;
+  font-weight: 500 !important;
+  font-size: 3rem !important;
+  /* align-self: center; */
+  /* transition: all 0.2s ease 0s; */
+}
+
+.display-6:hover {
+  color: #ef7c53;
+  font-weight: 500 !important;
+}
+
+#sidenav-topbar {
+  background-color: #ffd800;
+  height: 125px;
+  width: 25vw;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+.menuButton {
+  background-color: #ef7c53 !important;
+  border-color: #ef7c53 !important;
+  border: 2px solid #ef7c53 !important;
+  color: #ffd800 !important;
+}
+
+.menuButton:hover {
+  background-color: #ffd800 !important;
+  border-color: #ef7c53 !important;
+  border: 2px solid #ef7c53 !important;
+  color: #ef7c53 !important;
+}
+
+/* MAIN COMPONENT */
+
+#main-app {
+  height: 100vh !important;
+  /* overflow-y: scroll; */
+  width: 100vw !important;
+}
+
+#main-app-body {
+  height: 100vh !important;
+}
+
+.full-height {
+  height: 100%;
+}
+
+#main-app-component {
+  height: 100vh !important;
+  overflow-y: scroll;
+}
+
+#main-jumbo {
+  height: 80vh;
+  background-image: url('../src/components/resources/afrowoman.jpg');
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#brand-heading {
+  font-family: 'Rozha One', serif;
+  text-align: center;
+  color: #ef7c53;
+  font-size: 10rem;
+}
+
+#brand-tag {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+#brand-sub {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffd800;
+  font-weight: 800;
+}
+
+#header-button {
+  text-align: center;
+}
+
+#jumbo-contents {
+  padding-top: 100px !important;
+}
+
+#search-bar-strip {
+  background-color: #ffd800;
+  height: 20vh;
+}
+
+#search-bar-form {
+  width: 70vw;
+  height: 3rem;
+}
+
+.btn:focus, .btn:active {
+         outline: none !important;
+         box-shadow: none !important;
+}
+
+.navbar-toggler:focus
+{
+         outline: none !important;
+         box-shadow: none;
+}
+/* 
+#main-app-page {
+  height: 100vh;
+  overflow-y: scroll;
+} */
+
+/* CATEGORY */
+
+#category-slider-comp {
+  /* width: 80%; */
+  padding-left: 8rem !important;
+  padding-right: 8rem !important;
+}
+
+#category-slider-cont {
+  background-color: #ffef93;
+}
+
+.categoryListItem {
+  background-color: #ffef93 !important;
+}
+
+h2 {
+  font-size: 1.2em !important;
+}
+
+h6 {
+  font-size: 1rem !important;
+}
+
+/* REVIEWS */
+
+#reviews-slider-cont {
+  height: 90vh;
+  min-height: 650px;
+  background-image: url('../src/components/resources/afrowomansmiling.jpeg');
+  box-shadow: inset 2000px 0 0 0 rgba(255, 239, 147, 0.5);
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 150px;
+}
+
+#review-slider-comp {
+  /* width: 80%; */
+  padding-left: 8rem !important;
+  padding-right: 8rem !important;
+}
+
+/* NEW PRODUCTS */
+
+#product-slider-cont{
+  background-color: #ffd800;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 250px;
+
+}
+
+#product-slider-comp {
+  /* width: 80%; */
+  padding-left: 8rem !important;
+  padding-right: 8rem !important;
+}
+
+/* REGISTRATION */
+
+#register-app {
+  height: 100vh !important;
+  /* overflow-y: scroll; */
+  width: 100vw !important;
+  background-color: #ffef93;
+}
+
+#register-app-body {
+  height: 100vh !important;
+}
+
+#login-app-component {
+  height: 100vh !important; 
+  width: 30rem;
+}
+
+/* .form-floating {
+} */
+
+/* #login-form { */
+  /* height: 100vh !important; */
+  /* width: 30rem; */
+ 
+/* } */
+
+.brand-heading-h1 {
+  font-family: 'Rozha One', serif;
+  text-align: center;
+  color: #ef7c53;
+  font-size: 3rem;
+}
+
+#papaya-logo-login {
+  width: 3rem;
+  height: 3rem;
+}
+
+#brand-sub-tag {
+  text-align: center;
+  font-size: 1rem;
+  color: #363636;
+  text-shadow: 0.5px 0.5px #ef7c53;
+  font-weight: 800;
+}
+
+/* FOOTER */
+
+#papaya-logo-footer {
+  width: 3rem;
+  height: 3rem;
+}
+
+#footer-container {
+  padding: 0px 10rem 0px;
+  height: 60vh;
+}
+
+#footer-app-component {
+  background-color: #ffd800;
+  color: #ffffff;
+  font-weight: 900;
+}
