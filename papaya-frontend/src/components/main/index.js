@@ -6,6 +6,7 @@ import SearchBar from '../search-bar'
 import Categories from '../categories'
 import RecentReviews from '../recent-reviews'
 import NewProducts from '../new-products'
+import Footer from '../footer'
 
 export default function MainContainer (props) {
 
@@ -17,6 +18,7 @@ export default function MainContainer (props) {
             <Categories></Categories>
             <RecentReviews></RecentReviews>
             <NewProducts></NewProducts>
+            <Footer/>
         </Container>
 
     );

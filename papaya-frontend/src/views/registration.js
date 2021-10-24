@@ -7,6 +7,7 @@ import { useLocation } from 'react-router'
 import LoginContainer from '../components/register/login'
 import SignUpContainer from '../components/register/signup'
 import { useEffect } from 'react'
+import Footer from '../components/footer'
 
 const mapStateToProps = (state) => ({ sideMenuState: state.appState.sideMenu })
 const mapDispatchToProps = (dispatch) => ({
@@ -53,6 +54,7 @@ const RegisterPage = ({
                 <Col md={sideMenuState? 9 : 12} className="px-0">
                   {/* <Container className="px-0 flex-row"> */}
                     {(location.pathname === "/login") ? <LoginContainer/> : <SignUpContainer/>}
+                    {/* <Footer/> */}
                   {/* </Container> */}
                 </Col>
                 <Col md={3} className="px-0">

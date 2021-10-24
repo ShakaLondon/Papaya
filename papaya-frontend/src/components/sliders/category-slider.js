@@ -47,7 +47,7 @@ export default class CategorySlider extends Component {
     };
     return (
       <div id="category-slider-comp" className="py-5">
-        <h2 className="px-3 mb-3">Explore Categories</h2>
+        <h4 className="px-3 mb-3">Explore Categories</h4>
         <Slider {...settings}>
           <div>
             <CategoryListOne/>

@@ -51,7 +51,7 @@ export default class RecentSlider extends Component {
     };
     return (
       <div id="review-slider-comp" className="py-5">
-        <h2 className="px-3 mb-3">Recent Reviews</h2>
+        <h4 className="px-3 mb-3">Recent Reviews</h4>
         <Slider {...settings}>
           <div>
             <ReviewCard/>

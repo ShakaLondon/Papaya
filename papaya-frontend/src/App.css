@@ -151,6 +151,11 @@
   height: 3rem;
 }
 
+#searchBarcode {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .btn:focus, .btn:active {
          outline: none !important;
          box-shadow: none !important;
@@ -183,9 +188,9 @@
   background-color: #ffef93 !important;
 }
 
-h2 {
+/* h2 {
   font-size: 1.2em !important;
-}
+} */
 
 h6 {
   font-size: 1rem !important;
@@ -284,11 +289,30 @@ h6 {
 
 #footer-container {
   padding: 0px 10rem 0px;
-  height: 60vh;
+  height: 600px;
 }
 
 #footer-app-component {
   background-color: #ffd800;
   color: #ffffff;
   font-weight: 900;
+}
+
+#link-text {
+  text-decoration: none !important;
+}
+
+.registerButton {
+  background-color: #ef7c53 !important;
+  border-color: #ef7c53 !important;
+  border: 2px solid #ef7c53 !important;
+  color: #ffd800 !important;
+
+}
+
+.registerButton:hover {
+  background-color: #ffef93 !important;
+  border-color: #ef7c53 !important;
+  border: 2px solid #ef7c53 !important;
+  color: #ef7c53 !important;
 }

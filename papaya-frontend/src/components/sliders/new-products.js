@@ -16,7 +16,7 @@ export default class NewProductSlider extends Component {
     };
     return (
     <div id="product-slider-comp" className="py-5">
-        <h2 className="px-3 mb-3">Recent Added</h2>
+        <h4 className="px-3 mb-3">Recent Added</h4>
         <Slider {...settings}>
           <div>
             <ProductCard/>

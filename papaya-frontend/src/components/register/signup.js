@@ -1,11 +1,12 @@
-import { Navbar, NavDropdown, Nav, Container, Form, FormControl, FloatingLabel, Row, Col } from 'react-bootstrap'
+import { Button, Container, Form, FormControl, FloatingLabel, Row, Col } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Footer from '../footer';
 
 export default function SignUpContainer (props) {
 
     return (
-    
+    <>
         <Container fluid id="login-app-component" className="mx-auto d-flex justify-content-center">
             <Container fluid id="login-form" className="flex-row my-auto">
                 <Row>
@@ -62,11 +63,16 @@ export default function SignUpContainer (props) {
                                 className="mb-3">
                                 <Form.Control type="password" placeholder="Password" />
                             </FloatingLabel>
+                            <Button href="/register" className="container-fluid rounded-pill text-center my-4 py-2 registerButton">
+                                <h3>Sign Up</h3>
+                            </Button>
                         </Form>
                     </Col>
                 </Row>
             </Container>
         </Container>
+        <Footer/>
+        </>
 
     );
 

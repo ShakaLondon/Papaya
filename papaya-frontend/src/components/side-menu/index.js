@@ -28,10 +28,10 @@ export default function SideMenu (props) {
                     <h1 className="display-6 text-center py-0 mb-0">Profile</h1>
                 </Col> */}
                 <Col md={12} className="px-5 side-text-button py-4">
-                    <Button className="container-fluid rounded-pill text-center mt-2 mb-1 py-1 menuButton">
+                    <Button href="/login" className="container-fluid rounded-pill text-center mt-2 mb-1 py-1 menuButton">
                         <h3>Login</h3>
                     </Button>
-                    <Button className="container-fluid rounded-pill text-center mb-2 mt-1 py-1 menuButton">
+                    <Button href="/register" className="container-fluid rounded-pill text-center mb-2 mt-1 py-1 menuButton">
                         <h3>Sign Up</h3>
                     </Button>
                 </Col>

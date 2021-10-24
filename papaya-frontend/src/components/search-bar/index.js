@@ -1,6 +1,6 @@
 import { Navbar, Container, Form, FormControl, Button, Row, Col, InputGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBarcode } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { openNavAction } from '../../redux/actions'
 
@@ -30,6 +30,9 @@ const SearchBar = ({
                             aria-describedby="basic-addon2"
                             className="px-4"
                             />
+                            <Button variant="outline-secondary" id="button-addon2" className="px-4">
+                            <img src="https://img.icons8.com/pastel-glyph/64/000000/barcode-scanner--v2.png" id="searchBarcode"/>
+                            </Button>
                             <Button variant="outline-secondary" id="button-addon2" className="px-4">
                             Search
                             </Button>

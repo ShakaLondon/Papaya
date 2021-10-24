@@ -21,7 +21,7 @@ function App() {
         <Route path="/login" component={RegisterPage}/>
         <Route path="/register" component={RegisterPage}/>
       </Switch>
-        <Footer/>
+        {/* <Footer/> */}
     </Router>
   );
 }

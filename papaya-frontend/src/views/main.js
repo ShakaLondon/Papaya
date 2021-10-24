@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import MainSearch from '../components/main/main-jumbo'
 import MainContainer from '../components/main'
 import Categories from '../components/categories'
+import Footer from '../components/footer'
 
 const mapStateToProps = (state) => ({ sideMenuState: state.appState.sideMenu })
 const mapDispatchToProps = (dispatch) => ({
@@ -28,6 +29,7 @@ const HomePage = ({
                 <Col md={sideMenuState? 9 : 12} className="px-0">
                   {/* <Container className="px-0 flex-row"> */}
                     <MainContainer/>
+                    {/* <Footer/> */}
                   {/* </Container> */}
                 </Col>
                 <Col md={3} className="px-0">
