@@ -29,11 +29,12 @@ const SearchBar = ({
                             aria-label="Company, Category or Product Type"
                             aria-describedby="basic-addon2"
                             className="px-4"
+                            id="search-input"
                             />
-                            <Button variant="outline-secondary" id="button-addon2" className="px-4">
+                            <Button id="button-addon3" className="px-4 searchBarButton">
                             <img src="https://img.icons8.com/pastel-glyph/64/000000/barcode-scanner--v2.png" id="searchBarcode"/>
                             </Button>
-                            <Button variant="outline-secondary" id="button-addon2" className="px-4">
+                            <Button id="button-addon2" className="px-4 searchBarButton">
                             Search
                             </Button>
                         </InputGroup>

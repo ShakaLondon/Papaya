@@ -156,6 +156,27 @@
   height: 1.5rem;
 }
 
+.searchBarButton {
+  border-color: #ef7c53 !important;
+  background-color: #ef7c53 !important;
+  color: #000000 !important;
+}
+
+.searchBarButton:hover {
+  border-color: #ffef93 !important;
+  background-color: #ffef93 !important;
+  color: #000000 !important;
+}
+
+#search-input {
+  border-color: #ffef93 !important;
+}
+
+#search-input:focus, #search-input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .btn:focus, .btn:active {
          outline: none !important;
          box-shadow: none !important;
@@ -259,6 +280,15 @@ h6 {
   /* width: 30rem; */
  
 /* } */
+
+.register-input {
+  border-color: #ffef93 !important;
+}
+
+.register-input:focus, .register-input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 .brand-heading-h1 {
   font-family: 'Rozha One', serif;

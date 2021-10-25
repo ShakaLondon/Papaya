@@ -28,12 +28,12 @@ export default function LoginContainer (props) {
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Email address"
-                                className="mb-3"
+                                className="mb-3 register-input"
                             >
-                                <Form.Control type="email" placeholder="name@example.com" />
+                                <Form.Control type="email" placeholder="name@example.com" className="register-input" />
                             </FloatingLabel>
                             <FloatingLabel controlId="floatingPassword" label="Password">
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control type="password" placeholder="Password" className="register-input"/>
                             </FloatingLabel>
                             <Button href="/register" className="container-fluid rounded-pill text-center my-4 py-2 registerButton">
                                 <h3>Login</h3>

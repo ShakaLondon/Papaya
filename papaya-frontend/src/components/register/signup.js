@@ -30,38 +30,38 @@ export default function SignUpContainer (props) {
                                 controlId="floatingName" 
                                 label="First Name"
                                 className="mb-3">
-                                <Form.Control type="name" placeholder="First Name" />
+                                <Form.Control type="name" placeholder="First Name" className="register-input"/>
                             </FloatingLabel>
                             <FloatingLabel 
                                 controlId="floatingSurname" 
                                 label="Last Name"
                                 className="mb-3">
-                                <Form.Control type="surname" placeholder="Last Name" />
+                                <Form.Control type="surname" placeholder="Last Name" className="register-input"/>
                             </FloatingLabel>
                             <FloatingLabel 
                                 controlId="floatingUserName" 
                                 label="User Name"
                                 className="mb-3">
-                                <Form.Control type="username" placeholder="Username" />
+                                <Form.Control type="username" placeholder="Username" className="register-input"/>
                             </FloatingLabel>
                             <FloatingLabel 
                                 controlId="floatingDOB" 
                                 label="Date of Birth"
                                 className="mb-3">
-                                <Form.Control type="DOB" placeholder="Date of Birth" />
+                                <Form.Control type="date" placeholder="Date of Birth" className="register-input"/>
                             </FloatingLabel>
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Email address"
                                 className="mb-3"
                             >
-                                <Form.Control type="email" placeholder="name@example.com" />
+                                <Form.Control type="email" placeholder="name@example.com" className="register-input"/>
                             </FloatingLabel>
                             <FloatingLabel 
                                 controlId="floatingPassword" 
                                 label="Password"
                                 className="mb-3">
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control type="password" placeholder="Password" className="register-input"/>
                             </FloatingLabel>
                             <Button href="/register" className="container-fluid rounded-pill text-center my-4 py-2 registerButton">
                                 <h3>Sign Up</h3>
