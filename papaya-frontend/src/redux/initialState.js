@@ -1,10 +1,25 @@
 const initialState = {
   appState: {
     sideMenu: false,
+    error: false,
+    loading: false,
   },
-  searchRes: {
-    searchQuery: ""
-  }
+  user: {
+    name: "",
+    surname: "",
+    username: "",
+    email: "",
+    avatar: "",
+    jobTitle: "",
+    website: "",
+    role: "",
+    phoneNumber: "",
+    businessID: {},
+    reviews: [],
+    isLoggedIn: false,
+    userFound: false
+  },
+
   
 };
 

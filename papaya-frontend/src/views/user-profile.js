@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import { openNavAction } from '../redux/actions'
 import { Container, Row, Col, } from 'react-bootstrap'
 import { useLocation } from 'react-router'
-import LoginContainer from '../components/register/login'
-import SignUpContainer from '../components/register/signup'
+import ProfileContainer from '../components/profile/index'
 import { useEffect } from 'react'
 import Footer from '../components/footer'
 
@@ -24,13 +23,13 @@ const mapDispatchToProps = (dispatch) => ({
 //     return location
 // }
 
-const RegisterPage = ({
+const ProfilePage = ({
     sideMenuState,
     setMenuState,
 }) => {
 
 
-  let location = useLocation()
+  // let location = useLocation()
   
 
 
@@ -47,14 +46,14 @@ const RegisterPage = ({
 
     return (
     
-        <Container fluid id="register-app" className="mx-0">
+        <Container fluid id="profile-app" className="mx-0 px-0">
             <NavBar colour="rgba(255, 255, 255, 0)"/>
-            <Container fluid id="register-app-body" className="px-0 mx-0">
-              <Row className="full-height">
-                <Col md={sideMenuState? 9 : 12} className="px-0" id="register-app-main">
-                  <Container className="px-0"  style={{ maxWidth: "100vw" }}>
-                    {(location.pathname === "/login") ? <LoginContainer/> : <SignUpContainer/>}
-                    <Footer/>
+            <Container fluid id="profile-app-body" className="px-0 mx-0">
+              <Row className="full-height mx-0 px-0">
+                <Col md={sideMenuState? 9 : 12} className="px-0 mx-0" id="profile-app-main">
+                  <Container fluid className="px-0 mx-0"  style={{ maxWidth: "100vw" }}>
+                      <ProfileContainer/>
+                    {/* <Footer/> */}
                   </Container>
                 </Col>
                 <Col md={3} className="px-0">
@@ -70,4 +69,4 @@ const RegisterPage = ({
 
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage)
+  export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)

@@ -23,7 +23,7 @@ const HomePage = ({
     return (
     
         <Container fluid id="main-app" className="mx-0">
-            <NavBar/>
+            <NavBar colour="rgba(255, 255, 255, 0)"/>
             <Container fluid id="main-app-body" className="px-0 mx-0">
               <Row className="full-height">
                 <Col md={sideMenuState? 9 : 12} className="px-0">

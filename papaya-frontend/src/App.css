@@ -1,17 +1,24 @@
 /* NAVBAR */
 
 #navbar-strip-top {
-  background-color: rgba(255, 255, 255, 0);
+
+  z-index: 0;
 }
 
 #papaya-logo-nav {
   width: 5rem;
   height: 5rem;
+  z-index: 0 !important;
 }
 
 #main-nav-bar-icon {
   color: #ef7c53;
   font-size: 3rem;
+}
+
+#login-nav-bar-icon {
+  color: #ef7c53;
+  font-size: 2rem;
 }
 
 /* SIDE NAV */
@@ -27,9 +34,11 @@
   /* transition: right 20s;
   -webkit-transition: right 20s; */
   overflow-y: scroll;
+  z-index: 5500 !important;
   /* transform: translateX();
   -webkit-transform: translateX(); */
 }
+
 
 @media only screen and (min-height: 80vh) {
   #side-menu-row {
@@ -83,6 +92,10 @@
   color: #ef7c53 !important;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 /* MAIN COMPONENT */
 
 #main-app {
@@ -105,7 +118,16 @@
 }
 
 #main-jumbo {
-  height: 80vh;
+  height: 500px;
+  background-image: url('../src/components/resources/afrowoman.jpg');
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#main-jumbo-login {
+  height: 400px;
   background-image: url('../src/components/resources/afrowoman.jpg');
   background-color: #ffffff;
   background-size: cover;
@@ -141,9 +163,14 @@
   padding-top: 100px !important;
 }
 
+#jumbo-contents-login {
+  padding-top: 150px !important;
+}
+
 #search-bar-strip {
   background-color: #ffd800;
   height: 20vh;
+  z-index: -1 !important;
 }
 
 #search-bar-form {
@@ -265,11 +292,24 @@ h6 {
 
 #register-app-body {
   height: 100vh !important;
+  
+}
+
+#register-app-main {
+  height: 100vh !important;
+  overflow-y: scroll;
 }
 
 #login-app-component {
   height: 100vh !important; 
   width: 30rem;
+}
+
+#signup-app-component {
+  /* height: 100vh !important;  */
+  width: 30rem;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 
 /* .form-floating {
@@ -298,6 +338,11 @@ h6 {
 }
 
 #papaya-logo-login {
+  width: 3rem;
+  height: 3rem;
+}
+
+#papaya-logo-signup {
   width: 3rem;
   height: 3rem;
 }
@@ -345,4 +390,72 @@ h6 {
   border-color: #ef7c53 !important;
   border: 2px solid #ef7c53 !important;
   color: #ef7c53 !important;
+}
+
+/* PROFILE PAGE */
+
+#profile-app {
+  height: 100vh !important;
+  /* overflow-y: scroll; */
+  width: 100vw !important;
+}
+
+#profile-app-body {
+  height: 100vh !important;
+}
+
+#profile-app-main {
+  height: 100vh !important;
+  overflow-y: scroll;
+}
+
+/* #signup-app-component { */
+  /* height: 100vh !important;  */
+  /* width: 30rem;
+  margin-top: 10rem;
+  margin-bottom: 5rem; */
+/* } */
+
+#profile-brand-h1 {
+  font-family: 'Rozha One', serif;
+  text-align: center;
+  color: #ef7c53;
+  font-size: 3rem;
+  z-index: 550 !important;
+}
+
+#profile-topbar {
+  height: 138px
+}
+
+#profile-header {
+  background-image: url('../src/components/resources/flower-header.jpeg');
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
+  z-index: -1 !important;
+}
+
+#profile-container {
+  padding-left: 15rem;
+  padding-right: 15rem;
+}
+
+#profile-form {
+  width: 100vw !important;
+}
+
+#profile-main-container {
+  padding-left: 15rem !important;
+  padding-right: 15rem !important;
+}
+
+.profileButton {
+  background-color: #ef7c53 !important;
+  border-color: #ef7c53 !important;
+  border: 2px solid #ef7c53 !important;
+  color: #ffd800 !important;
+
 }
