@@ -53,7 +53,8 @@ const RegisterPage = ({
               <Row className="full-height">
                 <Col md={sideMenuState? 9 : 12} className="px-0" id="register-app-main">
                   <Container className="px-0"  style={{ maxWidth: "100vw" }}>
-                    {(location.pathname === "/login") ? <LoginContainer/> : <SignUpContainer/>}
+                    {location.pathname === "/login" && <LoginContainer/>} 
+                    {location.pathname === "/register" &&  <SignUpContainer/>}
                     <Footer/>
                   </Container>
                 </Col>

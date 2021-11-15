@@ -9,7 +9,7 @@ export default function ProfileNav (props) {
         <Navbar bg="light" expand="lg" className="py-5" id="profile-header">
             <Container fluid className="d-flex" id="profile-container">
 
-                <Navbar.Brand><img src={props.user.avatar} alt="User Avatar" className="rounded-circle"/></Navbar.Brand>
+                <Navbar.Brand><img src={props.user.avatar.avatar} alt="User Avatar" className="rounded-circle" style={{ width: "6rem", height: "6rem", objectFit: "cover" }}/></Navbar.Brand>
                 <Navbar.Brand>
                     <Container fluid>
                         <h1 className="text-white">{props.user.name}</h1>
@@ -27,7 +27,7 @@ export default function ProfileNav (props) {
                                 <Container>
                                     <Row>
                                         <Col md={12} className="d-flex justify-content-center">
-                                            <h1>{props.user.reviews.length}</h1>
+                                            <h1>{props.user.reviews?.length}</h1>
                                         </Col>
                                     </Row>
                                     <Row className="d-flex justify-content-center">

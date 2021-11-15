@@ -15,11 +15,11 @@ export default function ReviewCard (props) {
                     </Col> */}
                     <Col md={12} className="px-0">
                         <Card.Body className="px-0">
-                            <Card.Title className="mb-0">
+                            {/* <Card.Title className="mb-0"> */}
                                 <h6 className="mb-0">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim ipsum vitae velit bibendum pharetra. Vivamus condimentum luctus sapien, quis interdum nulla lobortis quis. Aenean dapibus mollis ullamcorper. Proin elementum massa ut ligula dignissim, ut mollis mauris consequat. Integer non ipsum sed purus faucibus posuere sed ac orci. Donec nec orci pellentesque, euismod tortor maximus, eleifend magna. Ut eu dignissim lorem. Ut vestibulum velit sapien, eget tristique nunc convallis vitae.
                                 </h6>
-                            </Card.Title>
+                            {/* </Card.Title> */}
                         </Card.Body>
                     
                     </Col>

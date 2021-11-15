@@ -7,6 +7,9 @@ import {
   LOADING,
   ERROR,
   REFRESH_TOKEN, 
+  UPDATE_USER,
+  UPDATE_AVATAR,
+  UPDATE_COVER
 } from '../actions/types.js';
 import initialState from '../initialState';
 
@@ -43,7 +46,15 @@ const authReducer = (state = initialState.user, action) => {
       };
     case LOGOUT:
       return {
-        ...state,
+        _id: "",
+        name: "",
+        surname: "",
+        username: "",
+        dateOfBirth: "",
+        email: "",
+        avatar: "",
+        role: "",
+        reviews: [],
         isLoggedIn: false,
         userFound: false,
       };
@@ -51,6 +62,32 @@ const authReducer = (state = initialState.user, action) => {
       return {
         ...state,
         accessToken: action.payload,
+        };
+
+       // USER FUNCTIONS
+
+       case UPDATE_USER:
+        return {
+          ...state,
+          ...action.payload.user,
+            isLoggedIn: true,
+            userFound: true,
+        };
+
+        case UPDATE_AVATAR:
+        return {
+          ...state,
+          ...action.payload.user,
+            isLoggedIn: true,
+            userFound: true,
+        };
+
+        case UPDATE_COVER:
+        return {
+          ...state,
+          ...action.payload.user,
+            isLoggedIn: true,
+            userFound: true,
         };
     default:
       return state;

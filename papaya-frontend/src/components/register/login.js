@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Footer from '../footer';
 import { connect } from "react-redux";
-import { loginAction } from "../../redux/actions/auth.js"
+import { loginAction, logoutAction } from "../../redux/actions/auth.js"
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom'
 
@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
   const mapDispatchToProps = (dispatch) => ({
     //functions
     login: (email, password) => dispatch(loginAction(email, password)),
+    logout: () => dispatch(logoutAction())
   });
 
 const LoginContainer = ({
@@ -24,7 +25,8 @@ const LoginContainer = ({
     loading,
     error,
     isLoggedIn,
-    userFound
+    userFound,
+    logout
 }) => {
 
     const [userInfo, setUserInfo] = useState({
@@ -46,6 +48,7 @@ const LoginContainer = ({
     if (isLoggedIn) { 
         return <Redirect to='/main' /> 
     } else if ( !isLoggedIn && userFound === null ) { 
+        logout()
         return <Redirect to='/register' /> 
     } else { return (
     <>

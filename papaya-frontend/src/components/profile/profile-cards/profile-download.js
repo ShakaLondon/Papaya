@@ -42,15 +42,27 @@ const ProfileDelete = ({
       }
 
     return (
-        <Card style={{ width: '100%' }}>
+        <Card style={{ width: '100%' }} className="my-4 py-4">
             <Card.Body>
-                <Card.Title><h4>Download your profile</h4></Card.Title>
-                                <Card.Text>
-                                    <h6>Download your profile and your reviews</h6>
-                                </Card.Text>
-                                <Button>
-                                    Download information
-                                </Button>
+            {/* <Card.Title className="px-2 mb-4" > */}
+                    <h4 className="px-2 mb-4" >Download profile</h4>
+                {/* </Card.Title> */}
+                                {/* <Card.Text > */}
+                                    <h6 className="px-2 mb-1">Download your profile and your reviews</h6>
+                                {/* </Card.Text> */}
+                                <Container fluid className="mx-0 px-0">
+                                <Row className="mx-0 px-2">
+                                    <Col md={6}  className="ps-0 mt-2">
+                                        <Button type="submit" className="container-fluid rounded text-center py-2 profileButton">
+                                        Download information
+                                        </Button>
+                                    </Col>
+                                    <Col md={6}  className="px-0">
+                                    </Col>
+                                </Row>
+
+                                </Container>
+                                
             </Card.Body>
         </Card>
     );

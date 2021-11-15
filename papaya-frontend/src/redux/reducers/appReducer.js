@@ -1,7 +1,8 @@
 import { 
     OPEN_NAV,
     ERROR,
-    LOADING
+    LOADING,
+
   } from '../actions/types.js';
   import initialState from '../initialState';
   

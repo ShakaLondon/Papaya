@@ -1,6 +1,6 @@
 import axiosInstance from "./api";
 import TokenService from "./tokenService";
-import { refreshToken } from "../redux/actions/auth.js";
+import { logoutAction, refreshToken } from "../redux/actions/auth.js";
 
 const setup = (store) => {
   axiosInstance.interceptors.request.use(
@@ -41,9 +41,14 @@ const setup = (store) => {
             dispatch(refreshToken(accessToken));
             TokenService.updateLocalAccessToken(accessToken);
 
+            console.log(accessToken + "Interceptor")
+
             return axiosInstance(originalConfig);
-          } catch (_error) {
-            return Promise.reject(_error);
+          } catch (err) {
+
+          //  dispatch(logoutAction())
+
+            return Promise.reject(err);
           }
         }
       }

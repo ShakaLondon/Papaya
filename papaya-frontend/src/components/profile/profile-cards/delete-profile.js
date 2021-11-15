@@ -42,17 +42,29 @@ const ProfileDownload = ({
       }
 
     return (
-        <Card style={{ width: '100%' }}>
-            <Card.Body>
-                <Card.Title><h4>Download your profile</h4></Card.Title>
-                                <Card.Text>
-                                    <h6>Download your profile and your reviews</h6>
-                                </Card.Text>
-                                <Button>
-                                    Download information
-                                </Button>
-            </Card.Body>
-        </Card>
+      <Card style={{ width: '100%' }} className="my-4 py-4">
+      <Card.Body>
+      {/* <Card.Title > */}
+              <h4 className="px-2 mb-4">Delete user</h4>
+          {/* </Card.Title> */}
+                          {/* <Card.Text> */}
+                              <h6 className="px-2 mb-1">When you delete your user profile, your reviews are deleted as well and cannot be restored</h6>
+                          {/* </Card.Text> */}
+                          <Container fluid className="mx-0 px-0">
+                          <Row className="mx-0 px-2">
+                              <Col md={6}  className="ps-0 mt-2">
+                                  <Button type="submit" className="container-fluid rounded text-center py-2 profileButton">
+                                  Delete my profile
+                                  </Button>
+                              </Col>
+                              <Col md={6}  className="px-0">
+                              </Col>
+                          </Row>
+
+                          </Container>
+                          
+      </Card.Body>
+  </Card>
     );
   }
 
