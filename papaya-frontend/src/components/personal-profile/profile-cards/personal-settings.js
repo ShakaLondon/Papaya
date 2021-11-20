@@ -33,7 +33,14 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default function PublicProfile (props){ 
+const PersonalSettings = ({
+    sideMenuState,
+    setMenuState,
+    userProf,
+    updateUserProf,
+    updateUserImage,
+    updateUserCover
+}) => { 
 
     const [updateUser, setUpdateUser] = useState({
         email: userProf.email,
@@ -41,9 +48,63 @@ export default function PublicProfile (props){
         surname: userProf.surname,
       })
 
+      const [formData, setFormData] = useState({
+        image: null
+      })
+
+      const [coverFormData, setCoverFormData] = useState({
+        cover: null
+      })
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        updateUserProf(updateUser)
+      }
+
+      const handleSubmitImage = (e) => {
+        e.preventDefault();
+        updateUserImage(formData.image)
+      }
+
+      const handleSubmitCover = (e) => {
+        e.preventDefault();
+        updateUserCover(coverFormData.cover)
+      }
+
+      const handleChange = (e) => {
+        console.log(e.target.value)
+        let name = e.target.name
+        setUpdateUser({ ...updateUser, [name]: e.target.value});
+      }
+
+      const addFile = (e) => {
+    
+        // event to update state when form inputs change
+        console.log(e.target.files)
+        const files = e.target.files
+        const fd = new FormData();
+        fd.append('avatar', files[0]);
+    
+        console.log(fd)
+    
+        setFormData({ image: fd });
+      }
+
+      const addFileCover = (e) => {
+    
+        // event to update state when form inputs change
+        console.log(e.target.files)
+        const files = e.target.files
+        const fd = new FormData();
+        fd.append('cover', files[0]);
+    
+        console.log(fd)
+    
+        setCoverFormData({ cover: fd });
+      }
 
     return (
-        <Card style={{ width: '100%' }} className="my-4 py-4">
+        <Card style={{ width: '100%' }} className="my-4 py-4 profileCard">
             <Card.Body>
                 {/* <Card.Title > */}
                     <h4 className="px-2 mb-4">Personal Settings</h4>
@@ -124,4 +185,4 @@ export default function PublicProfile (props){
     );
   }
 
-  export default PublicProfile
+  export default connect(mapStateToProps, mapDispatchToProps)(PersonalSettings)

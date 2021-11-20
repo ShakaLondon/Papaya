@@ -27,7 +27,7 @@ const NavBar = ({
     
         <Navbar expand="lg" fixed="top" id="navbar-strip-top" style={{ backgroundColor: colour }}>
         <Container fluid className="mx-0 d-flex justify-content-between">
-          <Navbar.Brand href="/"><img src="./resources/logo/papaya-round.png" alt="Papaya Logo" id="papaya-logo-nav" className="mx-3 my-3"/></Navbar.Brand>
+          <Navbar.Brand href="/"><img src="https://res.cloudinary.com/shakalondon/image/upload/v1636974558/Papaya/papaya-round_y4c6uq.png" alt="Papaya Logo" id="papaya-logo-nav" className="mx-3 my-3"/></Navbar.Brand>
           <Navbar.Brand className="d-flex align-items-center">
             {/* <FontAwesomeIcon icon={faUser} id="login-nav-bar-icon" className="mx-3 my-3"/> */}
               { sideMenuState ? <FontAwesomeIcon icon={faTimes} className="mx-3 my-3" id="main-nav-bar-icon" onClick={() => setMenuState(false)}/> : <FontAwesomeIcon icon={faBars} className="mx-3 my-3" id="main-nav-bar-icon" onClick={() => setMenuState(true)}/>}

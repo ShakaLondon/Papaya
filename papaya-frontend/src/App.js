@@ -7,7 +7,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import HomePage from './views/main';
 import RegisterPage from './views/registration';
 import ProfilePage from './views/user-profile';
-import Footer from './components/footer';
+import PublicProfilePage from './views/public-profile.js'
+import BusinessPage from './views/business-profile.js'
+import WriteReview from './views/write-review';
 
 
 function App() {
@@ -19,10 +21,14 @@ function App() {
         <Route exact path="/">
           <Redirect to="/main"/>
         </Route>
+        <Route exact path="/review/:companyname" component={BusinessPage}/>
+        <Route exact path="/review/:companyname/new" component={WriteReview}/>
+        <Route exact path="/profile/:username" component={PublicProfilePage}/>
         <Route exact path="/profile" component={ProfilePage}/>
         <Route exact path="/main" component={HomePage}/>
         <Route exact path="/login" component={RegisterPage}/>
         <Route exact path="/register" component={RegisterPage}/>
+
         
       </Switch>
         {/* <Footer/> */}

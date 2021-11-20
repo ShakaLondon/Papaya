@@ -1,0 +1,126 @@
+import { faArrowRight, faCalendar, faCalendarAlt, faCheckCircle, faInfoCircle, faSearch, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+import { Card, Button, Container, Row, Col, Form, FloatingLabel, FormControl, ProgressBar, InputGroup } from 'react-bootstrap'
+import { connect } from 'react-redux';
+import { openNavAction,  } from '../../../redux/actions';
+import { updateUserAction, updateUserImageAction, updateUserCoverAction } from '../../../redux/actions/user'
+import FilesUploadComponent from '../upload';
+import DropdownCard from './dropdown-card';
+import Keywords from './keywords.js'
+
+
+
+
+const mapStateToProps = (state) => ({ 
+    sideMenuState: state.appState.sideMenu,
+    userProf: state.user
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  setMenuState: (action) => {
+    dispatch(openNavAction(action))
+  },
+
+  updateUserProf: (action) => {
+    dispatch(updateUserAction(action))
+  },
+
+  updateUserImage: (action) => {
+    dispatch(updateUserImageAction(action))
+  },
+
+  updateUserCover: (action) => {
+      dispatch(updateUserCoverAction(action))
+  }
+})
+
+
+const BusinessTrans = ({
+    sideMenuState,
+    setMenuState,
+    userProf,
+    updateUserProf,
+    updateUserImage,
+    updateUserCover
+}) => { 
+
+      const [percentage, setPercentage] = useState(30)
+
+
+    return (
+        <Card style={{ width: '100%' }} className="my-4 pt-4 profileCard">
+            <Card className="profileCard borderBottom">
+            <Card.Body className>
+                {/* <Card.Title > */}
+                <h5 className="px-2 mb-1">Business Transparency</h5>
+
+                <Container  className="px-2 py-2">
+                
+                    
+                    <Row>
+                        <Col md={1} className="pe-3">
+                            <FontAwesomeIcon icon={faCalendarAlt} className="fa-xs"/>
+                            
+                        </Col>
+                        <Col md={10} className="px-0 d-flex align-items-center">
+                            {/* <Row className="px-0"> */}
+                            <Card.Text className="px-1 mb-0">Claimed their Trustpilot profile: December 2017.<FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2"/></Card.Text>
+                            
+                            {/* </Row> */}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={1} className="pe-3">
+                            <FontAwesomeIcon icon={faCheckCircle} className="fa-xs text-success"/>
+                            
+                        </Col>
+                        <Col md={10} className="px-0 d-flex align-items-center">
+                            {/* <Row className="px-0"> */}
+                            <Card.Text className="px-1 mb-0">Verified additional company details <FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2"/></Card.Text>
+                            
+                            {/* </Row> */}
+                        </Col>
+                    </Row>
+                </Container>
+               
+                {/* </Card.Title> */}
+            </Card.Body>
+            </Card>
+            <Card className="profileCard borderBottom">
+                <Card.Body className="px-4">
+                    <h6 className="extraSmallTxt mb-0">See how this company has been using Trustpilot for the past 12 months</h6>
+                </Card.Body>
+                
+            </Card>
+            <DropdownCard innerText={"Asks their customers for reviews — whether positive or negative."} 
+            dropdownText={"Companies who regularly ask their customers to review them tend to have a more representative star rating."} />
+            
+            <DropdownCard innerText={"Pays to access extra Trustpilot features."} 
+            dropdownText={"Our paid plans offer more review invitations, marketing materials, business support, and more."} />
+
+            <DropdownCard innerText={"Typically replies to negative reviews in 24 hours or less."} 
+            dropdownText={"We take all days of the week into account (including weekends) and consider 1- and 2-star reviews to be negative."} />
+
+            <DropdownCard innerText={"Has replied to 7 out of 8 negative reviews."} 
+            dropdownText={"We consider 1- and 2-star reviews to be negative."} />
+
+            <DropdownCard innerText={"Has reviews that were merged into this profile"} 
+            dropdownText={"Profiles can be merged for one of these reasons, Identical domains, Rebranding or a Business merger or change in ownership"} />
+
+<Card className="profileCard">
+<Card.Body className="px-4">
+<Button className="container-fluid d-inline-flex align-items-center justify-content-center rounded text-center py-2 profileButton">
+                <h6 className="mb-0">See a detailed overview</h6>
+                <FontAwesomeIcon icon={faArrowRight} className="fa-xs mx-2"/>
+            </Button>
+            </Card.Body>
+                
+            </Card>
+            
+        </Card>
+        
+    );
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(BusinessTrans)

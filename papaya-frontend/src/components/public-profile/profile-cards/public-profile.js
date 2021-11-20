@@ -3,108 +3,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { Card, Button, Container, Row, Col, Form, FloatingLabel, FormControl } from 'react-bootstrap'
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router';
 import { openNavAction,  } from '../../../redux/actions';
 import { updateUserAction, updateUserImageAction, updateUserCoverAction } from '../../../redux/actions/user'
-import FilesUploadComponent from '../upload';
 
 
 
-const mapStateToProps = (state) => ({ 
-    sideMenuState: state.appState.sideMenu,
-    userProf: state.user
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  setMenuState: (action) => {
-    dispatch(openNavAction(action))
-  },
-
-  updateUserProf: (action) => {
-    dispatch(updateUserAction(action))
-  },
-
-  updateUserImage: (action) => {
-    dispatch(updateUserImageAction(action))
-  },
-
-  updateUserCover: (action) => {
-      dispatch(updateUserCoverAction(action))
-  }
-})
 
 
-const PersonalSettings = ({
-    sideMenuState,
-    setMenuState,
-    userProf,
-    updateUserProf,
-    updateUserImage,
-    updateUserCover
-}) => { 
+export default function PublicProfile (props){ 
 
-    const [updateUser, setUpdateUser] = useState({
-        email: userProf.email,
-        name: userProf.name,
-        surname: userProf.surname,
-      })
 
-      const [formData, setFormData] = useState({
-        image: null
-      })
+    // let locationUrl = useLocation();
 
-      const [coverFormData, setCoverFormData] = useState({
-        cover: null
-      })
+    //   console.log(locationUrl)
+  
 
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        updateUserProf(updateUser)
-      }
+    //   const params = new URLSearchParams(locationUrl.search);
+    //   const searchReq = params.get('username');
+    //   console.log(searchReq)
 
-      const handleSubmitImage = (e) => {
-        e.preventDefault();
-        updateUserImage(formData.image)
-      }
+    const [userProf, setUserProf] = useState(props.profile)
 
-      const handleSubmitCover = (e) => {
-        e.preventDefault();
-        updateUserCover(coverFormData.cover)
-      }
 
-      const handleChange = (e) => {
-        console.log(e.target.value)
-        let name = e.target.name
-        setUpdateUser({ ...updateUser, [name]: e.target.value});
-      }
 
-      const addFile = (e) => {
-    
-        // event to update state when form inputs change
-        console.log(e.target.files)
-        const files = e.target.files
-        const fd = new FormData();
-        fd.append('avatar', files[0]);
-    
-        console.log(fd)
-    
-        setFormData({ image: fd });
-      }
-
-      const addFileCover = (e) => {
-    
-        // event to update state when form inputs change
-        console.log(e.target.files)
-        const files = e.target.files
-        const fd = new FormData();
-        fd.append('cover', files[0]);
-    
-        console.log(fd)
-    
-        setCoverFormData({ cover: fd });
-      }
 
     return (
-        <Card style={{ width: '100%' }} className="my-4 py-4">
+        <Card style={{ width: '100%' }} className="my-4 py-4 profileCard">
             <Card.Body>
                 {/* <Card.Title > */}
                     <h4 className="px-2 mb-4">Personal Settings</h4>
@@ -116,10 +41,10 @@ const PersonalSettings = ({
                                 {/* <Card.Text> */}
                                     <h6 className="px-0 mb-1">Profile picture</h6>
                                 {/* </Card.Text> */}
-                                <FilesUploadComponent addFile={addFile}/>
+                                {/* <FilesUploadComponent addFile={addFile}/> */}
                             </Row>
                             <Row>
-                                <Button className="container-fluid rounded text-center py-2 profileButton" onClick={handleSubmitImage}>
+                                <Button className="container-fluid rounded text-center py-2 profileButton">
                                     Upload your profile picture
                                 </Button>
                             </Row>
@@ -128,11 +53,11 @@ const PersonalSettings = ({
                             <Row>
                                 {/* <Card.Text> */}
                                     <h6 className="px-0 mb-1">Profile header</h6>
-                                    <FilesUploadComponent addFile={addFileCover}/>
+                                    {/* <FilesUploadComponent addFile={addFileCover}/> */}
                                 {/* </Card.Text> */}
                             </Row>
                             <Row>
-                                <Button className="container-fluid rounded text-center py-2 profileButton" onClick={handleSubmitCover}>
+                                <Button className="container-fluid rounded text-center py-2 profileButton">
                                     Upload a header image
                                 </Button>
                             </Row>
@@ -143,7 +68,7 @@ const PersonalSettings = ({
                     {/* <Card.Text> */}
                                     <h6 className="px-0 mb-1 mt-5">Profile information</h6>
                                 {/* </Card.Text> */}
-                <Form onSubmit={handleSubmit}>
+                {/* <Form onSubmit={handleSubmit}>
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Email address"
@@ -178,11 +103,9 @@ const PersonalSettings = ({
                                 </Row>
                             </Container>
                             
-                        </Form>
+                        </Form> */}
                         </Container>
             </Card.Body>
         </Card>
     );
   }
-
-  export default connect(mapStateToProps, mapDispatchToProps)(PersonalSettings)

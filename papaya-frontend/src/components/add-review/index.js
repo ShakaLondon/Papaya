@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
     logout: () => dispatch(logoutAction())
   });
 
-const LoginContainer = ({
+const AddReviewContainer = ({
     login,
     loading,
     error,
@@ -45,12 +45,13 @@ const LoginContainer = ({
         setUserInfo({ ...userInfo, [name]: e.target.value});
       }
 
-    if (isLoggedIn) { 
-        return <Redirect to='/main' /> 
-    } else if ( !isLoggedIn && userFound === null ) { 
-        logout()
-        return <Redirect to='/register' /> 
-    } else { return (
+    // if (isLoggedIn) { 
+    //     return <Redirect to='/main' /> 
+    // } else if ( !isLoggedIn && userFound === null ) { 
+    //     logout()
+    //     return <Redirect to='/register' /> 
+    // } else { 
+        return (
     <>
         <Container fluid id="login-app-component" className="mx-auto d-flex justify-content-center">
             <Container fluid id="login-form" className="flex-row my-auto">
@@ -92,6 +93,6 @@ const LoginContainer = ({
 </>
     );
 }
-  }
+//   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+  export default connect(mapStateToProps, mapDispatchToProps)(AddReviewContainer);

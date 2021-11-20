@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { openNavAction } from '../redux/actions'
 import { Container, Row, Col, } from 'react-bootstrap'
 import { Redirect, useLocation } from 'react-router'
-import ProfileContainer from '../components/personal-profile/index'
+import PublicProfileContainer from '../components/public-profile/index'
+
 import { useEffect } from 'react'
 import Footer from '../components/footer'
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
 //     return location
 // }
 
-const ProfilePage = ({
+const PublicProfilePage = ({
     sideMenuState,
     setMenuState,
     isLoggedIn
@@ -47,9 +48,10 @@ const ProfilePage = ({
   
 
 
-  if (!isLoggedIn) { 
-    return <Redirect to='/main' /> 
-} else { return (
+//   if (!isLoggedIn) { 
+//     return <Redirect to='/main' /> 
+// } else { 
+  return (
     
         <Container fluid id="profile-app" className="mx-0 px-0">
             <NavBar colour="rgba(255, 255, 255, 0)"/>
@@ -57,7 +59,7 @@ const ProfilePage = ({
               <Row className="full-height mx-0 px-0">
                 <Col md={sideMenuState? 9 : 12} className="px-0 mx-0" id="profile-app-main">
                   <Container fluid className="px-0 mx-0"  style={{ maxWidth: "100vw" }}>
-                      <ProfileContainer/>
+                      <PublicProfileContainer/>
                     {/* <Footer/> */}
                   </Container>
                 </Col>
@@ -72,6 +74,6 @@ const ProfilePage = ({
 
     );}
 
-  }
+  // }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)
+  export default connect(mapStateToProps, mapDispatchToProps)(PublicProfilePage)

@@ -10,7 +10,7 @@ export default function Footer (props) {
             <Container fluid id="footer-container" className="flex-row my-auto mt-4">
                 <Row>
                     <Col md={12} className="d-inline-flex justify-content-start align-content-center my-4">
-                        <img src="./resources/logo/papaya-round.png" alt="Papaya Logo" id="papaya-logo-footer" className="d-flex align-self-center mr-2"/>
+                        <img src="https://res.cloudinary.com/shakalondon/image/upload/v1636974558/Papaya/papaya-round_y4c6uq.png" alt="Papaya Logo" id="papaya-logo-footer" className="d-flex align-self-center mr-2"/>
                         <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
                     </Col>
                 </Row>

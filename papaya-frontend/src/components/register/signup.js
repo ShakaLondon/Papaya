@@ -58,7 +58,7 @@ const SignUpContainer = ({
             <Container fluid id="signup-form" className="flex-row my-auto">
                 <Row>
                     <Col md={12} className="d-inline-flex justify-content-center align-content-center my-3">
-                        <img src="./resources/logo/papaya-round.png" alt="Papaya Logo" id="papaya-logo-signup" className="d-flex align-self-center mx-2"/>
+                        <img src="https://res.cloudinary.com/shakalondon/image/upload/v1636974558/Papaya/papaya-round_y4c6uq.png" alt="Papaya Logo" id="papaya-logo-signup" className="d-flex align-self-center mx-2"/>
                         <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
                     </Col>
                     {/* <Col md={9} className="d-flex align-items-center">

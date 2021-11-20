@@ -241,7 +241,13 @@ a {
 } */
 
 h6 {
-  font-size: 1rem !important;
+  font-size: 1em !important;
+  font-weight: normal !important;
+}
+
+.extraSmallTxt {
+  font-size: 0.75rem !important;
+  font-weight: normal !important;
 }
 
 /* REVIEWS */
@@ -458,4 +464,74 @@ h6 {
   border: 2px solid #ef7c53 !important;
   color: #ffd800 !important;
 
+}
+
+.profileCard {
+  border-color: #ffef93 !important;
+  background-color: #ffef93 !important;
+}
+
+/* .papayaRatingLogo {
+  width: 2rem !important;
+  height: 2rem !important;
+} */
+
+/* PAPAYA APP ICON FONT */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('./fonts/icomoon.eot?vj1a11');
+  src:  url('./fonts/icomoon.eot?vj1a11#iefix') format('embedded-opentype'),
+    url('./fonts/icomoon.ttf?vj1a11') format('truetype'),
+    url('./fonts/icomoon.woff?vj1a11') format('woff'),
+    url('./fonts/icomoon.svg?vj1a11#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  /* speak: never; */
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-papaya-logo:before {
+  content: "\e900";
+}
+
+/* FILLER COMPONENT */
+
+/* .progress-bar {
+  position: relative;
+  height: 20px;
+  width: 350px;
+  border-radius: 50px;
+  border: 1px solid #333;
+}
+
+.filler {
+  background: #1DA598;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+} */
+
+/* REVIEW COMPONENT */
+
+.borderBottom {
+  border-bottom: 1px solid #ef7d5346 !important;
+  border-radius: 0px 0px 0px 0px !important;
+}
+
+hr {
+  color: #ef7c53 !important;
 }

@@ -42,7 +42,7 @@ const ProfileDelete = ({
       }
 
     return (
-        <Card style={{ width: '100%' }} className="my-4 py-4">
+        <Card style={{ width: '100%' }} className="my-4 py-4 profileCard">
             <Card.Body>
             {/* <Card.Title className="px-2 mb-4" > */}
                     <h4 className="px-2 mb-4" >Download profile</h4>
