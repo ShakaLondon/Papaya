@@ -35,7 +35,7 @@ const MainContainer = ({
 
     return (
     
-        <Container fluid id="main-app-component" className=" mx-0 px-0">
+        <Container fluid id="main-app-component" className="mx-0 px-0 scrollNav">
             {isLoggedIn ? <LoginJumbo></LoginJumbo> : <MainJumbo></MainJumbo>}
             <SearchBar></SearchBar>
             <Categories></Categories>

@@ -22,6 +22,10 @@ const editCover = (userUpdateCover) => {
   return api.post("image/upload/cover", userUpdateCover, { headers: authHeader() });
 };
 
+const addReview = (website, review) => {
+  return api.post(`reviews/${website}`, review, { headers: authHeader() });
+};
+
 const editUserReview = (reviewID) => {
   return api.put(`users/me/reviews/${reviewID}`, { headers: authHeader() });
 };
@@ -41,5 +45,6 @@ export default {
   UserReviewforBusiness,
   editUser,
   editAvatar,
-  editCover
+  editCover,
+  addReview
 };

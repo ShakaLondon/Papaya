@@ -61,14 +61,14 @@ const ProfileContainer = ({
     <>
         <Container fluid id="profile-app-component" className="mx-0 d-flex justify-content-center px-0">
             <Container fluid id="profile-form" className="flex-row mx-0 px-0">
-                <Row className="mx-0 px-0" style={{ backgroundColor: "#ffd800"}}>
-                    <Col md={12} id="profile-topbar" className="d-inline-flex justify-content-center align-items-center my-0">
+                {/* <Row className="mx-0 px-0" style={{ backgroundColor: "#ffd800"}}> */}
+                    {/* <Col md={12} id="profile-topbar" className="d-inline-flex justify-content-center align-items-center my-0">
                         <h1 id="profile-brand-h1" className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
-                    </Col>
+                    </Col> */}
                     {/* <Col md={9} className="d-flex align-items-center">
                         <h1 className="brand-heading-h1 mb-0">Papaya.</h1>
                     </Col> */}
-                </Row>
+                {/* </Row> */}
                 <Row className="mx-0 px-0">
                     <ProfileNav user={userProf}/>
                 </Row>

@@ -36,7 +36,7 @@ export default function Footer (props) {
                         <h6>Trust in reviews</h6>
                     </Col>
                     <Col md={3} className="py-2">
-                        <h6>Trustpilot Business</h6>
+                        <h6>Papaya Business</h6>
                     </Col>
                     <Col md={3} className="py-2">
                         <Row>

@@ -12,6 +12,7 @@ import BusinessPage from './views/business-profile.js'
 import WriteReview from './views/write-review';
 
 
+
 function App() {
   return (
     <Router>
@@ -21,8 +22,8 @@ function App() {
         <Route exact path="/">
           <Redirect to="/main"/>
         </Route>
-        <Route exact path="/review/:companyname" component={BusinessPage}/>
         <Route exact path="/review/:companyname/new" component={WriteReview}/>
+        <Route exact path="/review/:companyname" component={BusinessPage}/>
         <Route exact path="/profile/:username" component={PublicProfilePage}/>
         <Route exact path="/profile" component={ProfilePage}/>
         <Route exact path="/main" component={HomePage}/>

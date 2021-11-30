@@ -9,6 +9,7 @@ import { updateUserAction, updateUserImageAction, updateUserCoverAction } from '
 import StarRating from '../../rating-component';
 import FilesUploadComponent from '../upload';
 import Keywords from './keywords.js'
+import moment from 'moment'
 
 
 
@@ -41,20 +42,30 @@ const ReviewCard = (props) => {
 
       const [percentage, setPercentage] = useState(30)
 
+      const selected = (value) => {
+        // console.log(value + "selected")
+        // setWriteReview({ ...writeReview, stars: value})
+      }
+
 
     return (
-        <Card style={{ width: '100%' }} className="my-4 pt-4 profileCard">
+
+        <div className="">
+      {props.profile.reviewIDs?.map((review) => (
+        <Card style={{ width: '100%' }} className="my-4 pt-4 profileCard" key={review._id}>
             <Card.Body>
             <Container  className="px-2">
                     <Row>
                         <Col md={2} className="">
-                            <img src={props.profile.avatar.avatar} alt="User Avatar" className="rounded-circle" style={{ width: "3rem", height: "3rem", objectFit: "cover" }}/>
+                            <img 
+                            src={review.userID.avatar.avatar} 
+                            alt="User Avatar" className="rounded-circle" style={{ width: "3rem", height: "3rem", objectFit: "cover" }}/>
                         </Col>
                         <Col md={10} className="d-inline-flex px-0 align-items-center">
                             <Container className="px-0">
                             <Row>
                                 <Col md={12} className="px-0">
-                                <h5 className="px-0 mb-0">{`${props.profile.name} ${props.profile.surname}`}</h5>
+                                <h5 className="px-0 mb-0">{`${review.userID.name} ${review.userID.surname}`}</h5>
                                 </Col>
                                 
                             </Row>
@@ -62,7 +73,7 @@ const ReviewCard = (props) => {
                             <Col md={12} className="py-1 px-0 d-inline-flex">
                                 <div className="d-inline-flex px-0 align-items-center">
                                     <FontAwesomeIcon icon={faPencilAlt} className="fa-xs"/>
-                                    <Card.Text className="px-2 mb-0">0 reviews</Card.Text>
+                                    <Card.Text className="px-2 mb-0">{`${review.userID.reviews.length} reviews`}</Card.Text>
                                 </div>
                                 <div className="d-inline-flex px-2 align-items-center">
                                     <FontAwesomeIcon icon={faMapMarkerAlt} className="fa-xs"/>
@@ -85,12 +96,12 @@ const ReviewCard = (props) => {
                     <Row>
                         <Col md={6} className="">
                             <Row>
-                            <StarRating  fontSize={"1.5rem"} currentRating={0} numberOfStars={5}/>
+                            <StarRating current={review.rating} numberOfStars={0}   changeable={false} fontSize={"1.5rem"} selected={selected}/>
                             </Row>
                         </Col>
                         <Col md={6} className="d-flex justify-content-end">
                             <Row>
-                                <h6 className="px-2 mb-0">4 hours ago</h6>
+                                <h6 className="px-2 mb-0">{moment(review.createdAt).fromNow()}</h6>
                             </Row>
                         </Col>
                         </Row>
@@ -99,10 +110,10 @@ const ReviewCard = (props) => {
                 
                 
                 <Card.Title className="px-2 py-2 mb-0">
-                    Review Title
+                    {review.title}
                 </Card.Title>
                 <Card.Text className="px-2 py-2">
-                    Review description text
+                    {review.comment}
                 </Card.Text>
                 <hr className="mx-2" />
 
@@ -132,6 +143,8 @@ const ReviewCard = (props) => {
 
             </Card.Body>
         </Card>
+            ))}
+            </div>
     );
   }
 

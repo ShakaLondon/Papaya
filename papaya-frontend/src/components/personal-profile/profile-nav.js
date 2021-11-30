@@ -5,9 +5,11 @@ import userAuth from '../../services/user/user-auth';
 
 
 export default function ProfileNav (props) {
+    
     return (
-        <Navbar bg="light" expand="lg" className="py-5" id="profile-header">
-            <Container fluid className="d-flex" id="profile-container">
+        <Navbar bg="light" expand="lg" className="px-0 py-0" id="profile-header">
+            <div className="overlay py-5 container-fluid">
+            <Container fluid className="d-flex fullopacity" id="profile-container">
 
                 <Navbar.Brand><img src={props.user.avatar.avatar} alt="User Avatar" className="rounded-circle" style={{ width: "6rem", height: "6rem", objectFit: "cover" }}/></Navbar.Brand>
                 <Navbar.Brand>
@@ -64,6 +66,7 @@ export default function ProfileNav (props) {
                 </Nav>
                 </Navbar.Collapse>
             </Container>
+            </div>
             </Navbar>
     );
   }

@@ -6,7 +6,8 @@ import { Nav, Container, Navbar, NavDropdown, Row, Col, Card } from 'react-boots
 
 export default function WebsiteContainer (props) {
     return (
-        <Card style={{ width: '100%' }} className="my-4 py-4 profileCard">
+        <Card style={{ width: '100%' }} className="my-4 py-4 profileCard" id="websiteCard">
+            <a href={`https://${props.website}`}>
             <Card.Body>
                 <Container  className="px-2">
                     <Row>
@@ -22,7 +23,7 @@ export default function WebsiteContainer (props) {
                                
                             </Row>
                             <Row>
-                                <h6 className="mb-0">Visit this website</h6> 
+                                <h6 className="mb-0"><u>Visit this website</u></h6> 
                             </Row>
                         </Col>
                         <Col md={2}  className="d-flex align-items-center px-3">
@@ -31,6 +32,7 @@ export default function WebsiteContainer (props) {
                     </Row>
                 </Container>
             </Card.Body>
+            </a>
         </Card>
     );
   }

@@ -5,7 +5,7 @@ import { openNavAction } from '../redux/actions'
 import { Container, Row, Col, } from 'react-bootstrap'
 import { useLocation } from 'react-router'
 import LoginContainer from '../components/register/login'
-import AddReviewContainer from '../components/add-review/index'
+import ReviewContainer from '../components/add-review/index'
 import { useEffect } from 'react'
 import Footer from '../components/footer'
 
@@ -47,14 +47,14 @@ const WriteReview = ({
 
     return (
     
-        <Container fluid id="register-app" className="mx-0">
+        <Container fluid id="review-app" className="mx-0">
             <NavBar colour="rgba(255, 255, 255, 0)"/>
-            <Container fluid id="register-app-body" className="px-0 mx-0">
+            <Container fluid id="review-app-body" className="px-0 mx-0">
               <Row className="full-height">
-                <Col md={sideMenuState? 9 : 12} className="px-0" id="register-app-main">
+                <Col md={sideMenuState? 9 : 12} className="px-0 scrollNav" id="review-app-main">
                   <Container className="px-0"  style={{ maxWidth: "100vw" }}>
-                    <AddReviewContainer/>
-                    <Footer/>
+                    <ReviewContainer/>
+                    {/* <Footer/> */}
                   </Container>
                 </Col>
                 <Col md={3} className="px-0">

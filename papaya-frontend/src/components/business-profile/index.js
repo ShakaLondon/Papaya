@@ -2,12 +2,13 @@ import { Button, Container, Form, FormControl, FloatingLabel, Row, Col } from 'r
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Footer from '../footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { registerAction } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
+import { Redirect, useLocation } from 'react-router';
 import ProfileNav from './profile-nav';
 import ProfileMain from './profile-main';
+import LoadingSpinner from '../loading/index.js';
 
 const mapStateToProps = (state) => ({
     error: state.appState.error,
@@ -32,50 +33,191 @@ const BusinessContainer = ({
     userProf
 }) => {
 
-    const [userInfo, setUserInfo] = useState({
-        email: "",
-        password: "",
-        name: "",
-        surname: "",
-        email: "",
-        username: "",
-        password: "",
-        dateOfBirth: "",
+    const locationUrl = useLocation();
+    
+    console.log(locationUrl)
+
+
+    const routePath = locationUrl.pathname
+    console.log(routePath)
+
+    const businessNamePath = routePath.replace("/review/", 'www.')
+    console.log(businessNamePath)
+
+//   const [updateUser, setUpdateUser] = useState({
+//       email: userProf.email,
+//       name: userProf.name,
+//       surname: userProf.surname,
+//     })
+
+  const [searchRequest, setSearchRequest] = useState(businessNamePath);
+  const [searchResult, setSearchResult] = useState({});
+  const [dataLoading, setDataLoading] = useState(true);
+const [companyReviews, setCompanyReviews] = useState([])
+  const [reviews, setReviews] = useState({
+      average: 0,
+      total: 0,
+      reviewList: [],
+      ratingNo: {
+      five: {
+          percentage: 0,
+          reviews: []
+      },
+      four: {
+          percentage: 0,
+          reviews: []
+      },
+      three: {
+          percentage: 0,
+          reviews: []
+      },
+      two: {
+          percentage: 0,
+          reviews: []
+      },
+      one: {
+          percentage: 0,
+          reviews: []
+      },}
+  });
+
+  const [colorChange, setColorchange] = useState(false);
+
+
+  useEffect(() => {
+    const appPages = document.getElementsByClassName('scrollNav')
+
+    console.log(appPages)
+
+    const elemArray = Array.from(appPages)
+
+    elemArray.forEach(page => {
+    page.addEventListener('scroll', () => {
+      console.log(page.scrollTop);
+  
+      changeNavbarColor(page.scrollTop)
+    });
+  });
+  return () => {
+      // window.removeEventListener("scroll", listenScrollEvent);
+    };
+  }, []);
+
+
+  const changeNavbarColor = (scroll) =>{
+     if(scroll >= 30){
+       setColorchange(true);
+     }
+     else{
+       setColorchange(false);
+     }
+  };
+
+  const getAverages = (reviewArray) =>{
+    const reviewsList = companyReviews
+
+    console.log(companyReviews + "review Started")
+
+    setReviews({...reviews, reviewList: companyReviews})
+
+    companyReviews?.forEach(review => {
+        setReviews({ ...reviews, total: (reviews.total + review.rating)})
+        console.log({...reviews})
+
+        review.rating === 5 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, reviews: [...reviews.ratingNo.five.reviews, review] } }}) :
+        review.rating === 4 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, reviews: [...reviews.ratingNo.four.reviews, review] } }}) :
+        review.rating === 3 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, reviews: [...reviews.ratingNo.three.reviews, review] } }}) :
+        review.rating === 2 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, two: {...reviews.ratingNo.two, reviews: [...reviews.ratingNo.two.reviews, review] } }}) :
+        setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, reviews: [...reviews.ratingNo.one.reviews, review] } }})
+
+    });
+
+    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, percentage: (reviews.ratingNo.five.reviews?.length/reviews.reviewsList?.length)*100 } }})
+    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
+    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, percentage: (reviews.ratingNo.three.reviews?.length/reviews.reviewsList?.length)*100 } }})
+    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
+    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, percentage: (reviews.ratingNo.one.reviews?.length/reviews.reviewsList?.length)*100 } }})
+
+
+    setReviews({...reviews, average: (reviews.total/reviews.reviewsList?.length)*100})
+    console.log(reviews)
+ };
+
+    
+
+
+  useEffect(() => {
+      const url = `http://localhost:3005/business/${searchRequest}`
+      const options = {
+          method: 'GET',
+          // headers: {
+          //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
+          // }
+      }
+      fetch(`${url}`, options)
+      .then(res => res.json())
+      .then((business) => {
+          const busFound = business[0]
+          console.log(busFound)
+          console.log(busFound.reviewIDs)
+          const reviews = busFound.reviewIDs
+          setSearchResult(busFound)
+          // console.log(searchResult)
+          setCompanyReviews(reviews)
+          setDataLoading(false)
+          console.log(companyReviews + "reviews")
       })
+      .catch((error) => {console.log(error)})
+  }, [])
 
-      const handleSubmit= (e) => {
-        e.preventDefault();
-        register(userInfo)
+  
+  useEffect(() => {
+      // const reviewsList = companyReviews
+
+      // console.log(reviewsList)
+
+      // setReviews({...reviews, reviewList: companyReviews})
+
+      // companyReviews?.forEach(review => {
+      //     setReviews({ ...reviews, total: (reviews.total + review.rating)})
+      //     console.log({...reviews})
+
+      //     review.rating === 5 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, reviews: [...reviews.ratingNo.five.reviews, review] } }}) :
+      //     review.rating === 4 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, reviews: [...reviews.ratingNo.four.reviews, review] } }}) :
+      //     review.rating === 3 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, reviews: [...reviews.ratingNo.three.reviews, review] } }}) :
+      //     review.rating === 2 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, two: {...reviews.ratingNo.two, reviews: [...reviews.ratingNo.two.reviews, review] } }}) :
+      //     setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, reviews: [...reviews.ratingNo.one.reviews, review] } }})
+
+      // });
+
+      // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, percentage: (reviews.ratingNo.five.reviews?.length/reviews.reviewsList?.length)*100 } }})
+      // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
+      // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, percentage: (reviews.ratingNo.three.reviews?.length/reviews.reviewsList?.length)*100 } }})
+      // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
+      // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, percentage: (reviews.ratingNo.one.reviews?.length/reviews.reviewsList?.length)*100 } }})
+
+
+      // setReviews({...reviews, average: (reviews.total/reviews.reviewsList?.length)*100})
+      // console.log(reviews)
+      if (companyReviews.length > 0) {
+        getAverages(companyReviews)
       }
+    }, [companyReviews]);
 
-      const handleChange= (e) => {
-        console.log(e.target.value)
-        let name = e.target.name
-        setUserInfo({ ...userInfo, [name]: e.target.value});
-      }
 
-    //   if (isLoggedIn) { 
-    //     return <Redirect to='/main' /> 
-    // } else { 
         return (
     <>
-        <Container fluid id="profile-app-component" className="mx-0 d-flex justify-content-center px-0">
-            <Container fluid id="profile-form" className="flex-row mx-0 px-0">
-                <Row className="mx-0 px-0" style={{ backgroundColor: "#ffd800"}}>
-                    <Col md={12} id="profile-topbar" className="d-inline-flex justify-content-center align-items-center my-0">
-                        <h1 id="profile-brand-h1" className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
-                    </Col>
-                    {/* <Col md={9} className="d-flex align-items-center">
-                        <h1 className="brand-heading-h1 mb-0">Papaya.</h1>
-                    </Col> */}
-                </Row>
+        <Container fluid id="business-app-component" className="mx-0 d-flex justify-content-center px-0">
+            {dataLoading ? <Container fluid id="business-form" className="flex-row mx-0 px-0"> 
+            <LoadingSpinner/>
+            </Container> : <Container fluid id="business-form" className="flex-row mx-0 px-0">
                 <Row className="mx-0 px-0">
-                    <ProfileNav profile={userProf}/>
+                    <ProfileNav profile={searchResult} currentRating={0}/>
                 </Row>
-                <Row className="mx-0 px-0">
-                    <ProfileMain profile={userProf}/>
+                <Row className="mx-0 px-0" id="business-main-cont" style={{ paddingTop: `${ colorChange ? '280px' : '400px' }` }}>
+                    <ProfileMain profile={searchResult} user={userProf}/>
                 </Row>
-            </Container>
+            </Container>}
         </Container>
         <Footer/>
         </>

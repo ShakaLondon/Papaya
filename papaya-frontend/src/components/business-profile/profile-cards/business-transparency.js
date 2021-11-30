@@ -42,7 +42,8 @@ const BusinessTrans = ({
     userProf,
     updateUserProf,
     updateUserImage,
-    updateUserCover
+    updateUserCover, 
+    profile
 }) => { 
 
       const [percentage, setPercentage] = useState(30)
@@ -60,24 +61,24 @@ const BusinessTrans = ({
                     
                     <Row>
                         <Col md={1} className="pe-3">
-                            <FontAwesomeIcon icon={faCalendarAlt} className="fa-xs"/>
+                            <FontAwesomeIcon icon={faCalendarAlt} className="fa-xs text-secondary"/>
                             
                         </Col>
                         <Col md={10} className="px-0 d-flex align-items-center">
                             {/* <Row className="px-0"> */}
-                            <Card.Text className="px-1 mb-0">Claimed their Trustpilot profile: December 2017.<FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2"/></Card.Text>
+                            <Card.Text className="px-1 mb-0">{ profile.businessUserID? `Claimed their Papaya profile: ${profile.businessUserID.createdAt}.` : "This Papaya profile has never been claimed." }<FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2 text-secondary"/></Card.Text>
                             
                             {/* </Row> */}
                         </Col>
                     </Row>
                     <Row>
                         <Col md={1} className="pe-3">
-                            <FontAwesomeIcon icon={faCheckCircle} className="fa-xs text-success"/>
+                            <FontAwesomeIcon icon={faCheckCircle} className={`fa-xs ${profile.businessUserID? "text-success" : "text-secondary"}`}/>
                             
                         </Col>
                         <Col md={10} className="px-0 d-flex align-items-center">
                             {/* <Row className="px-0"> */}
-                            <Card.Text className="px-1 mb-0">Verified additional company details <FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2"/></Card.Text>
+                            {profile.businessUserID? <Card.Text className="px-1 mb-0">Verified additional company details <FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2"/></Card.Text> : <Card.Text className="px-1 mb-0">Hasn’t verified additional company details yet <FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2 text-secondary"/></Card.Text>}
                             
                             {/* </Row> */}
                         </Col>
@@ -89,14 +90,15 @@ const BusinessTrans = ({
             </Card>
             <Card className="profileCard borderBottom">
                 <Card.Body className="px-4">
-                    <h6 className="extraSmallTxt mb-0">See how this company has been using Trustpilot for the past 12 months</h6>
+                    <h6 className="extraSmallTxt mb-0">See how this company has been using Papaya for the past 12 months</h6>
                 </Card.Body>
                 
             </Card>
+            {profile.businessUserID &&  <>
             <DropdownCard innerText={"Asks their customers for reviews — whether positive or negative."} 
             dropdownText={"Companies who regularly ask their customers to review them tend to have a more representative star rating."} />
             
-            <DropdownCard innerText={"Pays to access extra Trustpilot features."} 
+            <DropdownCard innerText={"Pays to access extra Papaya features."} 
             dropdownText={"Our paid plans offer more review invitations, marketing materials, business support, and more."} />
 
             <DropdownCard innerText={"Typically replies to negative reviews in 24 hours or less."} 
@@ -107,6 +109,11 @@ const BusinessTrans = ({
 
             <DropdownCard innerText={"Has reviews that were merged into this profile"} 
             dropdownText={"Profiles can be merged for one of these reasons, Identical domains, Rebranding or a Business merger or change in ownership"} />
+            </>}
+
+            {!profile.businessUserID && 
+             <DropdownCard innerText={"Hasn't replied to negative reviews for the past 12 months."} 
+             dropdownText={"We consider 1- and 2-star reviews to be negative."} />}
 
 <Card className="profileCard">
 <Card.Body className="px-4">

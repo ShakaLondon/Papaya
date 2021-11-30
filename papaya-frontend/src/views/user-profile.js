@@ -55,7 +55,7 @@ const ProfilePage = ({
             <NavBar colour="rgba(255, 255, 255, 0)"/>
             <Container fluid id="profile-app-body" className="px-0 mx-0">
               <Row className="full-height mx-0 px-0">
-                <Col md={sideMenuState? 9 : 12} className="px-0 mx-0" id="profile-app-main">
+                <Col md={sideMenuState? 9 : 12} className="px-0 mx-0 scrollNav" id="profile-app-main">
                   <Container fluid className="px-0 mx-0"  style={{ maxWidth: "100vw" }}>
                       <ProfileContainer/>
                     {/* <Footer/> */}

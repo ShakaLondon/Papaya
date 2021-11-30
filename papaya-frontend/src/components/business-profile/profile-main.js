@@ -16,14 +16,14 @@ export default function BusinessMain (props) {
         <Container id="profile-main-container">
             <Row className="mx-0 px-0">
                 <Col md={8}>
-                    <AddRatingContainer profile={props.profile}/>
-                    <ReviewHeader profile={props.profile}/>
-                    <ReviewCard profile={props.profile}/>
+                    <AddRatingContainer profile={props.profile} user={props.user}/>
+                    <ReviewHeader profile={props.profile} user={props.profile}/>
+                    <ReviewCard profile={props.profile} user={props.user}/>
                    
                 </Col>
                 <Col md={4}>
-                    <BusinessTrans/>
-                    <BusinessInfo/>
+                    <BusinessTrans profile={props.profile} user={props.user}/>
+                    <BusinessInfo profile={props.profile} user={props.user}/>
 
                 </Col>
             </Row>

@@ -42,7 +42,8 @@ const BusinessInfo = ({
     userProf,
     updateUserProf,
     updateUserImage,
-    updateUserCover
+    updateUserCover,
+    profile
 }) => { 
 
       const [percentage, setPercentage] = useState(30)
@@ -50,11 +51,11 @@ const BusinessInfo = ({
 
     return (
         <Card style={{ width: '100%' }} className="my-4 pt-4 profileCard">
-            <Card className="profileCard borderBottom">
+            {profile.businessUserID && <Card className="profileCard borderBottom">
             <Card.Body className>
                 {/* <Card.Title > */}
                 <h5 className="px-2 mb-1">Business Title</h5>
-                <h6 className="extraSmallTxt mb-0 px-2 py-2">Information written by the company</h6>
+                <h6 className="extraSmallTxt mb-0 px-2 py-2">{profile.businessUserID ? "Information written by the company" : "Information provided by various external sources"}</h6>
 
                 <img src="https://res.cloudinary.com/shakalondon/image/upload/v1636933603/Papaya/618db3c8935db55fdd67108c-ShakaLondon.jpg" alt="Business Image" className="px-4 py-3 img-fluid" 
                 // style={{ width: "3rem", height: "3rem", objectFit: "cover" }}
@@ -67,7 +68,7 @@ Phasellus lobortis, tellus sed euismod tincidunt, orci libero accumsan nulla, at
                
                 {/* </Card.Title> */}
             </Card.Body>
-            </Card>
+            </Card>}
             <Card className="profileCard borderBottom">
                 <Card.Body className="px-4">
                 <h5 className="px-2 mb-1">About TrailFinders</h5>
@@ -91,7 +92,7 @@ Phasellus lobortis, tellus sed euismod tincidunt, orci libero accumsan nulla, at
                         </Col>
                         <Col md={10} className="px-0 d-flex align-items-center">
                             {/* <Row className="px-0"> */}
-                            <Card.Text className="px-1 mb-0">Claimed their Trustpilot profile: December 2017.<FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2"/></Card.Text>
+                            <Card.Text className="px-1 mb-0">Claimed their Papaya profile: December 2017.<FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2"/></Card.Text>
                             
                             {/* </Row> */}
                         </Col>
@@ -115,7 +116,7 @@ Phasellus lobortis, tellus sed euismod tincidunt, orci libero accumsan nulla, at
             </Card>
             <Card className="profileCard">
             <Card.Body className>
-                <h5 className="px-2 mb-1">Categories</h5>
+                <h5 className="px-2 mb-1">Category</h5>
             </Card.Body>
             </Card>
             

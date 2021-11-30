@@ -5,9 +5,9 @@ function Keywords({ keywords }) {
 
   return (
     
-    <div className="d-flex">
-    {keywords.map((word) => (
-        <div fluid className="d-flex ps-0 pe-1">
+    <div className="d-inline-flex">
+    {keywords.map((word, idx) => (
+        <div key={idx} className="d-flex ps-0 pe-1">
         <Card
         // style={{ width: '18rem' }}
         >

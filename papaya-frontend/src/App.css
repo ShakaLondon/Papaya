@@ -1,8 +1,18 @@
+.overlay {
+  /* opacity: 0.5; */
+  background-color: rgba(255, 255, 255, 0.582);
+  z-index: -1;
+}
+
+/* .fullopacity {
+  opacity: 1 !important;
+} */
+
 /* NAVBAR */
 
 #navbar-strip-top {
-
-  z-index: 0;
+  background-color: transparent;
+  z-index: 2;
 }
 
 #papaya-logo-nav {
@@ -14,6 +24,12 @@
 #main-nav-bar-icon {
   color: #ef7c53;
   font-size: 3rem;
+}
+
+#main-nav-bar-icon-close {
+  color: #ef7c53;
+  font-size: 3rem;
+  z-index: 2 !important;
 }
 
 #login-nav-bar-icon {
@@ -100,7 +116,7 @@ a {
 
 #main-app {
   height: 100vh !important;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   width: 100vw !important;
 }
 
@@ -187,12 +203,14 @@ a {
   border-color: #ef7c53 !important;
   background-color: #ef7c53 !important;
   color: #000000 !important;
+  /* z-index: 0; */
 }
 
 .searchBarButton:hover {
   border-color: #ffef93 !important;
   background-color: #ffef93 !important;
   color: #000000 !important;
+  /* z-index: 0; */
 }
 
 #search-input {
@@ -415,6 +433,8 @@ h6 {
   overflow-y: scroll;
 }
 
+
+
 /* #signup-app-component { */
   /* height: 100vh !important;  */
   /* width: 30rem;
@@ -422,16 +442,27 @@ h6 {
   margin-bottom: 5rem; */
 /* } */
 
+/* #profile-brand-h1 {
+  font-family: 'Rozha One', serif;
+  text-align: center;
+  color: #ef7c53;
+  font-size: 3rem;
+  z-index: 550 !important;
+} */
+
 #profile-brand-h1 {
   font-family: 'Rozha One', serif;
   text-align: center;
   color: #ef7c53;
   font-size: 3rem;
   z-index: 550 !important;
+  position: absolute;
 }
 
 #profile-topbar {
-  height: 138px
+  /* height: 138px */
+  position: absolute;
+  top: 0;
 }
 
 #profile-header {
@@ -442,11 +473,15 @@ h6 {
   background-attachment: fixed;
   color: #ffffff;
   z-index: -1 !important;
+  /* opacity: 0.5; */
 }
 
 #profile-container {
+  padding-top: 150px;
   padding-left: 15rem;
   padding-right: 15rem;
+  /* background-color: #ffffff; */
+  
 }
 
 #profile-form {
@@ -463,6 +498,7 @@ h6 {
   border-color: #ef7c53 !important;
   border: 2px solid #ef7c53 !important;
   color: #ffd800 !important;
+  /* z-index: 0; */
 
 }
 
@@ -534,4 +570,177 @@ h6 {
 
 hr {
   color: #ef7c53 !important;
+}
+
+#review-app {
+  /* overflow-y: scroll; */
+  width: 100vw !important;
+  background-color: white;
+}
+
+#review-app-component {
+  height: 1220px !important;
+}
+
+
+#review-app-body {
+  height: 100vh !important;
+  
+}
+
+#review-app-main {
+  height: 100vh !important;
+  overflow-y: scroll;
+}
+
+/* #review-app-main {
+  height: 100vh !important;
+  overflow-y: scroll;
+} */
+
+#review-form {
+  width: 100vw !important;
+  /* margin-top: 400px !important; */
+}
+
+#review-topbar {
+  height: 138px
+}
+
+.reviewFormMargin {
+  margin-top: 400px;
+}
+
+#review-brand-h1 {
+  font-family: 'Rozha One', serif;
+  text-align: center;
+  color: #ef7c53;
+  font-size: 3rem;
+  z-index: 550 !important;
+}
+
+#review-main-cont {
+  padding-top: 280px !important;
+  z-index: -1 !important;
+}
+
+#business-main-cont {
+  /* padding-top: 380px !important; */
+  z-index: -1 !important;
+}
+
+#review-header {
+  background-image: url('../src/components/resources/flower-header.jpeg');
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
+  z-index: 1 !important;
+}
+
+/* #review-container {
+  padding-left: 15rem;
+  padding-right: 15rem;
+} */
+
+#review-form {
+  height: 100vh !important; 
+  width: 40rem !important;
+}
+
+#review-form-component {
+  /* height: 1200px !important; */
+}
+
+#review-container {
+  padding-top: 160px;
+  padding-left: 24rem;
+  padding-right: 24rem;
+  /* background-color: #ffffff; */
+  
+}
+
+/* BUSINESS PAGE */
+
+#business-brand-h1 {
+  font-family: 'Rozha One', serif;
+  text-align: center;
+  color: #ef7c53;
+  font-size: 3rem;
+  z-index: 550 !important;
+  position: absolute;
+}
+
+#business-topbar {
+  /* height: 138px */
+  position: absolute;
+  top: 0;
+}
+
+/* #websiteCard {
+  z-index: 2 !important;
+} */
+
+#bus-profile-header {
+  background-image: url('../src/components/resources/flower-header.jpeg');
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
+  z-index: 1 !important;
+  /* opacity: 0.5; */
+}
+
+a { color: inherit !important; }
+
+.input-group .btn {
+  z-index: 0 !important;
+}
+
+/* LOADING COMPONENT */
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+  transform: rotateY(180deg);
+}
+	/* flip the pane when hovered */
+	/* .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg); 
+	} */
+
+.flip-container, .front, .back {
+	width: 100%;
+	height: 100%;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
 }

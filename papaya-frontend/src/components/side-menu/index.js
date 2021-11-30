@@ -38,6 +38,42 @@ const SideMenu = ({
 
     const [open, setOpen] = useState(sideMenu);
 
+    const [colorChange, setColorchange] = useState(false);
+
+
+  useEffect(() => {
+    const appPages = document.getElementsByClassName('scrollNav')
+
+    console.log(appPages)
+
+    const elemArray = Array.from(appPages)
+
+    elemArray.forEach(page => {
+    page.addEventListener('scroll', () => {
+      console.log(page.scrollTop);
+  
+      changeNavbarColor(page.scrollTop)
+    });
+  });
+
+    
+    // window.addEventListener("scroll", listenScrollEvent);
+    return () => {
+      // window.removeEventListener("scroll", listenScrollEvent);
+    };
+  }, []);
+
+
+ const changeNavbarColor = (scroll) =>{
+     if(scroll >= 30){
+       setColorchange(true);
+     }
+     else{
+       setColorchange(false);
+     }
+  };
+
+
     const handleClick = e => {
         if (node.current.contains(e.target)) {
           // inside click
@@ -46,6 +82,7 @@ const SideMenu = ({
         // outside click
         openMenu(false);}
       };
+
 
       useEffect(() => {
         document.addEventListener("mousedown", handleClick);
@@ -58,11 +95,15 @@ const SideMenu = ({
 
     return (
     
-        <Container fluid ref={node} className="jumbotron d-flex align-content-around justify-content-center" id="side-nav-jumbo">
+        <Container fluid ref={node} className="jumbotron d-flex align-content-around justify-content-center" id="side-nav-jumbo"  >
             {/* <div id="sidenav-topbar" className="fixed-top"></div> */}
             <Row id="side-menu-row" className="py-auto">
                 <Col md={12}>
-                    <div id="sidenav-topbar" className="d-flex align-items-center justify-content-end pt-2 pe-4"><FontAwesomeIcon icon={faTimes} className="mx-3 my-3" id="main-nav-bar-icon" onClick={() => openMenu(false)}/></div>
+                    <div id="sidenav-topbar" className="d-flex align-items-center justify-content-end pt-2 pe-4" style={{ height: `${ colorChange ? '106px' : '125px' }`,
+        // height: navSize,
+        transition: "all 1s" }}>
+            <FontAwesomeIcon icon={faTimes} className="mx-3 my-3" id="main-nav-bar-icon-close" style={{ fontSize: `${ colorChange ? '2rem' : '3rem' }`}} onClick={() => openMenu(false)}/>
+            </div>
                 </Col>
                 <Col md={12} className="py-4">
                     <h1 className="display-6 text-center py-2 mb-0">Categories</h1>

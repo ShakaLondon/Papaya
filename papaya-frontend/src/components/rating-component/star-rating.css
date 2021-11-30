@@ -1,5 +1,6 @@
 .star {
     color: gray;
+ 
     /* font-size: 3rem;
 vertical-align: middle; */
   }
@@ -29,4 +30,13 @@ vertical-align: middle; */
   .papayaRatingLogo {
     width: 1rem !important;
     height: 1rem !important;
+  }
+
+  .halfStar {
+    /* background: linear-gradient(to bottom, #f69ec4 0%, #32557f 50%); */
+  /* color: #9c47fc; */
+  display: block;
+  /* background: -webkit-linear-gradient(left, green 50%, gray 50%); */
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   }
