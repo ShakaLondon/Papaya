@@ -1,19 +1,33 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import CategoryListOne from "../categories/lists/list-one";
-import CategoryListTwo from "../categories/lists/list-two";
-import CategoryListThree from "../categories/lists/list-three";
-import CategoryListFour from "../categories/lists/list-four";
-import CategoryListFive from "../categories/lists/list-five";
-import CategoryListSix from "../categories/lists/list-six";
-import CategoryListSeven from "../categories/lists/list-seven";
-import CategoryListEight from "../categories/lists/list-eight";
-import CategoryCard from "../categories/card";
-import ReviewCard from "../recent-reviews/card";
+import ReviewCardMain from "../recent-reviews/card";
+
 
 export default class RecentSlider extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      reviews: this.props.reviews,
+    };
+  }
+
+  // componentDidMount() {
+  //   fetch(`http://localhost:3005/reviews`)
+  //     .then(res => res.json())
+  //     .then(result => {
+  //       console.log(result)
+  //       this.setState({
+  //         reviews: result,
+  //       });
+  //     });
+  // }
+
+
   render() {
-    var settings = {
+    // const { reviews } = this.state;
+    // console.log(reviews)
+    const settings = {
       className: "center",
       centerMode: true,
       infinite: true,
@@ -53,30 +67,18 @@ export default class RecentSlider extends Component {
       <div id="review-slider-comp" className="py-5">
         <h4 className="px-3 mb-3">Recent Reviews</h4>
         <Slider {...settings}>
-          <div>
-            <ReviewCard/>
-          </div>
-          <div>
-            <ReviewCard/>
-          </div>
-          <div>
-            <ReviewCard/>
-          </div>
-          <div>
-            <ReviewCard/>
-          </div>
-          <div>
-            <ReviewCard/>
-          </div>
-          <div>
-            <ReviewCard/>
-          </div>
-          <div>
-            <ReviewCard/>
-          </div>
-          <div>
-            <ReviewCard/>
-          </div>
+          {(this.state.reviews?.length > 0) && this.state.reviews?.map((review, idx) => {
+            // if (reviews.length > 0) { 
+              console.log(review)
+          return ( 
+            <div key={review._id}>
+              <ReviewCardMain review={review}/>
+            </div> 
+            ) 
+            // }
+          })}
+
+      
         </Slider>
       </div>
     );

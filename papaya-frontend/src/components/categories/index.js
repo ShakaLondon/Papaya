@@ -8,7 +8,7 @@ export default function Categories (props) {
     return (
     
         <Container fluid className="px-5" id="category-slider-cont">
-            <CategorySlider/>
+            <CategorySlider  categories={props.categories}/>
         </Container>
 
     );

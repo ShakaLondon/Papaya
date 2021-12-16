@@ -1,5 +1,6 @@
 import { 
   OPEN_NAV, 
+  COLOR_CHANGE
  } from './types.js'
 
 
@@ -12,4 +13,9 @@ export const openNavAction = (set) => ({
     payload: set,
   });
 
+
+export const colorChangeAction = (set) => ({
+    type: COLOR_CHANGE,
+    payload: set,
+  });
 

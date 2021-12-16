@@ -2,6 +2,7 @@ import {
     OPEN_NAV,
     ERROR,
     LOADING,
+    COLOR_CHANGE,
 
   } from '../actions/types.js';
   import initialState from '../initialState';
@@ -12,6 +13,11 @@ import {
       return {
         ...state,
         sideMenu: !state.sideMenu
+      }
+      case COLOR_CHANGE : 
+      return {
+        ...state,
+        colorChange: action.payload
       }
       case LOADING:
       return {

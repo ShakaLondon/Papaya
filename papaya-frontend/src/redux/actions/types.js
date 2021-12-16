@@ -8,6 +8,7 @@ export const REFRESH_TOKEN = "REFRESH_TOKEN";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 export const OPEN_NAV = "OPEN_NAV";
+export const COLOR_CHANGE = "COLOR_CHANGE"
 
 export const LOADING = "LOADING";
 export const ERROR = "ERROR";

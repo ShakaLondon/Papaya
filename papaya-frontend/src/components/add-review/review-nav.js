@@ -4,13 +4,55 @@ import { Nav, Container, Navbar, NavDropdown, Row, Col, Button } from 'react-boo
 import StarRating from '../rating-component/index';
 import WebsiteContainer from "../business-profile/profile-cards/website-card"
 import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { colorChangeAction, openNavAction } from '../../redux/actions';
+import { updateUserAction, updateUserCoverAction, updateUserImageAction } from '../../redux/actions/user';
 
 
-export default function ReviewNav (props) {
+const mapStateToProps = (state) => ({ 
+  sideMenuState: state.appState.sideMenu,
+  userProf: state.user,
+  colorChangeState: state.appState.colorChange
+})
+
+const mapDispatchToProps = (dispatch) => ({
+setMenuState: (action) => {
+  dispatch(openNavAction(action))
+},
+
+updateUserProf: (action) => {
+  dispatch(updateUserAction(action))
+},
+
+updateUserImage: (action) => {
+  dispatch(updateUserImageAction(action))
+},
+
+updateUserCover: (action) => {
+    dispatch(updateUserCoverAction(action))
+},
+
+colorChange: (action) => dispatch(colorChangeAction(action))
+})
+
+
+const ReviewNav = ({
+  sideMenuState,
+  setMenuState,
+  userProf,
+  updateUserProf,
+  updateUserImage,
+  updateUserCover,
+  profile,
+  score,
+  loading,
+  colorChange,
+  colorChangeState
+}) => { 
 
   
 
-    const [colorChange, setColorchange] = useState(false);
+    // const [colorChange, setColorchange] = useState(false);
 
 
   useEffect(() => {
@@ -35,28 +77,28 @@ export default function ReviewNav (props) {
 
   const changeNavbarColor = (scroll) =>{
      if(scroll >= 30){
-       setColorchange(true);
+       colorChange(true);
      }
      else{
-       setColorchange(false);
+      colorChange(false);
      }
   };
 
 
     return (
         <Navbar bg="light" expand="lg" className="py-0 px-0" id="review-header" fixed="top">
-            <div className={`overlay container-fluid ${colorChange ? "py-1" : "py-4"}`}>
-            <Container fluid className="d-flex fullopacity" id="review-container"  style={{ paddingTop: `${ colorChange ? '110px' : '160px' }`}}>
+            <div className={`overlay container-fluid ${colorChangeState ? "py-1" : "py-4"}`}>
+            <Container fluid className="d-flex fullopacity" id="review-container"  style={{ paddingTop: `${ colorChangeState ? '110px' : '160px' }`}}>
 
-                <Navbar.Brand><img src={props.profile.avatar?.avatar} alt="User Avatar" className="rounded-circle" style={{ width: "4rem", height: "4rem", objectFit: "cover" }}/></Navbar.Brand>
+                <Navbar.Brand><img src={profile.avatar?.avatar} alt="User Avatar" className="rounded-circle" style={{ width: "4rem", height: "4rem", objectFit: "cover" }}/></Navbar.Brand>
                 <Navbar.Brand>
                     <Container fluid className="px-2">
-                        <h3 className="text-white mb-0">{props.profile.businessName}</h3>
+                        <h3 className="text-white mb-0">{profile.businessName}</h3>
                     </Container>
                     
                     <Container fluid className="d-flex my-1 px-2">
                         {/* <StarRating currentRating={4.5} numberOfStars={5}  fontSize={"1em"}/> */}
-                        <h5 className="text-white mb-0">{props.profile.website}</h5>
+                        <h5 className="text-white mb-0">{profile.website}</h5>
                     </Container>
                 </Navbar.Brand>
                 {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -76,3 +118,5 @@ export default function ReviewNav (props) {
             </Navbar>
     );
   }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(ReviewNav)

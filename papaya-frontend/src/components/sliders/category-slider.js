@@ -1,17 +1,32 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import CategoryListOne from "../categories/lists/list-one";
-import CategoryListTwo from "../categories/lists/list-two";
-import CategoryListThree from "../categories/lists/list-three";
-import CategoryListFour from "../categories/lists/list-four";
-import CategoryListFive from "../categories/lists/list-five";
-import CategoryListSix from "../categories/lists/list-six";
-import CategoryListSeven from "../categories/lists/list-seven";
-import CategoryListEight from "../categories/lists/list-eight";
+import CategoryList from "../categories/lists/category-list.js";
+
 
 export default class CategorySlider extends Component {
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     categories: this.props.categories,
+  //   };
+  // }
+
+  // componentDidMount() {
+  //   fetch(`http://localhost:3005/category?limit=3&columns=8`)
+  //     .then(res => res.json())
+  //     .then(result => {
+  //       console.log(result)
+  //       this.setState({
+  //         categories: result,
+  //       });
+  //     });
+  // }
+
+
   render() {
-    var settings = {
+    // const { categories } = this.state;
+    const settings = {
       dots: true,
       infinite: false,
       speed: 500,
@@ -49,30 +64,13 @@ export default class CategorySlider extends Component {
       <div id="category-slider-comp" className="py-5">
         <h4 className="px-3 mb-3">Explore Categories</h4>
         <Slider {...settings}>
-          <div>
-            <CategoryListOne/>
-          </div>
-          <div>
-            <CategoryListTwo/>
-          </div>
-          <div>
-            <CategoryListThree/>
-          </div>
-          <div>
-            <CategoryListFour/>
-          </div>
-          <div>
-            <CategoryListFive/>
-          </div>
-          <div>
-            <CategoryListSix/>
-          </div>
-          <div>
-            <CategoryListSeven/>
-          </div>
-          <div>
-            <CategoryListEight/>
-          </div>
+          {(this.props.categories.pages?.length > 0) && this.props.categories.pages?.map((category, idx) => {
+            if (category.length > 0) { 
+              return ( 
+            <div  key={idx}>
+              <CategoryList category={category}/>
+            </div> ) }
+          })}
         </Slider>
       </div>
     );

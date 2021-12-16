@@ -22,7 +22,7 @@ const SearchBar = ({
         <Container fluid className="d-flex mx-0 justify-content-center">
             <Row>
                 <Col md={12}>
-                    <Form className="container-fluid d-flex my-4 mx-3" id="search-bar-form">
+                    <Form className="container-fluid d-flex my-4 mx-3 onTop" id="search-bar-form">
                         <InputGroup className="">
                             <FormControl
                             placeholder="Company, Category or Product Type"

@@ -3,13 +3,14 @@ import SideMenu from '../components/side-menu'
 import { connect } from 'react-redux'
 import { openNavAction } from '../redux/actions'
 import { Container, Row, Col, } from 'react-bootstrap'
-import { useLocation } from 'react-router'
-import LoginContainer from '../components/register/login'
-import ReviewContainer from '../components/add-review/index'
+import { Redirect, useLocation } from 'react-router'
+import SearchContainer from '../components/search-page/index'
 import { useEffect } from 'react'
 import Footer from '../components/footer'
 
-const mapStateToProps = (state) => ({ sideMenuState: state.appState.sideMenu })
+const mapStateToProps = (state) => ({ 
+  sideMenuState: state.appState.sideMenu,
+  isLoggedIn: state.user.isLoggedIn, })
 const mapDispatchToProps = (dispatch) => ({
   setMenuState: (action) => {
     dispatch(openNavAction(action))
@@ -24,13 +25,14 @@ const mapDispatchToProps = (dispatch) => ({
 //     return location
 // }
 
-const WriteReview = ({
+const SearchPage = ({
     sideMenuState,
     setMenuState,
+    isLoggedIn
 }) => {
 
 
-  let location = useLocation()
+  // let location = useLocation()
   
 
 
@@ -45,15 +47,18 @@ const WriteReview = ({
   
 
 
-    return (
+//   if (!isLoggedIn) { 
+//     return <Redirect to='/main' /> 
+// } else { 
+  return (
     
-        <Container fluid id="review-app" className="mx-0">
+        <Container fluid id="profile-app" className="mx-0 px-0">
             <NavBar colour="rgba(255, 255, 255, 0)"/>
-            <Container fluid id="review-app-body" className="px-0 mx-0">
-              <Row className="full-height">
-                <Col md={sideMenuState? 9 : 12} className="px-0 scrollNav" id="review-app-main">
-                  <Container className="px-0"  style={{ maxWidth: "100vw" }}>
-                    <ReviewContainer/>
+            <Container fluid id="profile-app-body" className="px-0 mx-0">
+              <Row className="full-height mx-0 px-0">
+                <Col md={sideMenuState? 9 : 12} className="px-0 mx-0 scrollNav" id="profile-app-main">
+                  <Container fluid className="px-0 mx-0"  style={{ maxWidth: "100vw" }}>
+                      <SearchContainer/>
                     {/* <Footer/> */}
                   </Container>
                 </Col>
@@ -66,8 +71,8 @@ const WriteReview = ({
             
         </Container>
 
-    );
+    );}
 
-  }
+  // }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(WriteReview)
+  export default connect(mapStateToProps, mapDispatchToProps)(SearchPage)

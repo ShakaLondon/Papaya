@@ -16,8 +16,8 @@ export default function BusinessMain (props) {
         <Container id="profile-main-container">
             <Row className="mx-0 px-0">
                 <Col md={8}>
-                    <AddRatingContainer profile={props.profile} user={props.user}/>
-                    <ReviewHeader profile={props.profile} user={props.profile}/>
+                    <AddRatingContainer profile={props.profile} user={props.user} isLoggedIn={props.sLoggedIn}/>
+                    <ReviewHeader profile={props.profile} user={props.profile} score={props.score} loading={props.loading}/>
                     <ReviewCard profile={props.profile} user={props.user}/>
                    
                 </Col>

@@ -62,7 +62,7 @@ const BusinessPage = ({
                     {/* <Footer/> */}
                   </Container>
                 </Col>
-                <Col md={3} className="px-0">
+                <Col md={3} className="px-0 onTop">
                   {sideMenuState && <SideMenu/>}
                 </Col>
               </Row>

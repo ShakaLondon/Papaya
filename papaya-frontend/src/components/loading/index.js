@@ -7,6 +7,7 @@ import { registerAction } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import { Redirect, useLocation } from 'react-router';
 import LoadingStar from './loading-star';
+import { colorChangeAction } from '../../redux/actions';
 
 
 const mapStateToProps = (state) => ({
@@ -14,12 +15,14 @@ const mapStateToProps = (state) => ({
     loading: state.appState.loading,
     isLoggedIn: state.user.isLoggedIn,
     userFound: state.user.userFound,
-    userProf: state.user
+    userProf: state.user,
+    colorChangeState: state.appState.colorChange
   });
   
   const mapDispatchToProps = (dispatch) => ({
     //functions
     register: (userObj) => dispatch(registerAction(userObj)),
+    colorChange: (action) => dispatch(colorChangeAction(action))
   });
 
 const LoadingSpinner = ({
@@ -29,7 +32,9 @@ const LoadingSpinner = ({
     isLoggedIn,
     userFound, 
     register,
-    userProf
+    userProf,
+    colorChange,
+    colorChangeState
 }) => {
 
     const locationUrl = useLocation();
@@ -53,7 +58,7 @@ const LoadingSpinner = ({
   const [searchResult, setSearchResult] = useState({});
 
 
-  const [colorChange, setColorchange] = useState(false);
+  // const [colorChange, setColorchange] = useState(false);
 
 
   useEffect(() => {
@@ -78,10 +83,10 @@ const LoadingSpinner = ({
 
   const changeNavbarColor = (scroll) =>{
      if(scroll >= 30){
-       setColorchange(true);
+       colorChange(true);
      }
      else{
-       setColorchange(false);
+       colorChange(false);
      }
   };
 

@@ -3,6 +3,7 @@ const initialState = {
     sideMenu: false,
     error: false,
     loading: false,
+    colorChange: false,
   },
   user: {
     _id: "",

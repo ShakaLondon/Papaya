@@ -2,10 +2,10 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { loginAction, logoutAction } from "../../redux/actions/auth.js"
-import { openNavAction } from "../../redux/actions/index.js"
+import { colorChangeAction, openNavAction } from "../../redux/actions/index.js"
 import { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 
 const mapStateToProps = (state) => ({
@@ -13,7 +13,8 @@ const mapStateToProps = (state) => ({
     loading: state.appState.loading,
     isLoggedIn: state.user.isLoggedIn,
     userFound: state.user.userFound,
-    sideMenu: state.appState.sideMenu
+    sideMenu: state.appState.sideMenu,
+    colorChangeState: state.appState.colorChange
   });
   
   const mapDispatchToProps = (dispatch) => ({
@@ -21,6 +22,7 @@ const mapStateToProps = (state) => ({
     login: (email, password) => dispatch(loginAction(email, password)),
     openMenu: (state) => dispatch(openNavAction(state)),
     logout: () => dispatch(logoutAction()),
+    colorChange: (action) => dispatch(colorChangeAction(action))
   });
 
 const SideMenu = ({
@@ -30,7 +32,9 @@ const SideMenu = ({
     isLoggedIn,
     userFound,
     sideMenu,
-    openMenu
+    openMenu,
+    colorChange,
+    colorChangeState
 
 }) => {
 
@@ -38,7 +42,23 @@ const SideMenu = ({
 
     const [open, setOpen] = useState(sideMenu);
 
-    const [colorChange, setColorchange] = useState(false);
+    // const [colorChange, setColorchange] = useState(false);
+
+    const locationUrl = useLocation();
+    
+    console.log(locationUrl)
+  
+  
+    const routePath = locationUrl.pathname
+    console.log(routePath)
+  
+    const splitPath = routePath.split('/')
+    console.log(splitPath)
+  
+    const currentPath = splitPath[1]
+  
+    // const businessNamePath = routePath.replace("/review/", 'www.')
+    console.log(currentPath)
 
 
   useEffect(() => {
@@ -65,12 +85,21 @@ const SideMenu = ({
 
 
  const changeNavbarColor = (scroll) =>{
+  if (currentPath === 'main') {
+    if(scroll >= 280){
+      colorChange(true);
+    }
+    else{
+      colorChange(false);
+    }
+   } else {
      if(scroll >= 30){
-       setColorchange(true);
+      colorChange(true);
      }
      else{
-       setColorchange(false);
+      colorChange(false);
      }
+   }
   };
 
 
@@ -99,10 +128,10 @@ const SideMenu = ({
             {/* <div id="sidenav-topbar" className="fixed-top"></div> */}
             <Row id="side-menu-row" className="py-auto">
                 <Col md={12}>
-                    <div id="sidenav-topbar" className="d-flex align-items-center justify-content-end pt-2 pe-4" style={{ height: `${ colorChange ? '106px' : '125px' }`,
+                    <div id="sidenav-topbar" className="d-flex align-items-center justify-content-end pt-2 pe-4 onTop" style={{ height: `${ colorChangeState ? '106px' : '125px' }`,
         // height: navSize,
         transition: "all 1s" }}>
-            <FontAwesomeIcon icon={faTimes} className="mx-3 my-3" id="main-nav-bar-icon-close" style={{ fontSize: `${ colorChange ? '2rem' : '3rem' }`}} onClick={() => openMenu(false)}/>
+            <FontAwesomeIcon icon={faTimes} className="mx-3 my-3" id="main-nav-bar-icon-close" style={{ fontSize: `${ colorChangeState ? '2rem' : '3rem' }`}} onClick={() => openMenu(false)}/>
             </div>
                 </Col>
                 <Col md={12} className="py-4">

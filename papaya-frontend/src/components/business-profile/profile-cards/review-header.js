@@ -1,6 +1,6 @@
 import { faSearch, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card, Button, Container, Row, Col, Form, FloatingLabel, FormControl, ProgressBar, InputGroup } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import { openNavAction,  } from '../../../redux/actions';
@@ -41,10 +41,55 @@ const ReviewHeader = ({
     userProf,
     updateUserProf,
     updateUserImage,
-    updateUserCover
+    updateUserCover,
+    loading,
+    score
 }) => { 
 
       const [percentage, setPercentage] = useState(30)
+      const [reviewScore, setReviewScore] = useState({
+        businessScore: score.avgTotal[0]?.average,
+        totalReviews: score.avgTotal[0]?.count,
+        one: {
+          reviews: [],
+          percentage: 0
+        },
+        two: {
+          reviews: [],
+          percentage: 0
+        },
+        three: {
+          reviews: [],
+          percentage: 0
+        },
+        four: {
+          reviews: [],
+          percentage: 0
+        },
+        five: {
+          reviews: [],
+          percentage: 0
+        }
+      })
+      const [currentRating, setCurrentRating] = useState(0)
+
+
+
+      useEffect(() => {
+
+      
+        score.reviewNo?.map((reviewNum) => {
+          const number = reviewNum
+         const valueArray = [ "one", "two", "three", "four", "five"]
+         const valueText = valueArray[number._id-1]
+         console.log(valueText)
+ 
+         setReviewScore((reviewScore) => ({...reviewScore, [valueText]: {
+           reviews: reviewNum.reviews,
+           percentage: (reviewNum.count / reviewScore.totalReviews)*100
+         }}))
+        })
+       }, [score]);
 
 
     return (
@@ -59,7 +104,7 @@ const ReviewHeader = ({
                 <Container  className="px-2 py-2">
                 
                     
-                    <Row>
+                    <Row className="d-flex justify-content-between">
                         <Col md={1} className="">
                             <Row>
                             <Form>
@@ -72,21 +117,21 @@ const ReviewHeader = ({
                                 </Form>
                             </Row>
                         </Col>
-                        <Col md={2} className="px-0 d-flex align-items-center">
+                        <Col md={1} className="px-0 d-flex align-items-center">
                             <Row className="px-0">
-                            <h6 className="px-0 mb-0">Excellent</h6>
+                                <h6 className="px-0 mb-0">Excellent</h6>
                             </Row>
                         </Col>
                         <Col md={8} className="px-0 flex-row align-self-center">
                             <Row>
                                 <Container>
-                                <ProgressBar now={percentage} variant="success"/>
+                                    { (reviewScore !== null) && <ProgressBar now={reviewScore.five.percentage} variant="success"/>}
                                 </Container>
                             </Row>
                         </Col>
-                        <Col md={1} className="d-flex justify-content-end px-2 align-items-center">
+                        <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            <h6 className=" mb-0">{`${percentage}%`}</h6>
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.five.percentage}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -94,10 +139,10 @@ const ReviewHeader = ({
                 {/* GOOD BAR */}
                 <Container  className="px-2 py-2">
                     
-                    <Row>
+                    <Row className="d-flex justify-content-between">
                         <Col md={1} className="">
                             <Row>
-                            <Form>
+                                <Form>
                                     <div key={`default-checkbox`} className="">
                                     <Form.Check 
                                         type={'checkbox'}
@@ -107,7 +152,7 @@ const ReviewHeader = ({
                                 </Form>
                             </Row>
                         </Col>
-                        <Col md={2} className="px-0 d-flex align-items-center">
+                        <Col md={1} className="px-0 d-flex align-items-center">
                             <Row className="px-0">
                             <h6 className="px-0 mb-0">Good</h6>
                             </Row>
@@ -115,13 +160,13 @@ const ReviewHeader = ({
                         <Col md={8} className="px-0 flex-row align-self-center">
                             <Row>
                                 <Container>
-                                <ProgressBar now={percentage} variant="success"/>
+                                { (reviewScore !== null) && <ProgressBar now={reviewScore.four.percentage} variant="success"/>}
                                 </Container>
                             </Row>
                         </Col>
-                        <Col md={1} className="d-flex justify-content-end px-2 align-items-center">
+                        <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            <h6 className=" mb-0">{`${percentage}%`}</h6>
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.four.percentage}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -129,7 +174,7 @@ const ReviewHeader = ({
                 {/* AVERAGE BAR */}
                 <Container  className="px-2 py-2">
                     
-                    <Row>
+                    <Row className="d-flex justify-content-between">
                         <Col md={1} className="">
                             <Row>
                             <Form>
@@ -142,7 +187,7 @@ const ReviewHeader = ({
                                 </Form>
                             </Row>
                         </Col>
-                        <Col md={2} className="px-0 d-flex align-items-center">
+                        <Col md={1} className="px-0 d-flex align-items-center">
                             <Row className="px-0">
                             <h6 className="px-0 mb-0">Average</h6>
                             </Row>
@@ -150,13 +195,13 @@ const ReviewHeader = ({
                         <Col md={8} className="px-0 flex-row align-self-center">
                             <Row>
                                 <Container>
-                                <ProgressBar now={percentage} variant="warning"/>
+                                { (reviewScore !== null) && <ProgressBar now={reviewScore.three.percentage} variant="warning"/>}
                                 </Container>
                             </Row>
                         </Col>
-                        <Col md={1} className="d-flex justify-content-end px-2 align-items-center">
+                        <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            <h6 className=" mb-0">{`${percentage}%`}</h6>
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.three.percentage}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -164,7 +209,7 @@ const ReviewHeader = ({
                 {/* POOR BAR */}
                 <Container  className="px-2 py-2">
                     
-                    <Row>
+                    <Row className="d-flex justify-content-between">
                         <Col md={1} className="">
                             <Row>
                             <Form>
@@ -177,7 +222,7 @@ const ReviewHeader = ({
                                 </Form>
                             </Row>
                         </Col>
-                        <Col md={2} className="px-0 d-flex align-items-center">
+                        <Col md={1} className="px-0 d-flex align-items-center">
                             <Row className="px-0">
                             <h6 className="px-0 mb-0">Poor</h6>
                             </Row>
@@ -185,13 +230,13 @@ const ReviewHeader = ({
                         <Col md={8} className="px-0 flex-row align-self-center">
                             <Row>
                                 <Container>
-                                <ProgressBar now={percentage} variant="danger"/>
+                                { (reviewScore !== null) && <ProgressBar now={reviewScore.two.percentage} variant="danger"/>}
                                 </Container>
                             </Row>
                         </Col>
-                        <Col md={1} className="d-flex justify-content-end px-2 align-items-center">
+                        <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            <h6 className=" mb-0">{`${percentage}%`}</h6>
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.two.percentage}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -199,7 +244,7 @@ const ReviewHeader = ({
                 {/* BAD BAR */}
                 <Container  className="px-2 py-2">
                     
-                    <Row>
+                    <Row className="d-flex justify-content-between">
                         <Col md={1} className="">
                             <Row>
                             <Form>
@@ -212,7 +257,7 @@ const ReviewHeader = ({
                                 </Form>
                             </Row>
                         </Col>
-                        <Col md={2} className="px-0 d-flex align-items-center">
+                        <Col md={1} className="px-0 d-flex align-items-center">
                             <Row className="px-0">
                             <h6 className="px-0 mb-0">Bad</h6>
                             </Row>
@@ -220,13 +265,13 @@ const ReviewHeader = ({
                         <Col md={8} className="px-0 flex-row align-self-center">
                             <Row>
                                 <Container>
-                                <ProgressBar now={percentage} variant="danger"/>
+                                { (reviewScore !== null) && <ProgressBar now={reviewScore.one.percentage} variant="danger"/>}
                                 </Container>
                             </Row>
                         </Col>
-                        <Col md={1} className="d-flex justify-content-end px-2 align-items-center">
+                        <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            <h6 className=" mb-0">{`${percentage}%`}</h6>
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.one.percentage}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>

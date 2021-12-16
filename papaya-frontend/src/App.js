@@ -10,6 +10,7 @@ import ProfilePage from './views/user-profile';
 import PublicProfilePage from './views/public-profile.js'
 import BusinessPage from './views/business-profile.js'
 import WriteReview from './views/write-review';
+import searchPage from './views/search-page';
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/main" component={HomePage}/>
         <Route exact path="/login" component={RegisterPage}/>
         <Route exact path="/register" component={RegisterPage}/>
+        <Route exact path="/search/category/:searchReq" component={searchPage}/>
 
         
       </Switch>

@@ -12,7 +12,7 @@
 
 #navbar-strip-top {
   background-color: transparent;
-  z-index: 2;
+  z-index: 9;
 }
 
 #papaya-logo-nav {
@@ -50,7 +50,7 @@
   /* transition: right 20s;
   -webkit-transition: right 20s; */
   overflow-y: scroll;
-  z-index: 5500 !important;
+  z-index: 98 !important;
   /* transform: translateX();
   -webkit-transform: translateX(); */
 }
@@ -186,7 +186,7 @@ a {
 #search-bar-strip {
   background-color: #ffd800;
   height: 20vh;
-  z-index: -1 !important;
+  z-index: 0 !important;
 }
 
 #search-bar-form {
@@ -266,6 +266,15 @@ h6 {
 .extraSmallTxt {
   font-size: 0.75rem !important;
   font-weight: normal !important;
+}
+
+.smallTxt {
+  font-size: 1rem !important;
+  font-weight: normal !important;
+}
+
+.text-bold {
+  font-weight: bold !important;
 }
 
 /* REVIEWS */
@@ -472,7 +481,7 @@ h6 {
   background-position: center;
   background-attachment: fixed;
   color: #ffffff;
-  z-index: -1 !important;
+  z-index: 1 !important;
   /* opacity: 0.5; */
 }
 
@@ -511,6 +520,10 @@ h6 {
   width: 2rem !important;
   height: 2rem !important;
 } */
+
+.public-app-component {
+  height: 1000px
+}
 
 /* PAPAYA APP ICON FONT */
 @font-face {
@@ -623,6 +636,11 @@ hr {
   padding-top: 280px !important;
   z-index: -1 !important;
 }
+
+/* #public-main-cont {
+  padding-top: 290px !important;
+  z-index: -1 !important;
+} */
 
 #business-main-cont {
   /* padding-top: 380px !important; */
@@ -743,4 +761,38 @@ a { color: inherit !important; }
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
+}
+
+.onTop {
+  z-index: 999 !important;
+}
+
+.percentageWidth {
+  width: 50px !important;
+}
+
+.categoryCard {
+  background-color: #ef7c53 !important;
+  border-color: #ef7c53 !important;
+  border: 2px solid #ef7c53 !important;
+  color: #ffd800 !important;
+}
+
+.categoryCard:hover {
+  background-color: #ffd800 !important;
+  border-color: #ffd800 !important;
+  border: 2px solid #ffd800 !important;
+  color: #ef7c53 !important;
+}
+
+/* CATEGORY SEARCH */
+
+#category-search-container{
+  padding-left: 15rem !important;
+  padding-right: 15rem !important;
+}
+
+#category-main-cont {
+  /* padding-top: 380px !important; */
+  z-index: -1 !important;
 }

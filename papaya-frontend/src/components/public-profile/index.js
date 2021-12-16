@@ -97,7 +97,7 @@ const PublicProfileContainer = ({
                 <Row className="mx-0 px-0">
                     <PublicProfileNav profile={searchResult}/>
                 </Row>
-                <Row className="mx-0 px-0">
+                <Row className="mx-0 px-0" id="public-main-cont">
                     <PublicProfileMain profile={searchResult}/>
                 </Row>
             </Container>

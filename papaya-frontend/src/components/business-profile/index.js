@@ -9,18 +9,21 @@ import { Redirect, useLocation } from 'react-router';
 import ProfileNav from './profile-nav';
 import ProfileMain from './profile-main';
 import LoadingSpinner from '../loading/index.js';
+import { colorChangeAction } from '../../redux/actions';
 
 const mapStateToProps = (state) => ({
     error: state.appState.error,
     loading: state.appState.loading,
     isLoggedIn: state.user.isLoggedIn,
     userFound: state.user.userFound,
-    userProf: state.user
+    userProf: state.user,
+    colorChangeState: state.appState.colorChange
   });
   
   const mapDispatchToProps = (dispatch) => ({
     //functions
     register: (userObj) => dispatch(registerAction(userObj)),
+    colorChange: (action) => dispatch(colorChangeAction(action))
   });
 
 const BusinessContainer = ({
@@ -30,7 +33,9 @@ const BusinessContainer = ({
     isLoggedIn,
     userFound, 
     register,
-    userProf
+    userProf,
+    colorChange,
+    colorChangeState
 }) => {
 
     const locationUrl = useLocation();
@@ -54,34 +59,9 @@ const BusinessContainer = ({
   const [searchResult, setSearchResult] = useState({});
   const [dataLoading, setDataLoading] = useState(true);
 const [companyReviews, setCompanyReviews] = useState([])
-  const [reviews, setReviews] = useState({
-      average: 0,
-      total: 0,
-      reviewList: [],
-      ratingNo: {
-      five: {
-          percentage: 0,
-          reviews: []
-      },
-      four: {
-          percentage: 0,
-          reviews: []
-      },
-      three: {
-          percentage: 0,
-          reviews: []
-      },
-      two: {
-          percentage: 0,
-          reviews: []
-      },
-      one: {
-          percentage: 0,
-          reviews: []
-      },}
-  });
+  const [reviews, setReviews] = useState({});
 
-  const [colorChange, setColorchange] = useState(false);
+  // const [colorChange, setColorchange] = useState(false);
 
 
   useEffect(() => {
@@ -106,48 +86,19 @@ const [companyReviews, setCompanyReviews] = useState([])
 
   const changeNavbarColor = (scroll) =>{
      if(scroll >= 30){
-       setColorchange(true);
+       colorChange(true);
      }
      else{
-       setColorchange(false);
+      colorChange(false);
      }
   };
-
-  const getAverages = (reviewArray) =>{
-    const reviewsList = companyReviews
-
-    console.log(companyReviews + "review Started")
-
-    setReviews({...reviews, reviewList: companyReviews})
-
-    companyReviews?.forEach(review => {
-        setReviews({ ...reviews, total: (reviews.total + review.rating)})
-        console.log({...reviews})
-
-        review.rating === 5 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, reviews: [...reviews.ratingNo.five.reviews, review] } }}) :
-        review.rating === 4 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, reviews: [...reviews.ratingNo.four.reviews, review] } }}) :
-        review.rating === 3 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, reviews: [...reviews.ratingNo.three.reviews, review] } }}) :
-        review.rating === 2 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, two: {...reviews.ratingNo.two, reviews: [...reviews.ratingNo.two.reviews, review] } }}) :
-        setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, reviews: [...reviews.ratingNo.one.reviews, review] } }})
-
-    });
-
-    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, percentage: (reviews.ratingNo.five.reviews?.length/reviews.reviewsList?.length)*100 } }})
-    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
-    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, percentage: (reviews.ratingNo.three.reviews?.length/reviews.reviewsList?.length)*100 } }})
-    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
-    setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, percentage: (reviews.ratingNo.one.reviews?.length/reviews.reviewsList?.length)*100 } }})
-
-
-    setReviews({...reviews, average: (reviews.total/reviews.reviewsList?.length)*100})
-    console.log(reviews)
- };
 
     
 
 
   useEffect(() => {
       const url = `http://localhost:3005/business/${searchRequest}`
+      const urlReviews = `http://localhost:3005/business/${searchRequest}/reviews/averages`
       const options = {
           method: 'GET',
           // headers: {
@@ -159,19 +110,48 @@ const [companyReviews, setCompanyReviews] = useState([])
       .then((business) => {
           const busFound = business[0]
           console.log(busFound)
-          console.log(busFound.reviewIDs)
-          const reviews = busFound.reviewIDs
+          // console.log(busFound.reviewIDs)
+          // const reviews = busFound.reviewIDs
           setSearchResult(busFound)
-          // console.log(searchResult)
-          setCompanyReviews(reviews)
+          console.log(searchResult)
+
+          setCompanyReviews(busFound.reviewIDs)
+          
           setDataLoading(false)
-          console.log(companyReviews + "reviews")
+          
+          
+          
+          
       })
+      // .then(() => { setCompanyReviews([searchResult.reviewIDs])
+
+      //   setDataLoading(false)
+      // })
+      .catch((error) => {console.log(error)})
+
+      fetch(`${urlReviews}`, options)
+      .then(res => res.json())
+      .then((results) => {
+          const busResult = results
+          console.log(busResult)
+          // console.log(busFound.reviewIDs)
+          // const reviews = busFound.reviewIDs
+          setReviews(busResult)
+          
+          
+          
+          
+          
+      })
+      // .then(() => { setCompanyReviews([searchResult.reviewIDs])
+
+      //   setDataLoading(false)
+      // })
       .catch((error) => {console.log(error)})
   }, [])
 
   
-  useEffect(() => {
+  // useEffect(async () => {
       // const reviewsList = companyReviews
 
       // console.log(reviewsList)
@@ -199,10 +179,13 @@ const [companyReviews, setCompanyReviews] = useState([])
 
       // setReviews({...reviews, average: (reviews.total/reviews.reviewsList?.length)*100})
       // console.log(reviews)
-      if (companyReviews.length > 0) {
-        getAverages(companyReviews)
-      }
-    }, [companyReviews]);
+    //   if (companyReviews.length > 0) {
+    //     await getAverages({...companyReviews})
+    //     console.log({...companyReviews})
+
+    //     setReviews(reviews => ({...reviews, average: (reviews.total/reviews.reviewList.length)}))
+    //   }
+    // }, [dataLoading, companyReviews]);
 
 
         return (
@@ -212,10 +195,10 @@ const [companyReviews, setCompanyReviews] = useState([])
             <LoadingSpinner/>
             </Container> : <Container fluid id="business-form" className="flex-row mx-0 px-0">
                 <Row className="mx-0 px-0">
-                    <ProfileNav profile={searchResult} currentRating={0}/>
+                    <ProfileNav profile={searchResult} loading={loading} score={reviews}/>
                 </Row>
-                <Row className="mx-0 px-0" id="business-main-cont" style={{ paddingTop: `${ colorChange ? '280px' : '400px' }` }}>
-                    <ProfileMain profile={searchResult} user={userProf}/>
+                <Row className="mx-0 px-0" id="business-main-cont" style={{ paddingTop: `${ colorChangeState ? '280px' : '400px' }` }}>
+                    <ProfileMain profile={searchResult} loading={loading} user={userProf} score={reviews} isLoggedIn={isLoggedIn}/>
                 </Row>
             </Container>}
         </Container>

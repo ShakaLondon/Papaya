@@ -16,7 +16,7 @@ export default function AddRatingContainer (props) {
                 <Container  className="px-2">
                     <Row>
                         <Col md={2} className="">
-                            <img src={props.user.avatar?.avatar} alt="User Avatar" className="rounded-circle" style={{ width: "3rem", height: "3rem", objectFit: "cover" }}/>
+                            <img src={props.isLoggedIn ? props.user.avatar?.avatar : "https://res.cloudinary.com/shakalondon/image/upload/v1638347322/Papaya/afro-profile_guv3qt.jpg"} alt="User Avatar" className="rounded-circle" style={{ width: `${ props.isLoggedIn ? "3rem" : "3.5rem" }`, height: `${ props.isLoggedIn ? "3rem" : "3.5rem" }`, objectFit: "cover" }}/>
                         </Col>
                         <Col md={4} className="d-inline-flex px-0 align-items-center">
                             <Container className="px-0">
