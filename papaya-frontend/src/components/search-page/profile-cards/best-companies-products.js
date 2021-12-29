@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { openNavAction,  } from '../../../redux/actions';
 import { updateUserAction, updateUserImageAction, updateUserCoverAction } from '../../../redux/actions/user'
 import FilesUploadComponent from '../upload';
-import CatKeywords from './keywords.js'
+import CompanyProductCard from './company-product-card'
 
 
 
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-const PopularSubcat = ({
+const BestCompaniesProducts = ({
     sideMenuState,
     setMenuState,
     userProf,
@@ -90,17 +90,21 @@ const PopularSubcat = ({
 
 
     return (
-        <Card style={{ width: '100%', border: "none" }} className="mt-4 mb-2 pt-4">
+        <Card style={{ width: '100%', border: "none" }} className="my-2">
             <Card.Body>
                 <Card.Title >
-                <h5 className="px-2 mb-3">Popular Subcategories</h5>
+                <h5 className="px-2 mb-3">Best companies in this category</h5>
                 </Card.Title>
+
+                <Card.Text >
+                <h5 className="px-2 mb-3">Best companies in this category</h5>
+                </Card.Text>
                 {/* <hr className="mx-2"/> */}
 
                 <div className="px-1 py-0">
                     {/* {(category?.subCategories.length > 0) && category?.subCategories.map((subCat) => { */}
 
-                            <CatKeywords keywords={category?.subCategories}/>
+                            <CompanyProductCard catList={category?.subCategories}/>
                      {/* })} */}
                 </div>
 
@@ -114,4 +118,4 @@ const PopularSubcat = ({
     );
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(PopularSubcat)
+  export default connect(mapStateToProps, mapDispatchToProps)(BestCompaniesProducts)

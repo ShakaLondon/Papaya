@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Nav, Container, Navbar, NavDropdown, Row, Col } from 'react-bootstrap'
 import CategoryList from './profile-cards/category-list';
 import PopularSubcat from './profile-cards/popular-subcategories';
+import BestCompaniesProducts from './profile-cards/best-companies-products';
 
 
 
@@ -19,6 +20,7 @@ export default function CategorySearchMain ({ category, user, isLoggedIn }) {
                 </Col>
                 <Col md={8}>
                     <PopularSubcat  category={category}/>
+                    <BestCompaniesProducts category={category}/>
 
                 </Col>
             </Row>
