@@ -1,6 +1,6 @@
-import { faChevronLeft, faCircle, faDotCircle, faInfoCircle, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faCircle, faDotCircle, faInfoCircle, faStar, faThumbsUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Nav, Container, Navbar, NavDropdown, Row, Col, Button } from 'react-bootstrap'
+import { Nav, Container, Navbar, NavDropdown, Row, Col, Button, Form, FormControl, InputGroup } from 'react-bootstrap'
 import userAuth from '../../services/user/user-auth';
 import { connect } from 'react-redux';
 import { colorChangeAction, openNavAction,  } from '../../redux/actions';
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-const CategorySearchNav = ({
+const CategoryMainNav = ({
     sideMenuState,
     setMenuState,
     userProf,
@@ -146,20 +146,45 @@ const CategorySearchNav = ({
 
 // console.log(category, "category")
     return (
-        <Navbar bg="light" expand="lg" className="px-0 py-0" id="bus-profile-header" fixed="top">
+        <Navbar bg="light" expand="lg" className="px-0 py-0" id="bus-profile-header">
             { !loading && <div className={`overlay container-fluid ${colorChangeState ? "py-1" : "py-4"}`}>
-            <Container fluid className="d-flex fullopacity" id="profile-container"  style={{ paddingTop: `${ colorChangeState ? '110px' : '150px' }`}}>
+            <Container fluid className="d-flex fullopacity" id="category-search-container"  style={{ paddingTop: `${ colorChangeState ? '110px' : '150px' }`}}>
 
-                <Navbar.Brand>
-                <div className="d-flex align-items-center">
+                <Navbar.Brand className="w-100">
+                {/* <div className="d-flex align-items-center">
                 <FontAwesomeIcon icon={faChevronLeft} className="fa-sm text-white"/>
-                  { (category?.categoryID.categoryLevel == 1) ? <h6  onClick={() => history.push(`/search/category/All`)} className="text-white mb-0 mx-2">All Categories</h6> : <h6 className="text-white mb-0 mx-2" onClick={() => history.push(`/search/category/${category.categoryID.parentCategory[0]?.name}`)}>{category.categoryID.parentCategory[0]?.name}</h6>}
-                </div>
-                <h1 className="text-white mb-0">{category?.categoryID.name}</h1>
-                <div className="d-flex align-items-center">
+                  { (category?.categoryID.categoryLevel == 1) ? <h6  onClick={() => history.push(`/search/category/`)} className="text-white mb-0 mx-2">All Categories</h6> : <h6 className="text-white mb-0 mx-2" onClick={() => history.push(`/search/category/${category.categoryID.parentCategory[0]?.name}`)}>{category.categoryID.parentCategory[0]?.name}</h6>}
+                </div> */}
+                <div className="d-flex align-items-center justify-content-center">
+                  <h1 className="text-white mb-0">What are you looking for?</h1>
+                  </div>
+                
+                  <div className="d-flex align-items-center justify-content-center"> 
+                <Form className="container-fluid d-flex my-4 onTop" id="category-search-form">
+                        <InputGroup className="">
+                        <Button id="button-addon2" className="px-3 categorySearchButton">
+                            <FontAwesomeIcon icon={faSearch}/>
+                            </Button>
+                            <FormControl
+                            placeholder="Search"
+                            aria-label="Search"
+                            aria-describedby="basic-addon2"
+                            className="px-0"
+                            id="category-nav-input"
+                            />
+                            {/* <Button id="button-addon3" className="px-4 searchBarButton">
+                            <img src="https://img.icons8.com/pastel-glyph/64/000000/barcode-scanner--v2.png" id="searchBarcode"/>
+                            </Button> */}
+                            <Button id="button-addon2" className="px-4 searchBarButton">
+                            Search
+                            </Button>
+                        </InputGroup>
+                        </Form>
+                        </div>
+                {/* <div className="d-flex align-items-center">
                   <h6 className="text-white mb-0 align-self-center">{`Compare companies in the ${category?.categoryID.name} category`}</h6>
                   <FontAwesomeIcon icon={faInfoCircle} className="fa-sm mx-2 text-white"/>
-                  </div>
+                  </div> */}
                 </Navbar.Brand>
               
                 
@@ -169,4 +194,4 @@ const CategorySearchNav = ({
     );
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(CategorySearchNav)
+  export default connect(mapStateToProps, mapDispatchToProps)(CategoryMainNav)

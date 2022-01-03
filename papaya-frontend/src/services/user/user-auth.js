@@ -3,17 +3,17 @@ import api from "../api.js"
 
 
 const register = (userObject) => {
-  console.log(userObject + "register user")
+  console.log(userObject, "register user")
   return api.post("users/register", userObject)
   .then((response) => {
     if (response.data.accessToken) {
       localStorage.setItem("user", JSON.stringify(response.data));
     }
 
-    const userData = response.data
+    const userData = JSON.stringify(response.data)
     console.log(userData)
 
-    return response.data;
+    return userData;
   });;
 };
 
@@ -31,7 +31,7 @@ const login = (email, password) => {
       const userData = response.data
       console.log(userData)
 
-      return response.data;
+      return userData;
     });
 };
 

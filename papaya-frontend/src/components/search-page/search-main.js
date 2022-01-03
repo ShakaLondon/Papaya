@@ -10,17 +10,17 @@ import BestCompaniesProducts from './profile-cards/best-companies-products';
 
 export default function CategorySearchMain ({ category, user, isLoggedIn }) {
     return (
-        <Container id="category-search-container">
+        <Container id="category-search-main-container">
             <Row className="mx-0 px-0">
                 <Col md={4}>
-                    <CategoryList category={category} user={user} isLoggedIn={isLoggedIn}/>
+                    <CategoryList category={category.categoryID} user={user} isLoggedIn={isLoggedIn}/>
                     {/* <ReviewHeader profile={props.profile} user={props.profile} score={props.score} loading={props.loading}/>
                     <ReviewCard profile={props.profile} user={props.user}/>  */}
                    
                 </Col>
                 <Col md={8}>
-                    <PopularSubcat  category={category}/>
-                    <BestCompaniesProducts category={category}/>
+                    <PopularSubcat  category={category.categoryID}/>
+                    <BestCompaniesProducts categoryItems={category.categoryItemScores} category={category.categoryID}/>
 
                 </Col>
             </Row>

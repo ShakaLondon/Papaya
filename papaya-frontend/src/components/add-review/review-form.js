@@ -27,7 +27,8 @@ const AddReviewContainer = ({
     error,
     isLoggedIn,
     userFound,
-    logout
+    logout,
+    reDirect
 }) => {
 
     const [userInfo, setUserInfo] = useState({
@@ -87,7 +88,7 @@ const AddReviewContainer = ({
                                 <h3>Login</h3>
                             </Button>
                         </Form> */}
-                        <ReviewCard/>
+                        <ReviewCard  reDirect={reDirect}/>
                     </Col>
                 </Row>
                 </Container>

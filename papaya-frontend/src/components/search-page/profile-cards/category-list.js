@@ -10,7 +10,7 @@ import StarRating from '../../rating-component/index.js';
 
 export default function CategoryList ({ category }) {
 
-     const [currentCategory, setCurrentCategory] = useState(category.name);
+     const [currentCategory, setCurrentCategory] = useState(category?.name);
     
     const selected = (value) => {
         // console.log(value + "selected")
@@ -239,7 +239,7 @@ console.log(currentCategory, subCat)
                         </Col>
                         <Col md={10} className="d-flex align-items-center px-0">
                             {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
-                            <h6 className="mb-0 align-self-center smallTxt">All Categories</h6>
+                            <h6  onClick={() => history.push(`/search/category/All`)} className="mb-0 align-self-center smallTxt">All Categories</h6>
                         </Col>
                         
                     </Row>

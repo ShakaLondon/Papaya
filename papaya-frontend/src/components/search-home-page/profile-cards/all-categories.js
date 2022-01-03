@@ -1,8 +1,9 @@
 import { faSearch, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { Card, Button, Container, Row, Col, Form, FloatingLabel, FormControl, ProgressBar, InputGroup } from 'react-bootstrap'
+import { Card, Button, Container, Row, Col, Form, FloatingLabel, FormControl, ProgressBar, InputGroup, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router';
 import { openNavAction,  } from '../../../redux/actions';
 import { updateUserAction, updateUserImageAction, updateUserCoverAction } from '../../../redux/actions/user'
 import FilesUploadComponent from '../upload';
@@ -35,7 +36,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-const BestCompaniesProducts = ({
+const AllCategoryList = ({
     sideMenuState,
     setMenuState,
     userProf,
@@ -75,6 +76,8 @@ const BestCompaniesProducts = ({
     //   })
       // const [categoryList, setCategoryList] = useState(categoryItems)
 
+      const history = useHistory()
+
 
 
     //   useEffect(() => {
@@ -93,32 +96,51 @@ const BestCompaniesProducts = ({
 
 
     return (
-        <Card style={{ width: '100%', border: "none" }} className="my-2" key={category._id}>
+        <Card style={{ width: '100%', border: "none" }} className="my-4 py-2 profileCard">
             <Card.Body>
-                <Card.Title >
-                <h5 className="px-2 mb-3">Best companies in this category</h5>
-                </Card.Title>
+            <ListGroup>
+            {category?.map((cat, idx) => 
+                  {
+                    const subNo = cat?.subCategories.length
+                    const halfValue = subNo / 2
+                    
+                    return (
+              <ListGroupItem key={cat._id}  className="categoryListCard py-0">
+                <Card  style={{ width: '100%', border: "none" }} className="categoryListCard bottomLine py-2">
+                  <Row>
+                    <Col md={4}>
+                      <h5  onClick={() => history.push(`/search/category/${cat.name}`)} className="px-0 mb-0 noBold">{cat.name}</h5>
+                    </Col>
+                    <Col md={8}>
+                      {
+                      cat?.subCategories.map((subCat, idx) => {
 
-                {/* <Card.Text > */}
-                <h6 className="px-2 mb-3 extraSmallTxt">1-20 of 43 results based on current filters. Ordered by PapayaScore and number of reviews. Default filter settings show companies as best in this category if they’re actively asking for reviews and have received 25+ in the past 12 months. You can adjust these filters.</h6>
-                {/* </Card.Text> */}
-                {/* <hr className="mx-2"/> */}
+                        console.log(halfValue)
 
-                <div className="px-1 py-0">
-                    {/* {(category?.subCategories.length > 0) && category?.subCategories.map((subCat) => { */}
+                        
+                        return (
+                          <div className="d-flex align-items-center">
+ <h6  key={subCat._id} onClick={() => history.push(`/search/category/${subCat.name}`)} className="px-0 mb-0 pb-3 py-1 noBold">{subCat.name}</h6>
+                          </div>
 
-                            <CompanyProductCard catList={categoryItems}/>
-                     {/* })} */}
-                </div>
+                           
+                        )
+                      })}
+                      
+                    </Col>
+                  </Row>
 
-                
-                  
-                {/* <Container className="px-2 py-3">
-         
-                        </Container> */}
+                </Card>
+              </ListGroupItem>
+                    )}
+            )}
+              
+            </ListGroup>
+
+
             </Card.Body>
         </Card>
     );
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(BestCompaniesProducts)
+  export default connect(mapStateToProps, mapDispatchToProps)(AllCategoryList)

@@ -26,7 +26,7 @@ const setup = (store) => {
     async (err) => {
       const originalConfig = err.config;
 
-      if ((originalConfig.url !== "/users/me" || originalConfig.url !== "/users/business/me") && err.response) {
+      if (((originalConfig.url !== "/users/register") || (originalConfig.url !== "/users/business/register")) && err.response) {
         // Access Token was expired
         if (err.response.status === 401 && !originalConfig._retry) {
           originalConfig._retry = true;
@@ -41,7 +41,7 @@ const setup = (store) => {
             dispatch(refreshToken(accessToken));
             TokenService.updateLocalAccessToken(accessToken);
 
-            console.log(accessToken + "Interceptor")
+            console.log(accessToken, "Interceptor")
 
             return axiosInstance(originalConfig);
           } catch (err) {
@@ -50,6 +50,21 @@ const setup = (store) => {
 
             return Promise.reject(err);
           }
+        } else if (err.response.status === 401) {
+
+          try {
+        
+            dispatch(logoutAction());
+            TokenService.removeUser();
+
+            return Promise.reject(err);
+          } catch (err) {
+
+          //  dispatch(logoutAction())
+
+            return Promise.reject(err);
+          }
+
         }
       }
 

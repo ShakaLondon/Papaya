@@ -44,6 +44,10 @@ colorChange
   const [dataLoading, setDataLoading] = useState(true);
 
   useEffect(() => {
+    colorChange(false);
+  }, []);
+
+  useEffect(() => {
     const appPages = document.getElementsByClassName('scrollNav')
 
     console.log(appPages)

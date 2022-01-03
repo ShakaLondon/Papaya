@@ -6,10 +6,10 @@ import { useEffect, useState } from 'react';
 import { registerAction } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import { Redirect, useLocation } from 'react-router';
-import CategorySearchNav from './search-nav';
+import CategoryMainNav from './search-nav';
 import LoadingSpinner from '../loading/index.js';
 import { colorChangeAction } from '../../redux/actions';
-import CategorySearchMain from './search-main';
+import CategoryMain from './search-main';
 
 const mapStateToProps = (state) => ({
     error: state.appState.error,
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => ({
     colorChange: (action) => dispatch(colorChangeAction(action))
   });
 
-const SearchContainer = ({
+const AllCategories = ({
     login,
     loading,
     error,
@@ -58,32 +58,32 @@ const SearchContainer = ({
 //       surname: userProf.surname,
 //     })
 
-  const [searchRequest, setSearchRequest] = useState(catNamePath);
-  const [searchResult, setSearchResult] = useState();
+  // const [searchRequest, setSearchRequest] = useState(catNamePath);
+  const [allCategories, setAllCategories] = useState();
   const [dataLoading, setDataLoading] = useState(true);
 // const [companyReviews, setCompanyReviews] = useState([])
 //   const [reviews, setReviews] = useState({});
 
   // const [colorChange, setColorchange] = useState(false);
 
-  useEffect(() => {
-    colorChange(true);
-  }, []);
+  // useEffect(() => {
+  //  const routePath = locationUrl.pathname
+  //   console.log(routePath)
 
-  useEffect(() => {
-   const routePath = locationUrl.pathname
-    console.log(routePath)
+  //   const categoryNamePath = routePath.replace("/search/category/", '')
+  //   console.log(categoryNamePath)
 
-    const categoryNamePath = routePath.replace("/search/category/", '')
-    console.log(categoryNamePath)
-
-    // if(categoryNamePath) {
-      setSearchRequest(() => categoryNamePath)
-    // }
+  //   // if(categoryNamePath) {
+  //     setSearchRequest(() => categoryNamePath)
+  //   // }
 
     
 
-  });
+  // });
+
+  useEffect(() => {
+    colorChange(true);
+  }, []);
 
 
   useEffect(() => {
@@ -133,9 +133,9 @@ const SearchContainer = ({
     // if(categoryNamePath) {
     // setSearchRequest((state) => (categoryNamePath))
     // }
-    if (searchRequest != null){
-      const url = `http://localhost:3005/category/${searchRequest}`
-      const urlReviews = `http://localhost:3005/business/${searchRequest}/reviews/averages`
+    // if (searchRequest != null){
+      const url = `http://localhost:3005/category?limit=3&columns=8`
+      // const urlReviews = `http://localhost:3005/business/${searchRequest}/reviews/averages`
       const options = {
           method: 'GET',
           // headers: {
@@ -146,11 +146,11 @@ const SearchContainer = ({
       .then(res => res.json())
       .then((result) => {
           const categoryRes = result
-          console.log(categoryRes.category)
+          console.log(categoryRes)
           // console.log(busFound.reviewIDs)
           // const reviews = busFound.reviewIDs
-          setSearchResult((searchResult) => categoryRes.category)
-          console.log(categoryRes.category)
+          setAllCategories((allCategories) => categoryRes)
+          console.log(categoryRes)
 
           // setCompanyReviews(busFound.reviewIDs)
           
@@ -179,11 +179,11 @@ const SearchContainer = ({
       // .catch((error) => {console.log(error)})
 
      
-    } 
+    // } 
     // return () => {
        
     //   };
-  }, [searchRequest])
+  }, [])
 
 
 
@@ -194,10 +194,10 @@ const SearchContainer = ({
             <LoadingSpinner/>
             </Container> : <Container fluid id="business-form" className="flex-row mx-0 px-0">
                 <Row className="mx-0 px-0">
-                    <CategorySearchNav category={searchResult} loading={loading}/>
+                    <CategoryMainNav category={allCategories} loading={loading}/>
                 </Row>
-                <Row className="mx-0 px-0" id="category-main-cont" style={{ paddingTop: '240px' }}>
-                    <CategorySearchMain category={searchResult} loading={loading} user={userProf} isLoggedIn={isLoggedIn}/>
+                <Row className="mx-0 px-0 py-2" id="category-main-cont" style={{ paddingTop: '0px' }}>
+                    <CategoryMain category={allCategories} loading={loading} user={userProf} isLoggedIn={isLoggedIn}/>
                 </Row>
             </Container>}
         </Container>
@@ -208,4 +208,4 @@ const SearchContainer = ({
     // }
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
+  export default connect(mapStateToProps, mapDispatchToProps)(AllCategories);

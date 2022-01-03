@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { Redirect, useLocation } from 'react-router';
 import PublicProfileNav from './profile-nav';
 import PublicProfileMain from './profile-main';
+import LoadingSpinner from '../loading/index'
 
 const mapStateToProps = (state) => ({
     error: state.appState.error,
@@ -52,6 +53,7 @@ const PublicProfileContainer = ({
     
         const [searchRequest, setSearchRequest] = useState(userNamePath);
         const [searchResult, setSearchResult] = useState({});
+        const [dataLoading, setDataLoading] = useState(true);
     
     
           
@@ -71,6 +73,7 @@ const PublicProfileContainer = ({
                 const userFound = user
                 console.log(userFound)
                 setSearchResult(user)
+                setDataLoading(false)
                 // console.log(searchResult)
             })
             .catch((error) => {console.log(error)})
@@ -85,7 +88,9 @@ const PublicProfileContainer = ({
         return (
     <>
         <Container fluid id="public-app-component" className="mx-0 d-flex justify-content-center px-0">
-            <Container fluid id="public-form" className="flex-row mx-0 px-0">
+            { dataLoading ? <Container fluid id="public-form" className="flex-row mx-0 px-0"> 
+            <LoadingSpinner/>
+            </Container> : <Container fluid id="public-form" className="flex-row mx-0 px-0">
                 {/* <Row className="mx-0 px-0" style={{ backgroundColor: "#ffd800"}}>
                     <Col md={12} id="profile-topbar" className="d-inline-flex justify-content-center align-items-center my-0">
                         <h1 id="profile-brand-h1" className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
@@ -100,7 +105,7 @@ const PublicProfileContainer = ({
                 <Row className="mx-0 px-0" id="public-main-cont">
                     <PublicProfileMain profile={searchResult}/>
                 </Row>
-            </Container>
+            </Container>}
         </Container>
         <Footer/>
         </>

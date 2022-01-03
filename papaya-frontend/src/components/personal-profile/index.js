@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import ProfileNav from './profile-nav';
 import ProfileMain from './profile-main';
+import LoadingSpinner from '../loading/index'
 
 const mapStateToProps = (state) => ({
     error: state.appState.error,
@@ -60,7 +61,9 @@ const ProfileContainer = ({
         return (
     <>
         <Container fluid id="profile-app-component" className="mx-0 d-flex justify-content-center px-0">
-            <Container fluid id="profile-form" className="flex-row mx-0 px-0">
+            {loading ? <Container fluid id="profile-form" className="flex-row mx-0 px-0"> 
+            <LoadingSpinner/>
+            </Container> : <Container fluid id="profile-form" className="flex-row mx-0 px-0">
                 {/* <Row className="mx-0 px-0" style={{ backgroundColor: "#ffd800"}}> */}
                     {/* <Col md={12} id="profile-topbar" className="d-inline-flex justify-content-center align-items-center my-0">
                         <h1 id="profile-brand-h1" className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
@@ -75,7 +78,7 @@ const ProfileContainer = ({
                 <Row className="mx-0 px-0">
                     <ProfileMain user={userProf}/>
                 </Row>
-            </Container>
+            </Container>}
         </Container>
         <Footer/>
         </>

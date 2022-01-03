@@ -42,7 +42,8 @@ const ReviewCard = ({
     userProf,
     updateUserProf,
     updateUserImage,
-    updateUserCover
+    updateUserCover,
+    reDirect
 }) => { 
 
   const locationUrl = useLocation();
@@ -88,6 +89,7 @@ const ReviewCard = ({
         cover: null
       })
 
+
     //   const handleSubmit = (e) => {
     //     e.preventDefault();
     //     const url = `http://localhost:3005/reviews/${website}`
@@ -123,9 +125,10 @@ const ReviewCard = ({
     //         }
             UserData.addReview(writeReview.website, writeReview)
             // .then(res => res.json())
-            .then((user) => {
+            .then((review) => {
                 // const userFound = user
-                console.log(user)
+                console.log(review)
+                // setRedirect(true)
                 // setSearchResult(user)
                 // console.log(searchResult)
             })

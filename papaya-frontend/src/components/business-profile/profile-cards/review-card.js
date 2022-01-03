@@ -10,6 +10,7 @@ import StarRating from '../../rating-component';
 import FilesUploadComponent from '../upload';
 import Keywords from './keywords.js'
 import moment from 'moment'
+import { useHistory } from 'react-router';
 
 
 
@@ -47,6 +48,8 @@ const ReviewCard = (props) => {
         // setWriteReview({ ...writeReview, stars: value})
       }
 
+      const history = useHistory()
+
 
     return (
 
@@ -57,7 +60,7 @@ const ReviewCard = (props) => {
             <Container  className="px-2">
                     <Row>
                         <Col md={2} className="">
-                            <img 
+                            <img  onClick={() => history.push(`/profile/${review.userID.username}`)}
                             src={review.userID.avatar.avatar} 
                             alt="User Avatar" className="rounded-circle" style={{ width: "3rem", height: "3rem", objectFit: "cover" }}/>
                         </Col>
@@ -65,7 +68,7 @@ const ReviewCard = (props) => {
                             <Container className="px-0">
                             <Row>
                                 <Col md={12} className="px-0">
-                                <h5 className="px-0 mb-0">{`${review.userID.name} ${review.userID.surname}`}</h5>
+                                <h5  onClick={() => history.push(`/profile/${review.userID.username}`)} className="px-0 mb-0">{`${review.userID.name} ${review.userID.surname}`}</h5>
                                 </Col>
                                 
                             </Row>

@@ -143,7 +143,7 @@ a {
 }
 
 #main-jumbo-login {
-  height: 400px;
+  height: 500px;
   background-image: url('../src/components/resources/afrowoman.jpg');
   background-color: #ffffff;
   background-size: cover;
@@ -181,6 +181,7 @@ a {
 
 #jumbo-contents-login {
   padding-top: 150px !important;
+  /* padding-bottom: 50px !important; */
 }
 
 #search-bar-strip {
@@ -204,6 +205,23 @@ a {
   background-color: #ef7c53 !important;
   color: #000000 !important;
   /* z-index: 0; */
+}
+
+#category-nav-input {
+  border-color: #ffef93 !important;
+  border-left: none !important;
+}
+
+#category-nav-input:focus, #category-nav-input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.categorySearchButton {
+  border-color: #ffef93 !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-right: none !important;
 }
 
 .searchBarButton:hover {
@@ -265,6 +283,11 @@ h6 {
 
 .extraSmallTxt {
   font-size: 0.75rem !important;
+  font-weight: normal !important;
+}
+
+.noBold {
+  /* font-size: 0.75rem !important; */
   font-weight: normal !important;
 }
 
@@ -514,6 +537,17 @@ h6 {
 .profileCard {
   border-color: #ffef93 !important;
   background-color: #ffef93 !important;
+}
+
+.categoryListCard {
+  border-color: #ffef93 !important;
+  background-color: #ffef93 !important;
+  /* border-bottom: #ef7c53; */
+}
+
+.bottomLine {
+  border-bottom: 1px solid #ffd800 !important;
+  border-radius: 0px 0px 0px !important;
 }
 
 /* .papayaRatingLogo {
@@ -792,7 +826,34 @@ a { color: inherit !important; }
   padding-right: 15rem !important;
 }
 
+#category-main-container{
+  padding-left: 15rem !important;
+  padding-right: 15rem !important;
+}
+
 #category-main-cont {
   /* padding-top: 380px !important; */
   z-index: -1 !important;
+}
+
+#category-search-container {
+  padding-top: 200px !important;
+  padding-bottom: 50px !important;
+}
+
+#category-search-main-container {
+  padding-left: 15rem !important;
+  padding-right: 15rem !important;
+}
+
+/* Thankyou Page */
+
+#thankyou-app-body {
+  height: 100vh !important;
+}
+
+#thankyou-app-main {
+  height: 100vh !important;
+  overflow-y: scroll;
+  background-color: #ffef93;
 }

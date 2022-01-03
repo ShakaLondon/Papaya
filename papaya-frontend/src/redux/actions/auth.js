@@ -40,7 +40,7 @@ export const registerAction = (userObject) => {
 
       UserAuth.register(userObject).then(
         (response) => { 
-          console.log(response + "authfile")
+          console.log(response, "authfile")
 
           dispatch({
             type: REGISTER_SUCCESS,

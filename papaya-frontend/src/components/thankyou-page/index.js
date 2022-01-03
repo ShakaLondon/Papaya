@@ -5,7 +5,7 @@ import Footer from '../footer';
 import { useEffect, useState } from 'react';
 import { registerAction } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
-import { Redirect, useLocation } from 'react-router';
+import { Redirect, useHistory, useLocation } from 'react-router';
 import LoadingStar from './loading-star';
 import { colorChangeAction } from '../../redux/actions';
 
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
     colorChange: (action) => dispatch(colorChangeAction(action))
   });
 
-const LoadingSpinner = ({
+const ThankyouReviewPage = ({
     login,
     loading,
     error,
@@ -57,8 +57,10 @@ const LoadingSpinner = ({
   const [searchRequest, setSearchRequest] = useState(businessNamePath);
   const [searchResult, setSearchResult] = useState({});
 
+  const history = useHistory()
+
   useEffect(() => {
-    colorChange(false);
+    colorChange(true);
   }, []);
 
 
@@ -86,12 +88,12 @@ const LoadingSpinner = ({
 
 
   const changeNavbarColor = (scroll) =>{
-     if(scroll >= 30){
+     if(scroll >= 0){
        colorChange(true);
      }
-     else{
-       colorChange(false);
-     }
+    //  else{
+    //    colorChange(false);
+    //  }
   };
 
     
@@ -145,13 +147,27 @@ const LoadingSpinner = ({
     // <>
         <Container fluid 
         // id="loading-app-component" 
-        className="mx-0 d-flex justify-content-center px-0" style={{ height: "800px" }}>
+        className="mx-0 d-flex justify-content-center align-items-center px-0" style={{ height: "800px" }}>
             <Container fluid 
             // id="loading-container"
              className="flex-row mx-0 px-0">
                 <Row className="mx-0 px-0 container-fluid">
-                        <LoadingStar colour={"#ef7c53"} position={"front"}/>
-                        <LoadingStar colour={"#ffef93"} position={"back"}/>
+                        {/* <LoadingStar colour={"#ef7c53"} position={"front"}/>
+                        <LoadingStar colour={"#ffef93"} position={"back"}/> */}
+
+                        <Col md={12} className="d-inline-flex justify-content-center">
+                          <h3>Thank you for contributing to the Papaya community.</h3>
+
+                        </Col>
+                        <Col md={12} className="d-inline-flex justify-content-center">
+  <Button style={{ width: "400px" }}   onClick={() => history.push(`/main`)} className="menuButton rounded-pill my-2">Go Home</Button>
+
+                        </Col>
+                        <Col md={12} className="d-inline-flex justify-content-center">
+
+                          <Button style={{ width: "400px" }}   onClick={() => history.push(`/profile/${userProf.username}`)} className="menuButton  rounded-pill my-2">Go to Profile</Button>
+
+                        </Col>
                 </Row>
             </Container>
         </Container>
@@ -161,4 +177,4 @@ const LoadingSpinner = ({
     // }
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(LoadingSpinner);
+  export default connect(mapStateToProps, mapDispatchToProps)(ThankyouReviewPage);

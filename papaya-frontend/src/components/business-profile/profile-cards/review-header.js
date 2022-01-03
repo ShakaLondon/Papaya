@@ -131,7 +131,7 @@ const ReviewHeader = ({
                         </Col>
                         <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.five.percentage}%`}</h6> }
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.five.percentage.toFixed(1)}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -166,7 +166,7 @@ const ReviewHeader = ({
                         </Col>
                         <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.four.percentage}%`}</h6> }
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.four.percentage.toFixed(1)}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -201,7 +201,7 @@ const ReviewHeader = ({
                         </Col>
                         <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.three.percentage}%`}</h6> }
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.three.percentage.toFixed(1)}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -236,7 +236,7 @@ const ReviewHeader = ({
                         </Col>
                         <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.two.percentage}%`}</h6> }
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.two.percentage.toFixed(1)}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>
@@ -271,7 +271,7 @@ const ReviewHeader = ({
                         </Col>
                         <Col md={2} className="d-flex justify-content-end px-2 align-items-center percentageWidth">
                             <Row>
-                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.one.percentage}%`}</h6> }
+                            { (reviewScore !== null) && <h6 className=" mb-0">{`${reviewScore.one.percentage.toFixed(1)}%`}</h6> }
                             </Row>
                         </Col>
                     </Row>

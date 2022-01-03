@@ -172,7 +172,7 @@ const BusinessNav = ({
                     </Container>}
                     <Container fluid className={`d-flex align-items-center ${colorChange ? "my-1" : "my-2 mt-4"}`}>
                         {( reviewScore.businessScore > 0 ) && <StarRating current={reviewScore.businessScore} fontSize={colorChangeState ? "1.5rem" : "3rem"}   changeable={false} selected={selected}/>}
-                        <h6 className="text-white mb-0">{reviewScore.businessScore}</h6>
+                        <h6 className="text-white mb-0">{reviewScore.businessScore.toFixed(1)}</h6>
                     </Container>
                     
                 </Navbar.Brand>

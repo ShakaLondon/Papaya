@@ -191,7 +191,7 @@ const NavBar = ({
           { colorChangeState && <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1> }
           </Navbar.Brand>
           <Navbar.Brand href="/" className="d-inline-flex align-items-center mx-auto">
-          {  ( routePath != '/main' ) && ( routePath != '/register' ) && ( routePath != '/signup' )  && ( !colorChangeState && <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>)}
+          {  ( routePath != '/main' ) && ( routePath != '/login' ) && ( routePath != '/signup' )  && ( !colorChangeState && <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>)}
           </Navbar.Brand>
           <Navbar.Brand className="d-flex align-items-center">
             { colorChangeState && <FontAwesomeIcon icon={faSearch} className="mx-4 my-4" id="main-nav-bar-icon"  style={{ fontSize: `${ colorChangeState ? '2rem' : '3rem' }`}} onClick={() => setMenuState(true)}/>}

@@ -6,16 +6,17 @@ import './star-rating.css';
 function Star({ filled, onClick, ratingValue, onMouseOver, hoverValue, onMouseOut, fontSize, half, number, set }) {
 
     console.log(ratingValue)
-    console.log(hoverValue)
+    console.log(half)
 
 
-    const hoverColour = (hoverValue < 3) ? "red" : (hoverValue < 4) ? "orange" : "green"
-    const ratingColour = (ratingValue < 3) ? "red" : (ratingValue < 4) ? "orange" : "green"
-    const currentRatingColour = (ratingValue < 2.8) ? "red" : (ratingValue < 3.8) ? "orange" : "green"
-    const currentRatingHalf = (ratingValue < 2) ? "red" : (ratingValue < 3) ? "orange" : "green"
+    const hoverColour = (hoverValue < 2.1) ? "red" : (hoverValue < 3.1) ? "orange" : "green"
+    const ratingColour = (half === 0.5) ? ((ratingValue < 2.1) ? "red" : (ratingValue < 3.1) ? "orange" : "green") : ((ratingValue < 2.1) ? "red" : (ratingValue < 3.1) ? "orange" : "green")
+    const currentRatingColour = (ratingValue < 2.1) ? "red" : (ratingValue < 3.1) ? "orange" : "green"
+    const currentRatingHalf = (ratingValue < 2.1) ? "red" : (ratingValue < 3.1) ? "orange" : "green"
 // if remainer is not modular 0
 
-    const valueCheck = hoverValue == 0 ? ratingColour : hoverColour
+    const valueCheck =( hoverValue == 0 )? ratingColour : 
+    ( half ) ? currentRatingHalf : hoverColour
 // const 
     const fillColour = filled ? valueCheck : 'gray'
 

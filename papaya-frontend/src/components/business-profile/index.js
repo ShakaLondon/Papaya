@@ -61,6 +61,10 @@ const BusinessContainer = ({
 const [companyReviews, setCompanyReviews] = useState([])
   const [reviews, setReviews] = useState({});
 
+  useEffect(() => {
+    colorChange(false);
+  }, []);
+
   // const [colorChange, setColorchange] = useState(false);
 
 
