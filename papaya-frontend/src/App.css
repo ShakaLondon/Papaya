@@ -55,12 +55,11 @@
   -webkit-transform: translateX(); */
 }
 
-
 @media only screen and (min-height: 80vh) {
   #side-menu-row {
     margin-top: 125px !important;
     height: 75%;
-  };
+  }
 }
 
 /* @media only screen and (min-height: 100vh) {
@@ -70,7 +69,6 @@
     height: 75%;
   };
 } */
-
 
 .display-6 {
   color: white;
@@ -135,7 +133,7 @@ a {
 
 #main-jumbo {
   height: 500px;
-  background-image: url('../src/components/resources/afrowoman.jpg');
+  background-image: url("../src/components/resources/afrowoman.jpg");
   background-color: #ffffff;
   background-size: cover;
   background-position: center;
@@ -144,7 +142,7 @@ a {
 
 #main-jumbo-login {
   height: 500px;
-  background-image: url('../src/components/resources/afrowoman.jpg');
+  background-image: url("../src/components/resources/afrowoman.jpg");
   background-color: #ffffff;
   background-size: cover;
   background-position: center;
@@ -152,7 +150,7 @@ a {
 }
 
 #brand-heading {
-  font-family: 'Rozha One', serif;
+  font-family: "Rozha One", serif;
   text-align: center;
   color: #ef7c53;
   font-size: 10rem;
@@ -212,7 +210,8 @@ a {
   border-left: none !important;
 }
 
-#category-nav-input:focus, #category-nav-input:active {
+#category-nav-input:focus,
+#category-nav-input:active {
   outline: none !important;
   box-shadow: none !important;
 }
@@ -235,20 +234,21 @@ a {
   border-color: #ffef93 !important;
 }
 
-#search-input:focus, #search-input:active {
+#search-input:focus,
+#search-input:active {
   outline: none !important;
   box-shadow: none !important;
 }
 
-.btn:focus, .btn:active {
-         outline: none !important;
-         box-shadow: none !important;
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.navbar-toggler:focus
-{
-         outline: none !important;
-         box-shadow: none;
+.navbar-toggler:focus {
+  outline: none !important;
+  box-shadow: none;
 }
 /* 
 #main-app-page {
@@ -305,7 +305,7 @@ h6 {
 #reviews-slider-cont {
   height: 90vh;
   min-height: 650px;
-  background-image: url('../src/components/resources/afrowomansmiling.jpeg');
+  background-image: url("../src/components/resources/afrowomansmiling.jpeg");
   box-shadow: inset 2000px 0 0 0 rgba(255, 239, 147, 0.5);
   background-color: #ffffff;
   background-size: cover;
@@ -322,13 +322,12 @@ h6 {
 
 /* NEW PRODUCTS */
 
-#product-slider-cont{
+#product-slider-cont {
   background-color: #ffd800;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   padding-top: 250px;
-
 }
 
 #product-slider-comp {
@@ -348,7 +347,6 @@ h6 {
 
 #register-app-body {
   height: 100vh !important;
-  
 }
 
 #register-app-main {
@@ -357,7 +355,7 @@ h6 {
 }
 
 #login-app-component {
-  height: 100vh !important; 
+  height: 100vh !important;
   width: 30rem;
 }
 
@@ -372,22 +370,23 @@ h6 {
 } */
 
 /* #login-form { */
-  /* height: 100vh !important; */
-  /* width: 30rem; */
- 
+/* height: 100vh !important; */
+/* width: 30rem; */
+
 /* } */
 
 .register-input {
   border-color: #ffef93 !important;
 }
 
-.register-input:focus, .register-input:active {
+.register-input:focus,
+.register-input:active {
   outline: none !important;
   box-shadow: none !important;
 }
 
 .brand-heading-h1 {
-  font-family: 'Rozha One', serif;
+  font-family: "Rozha One", serif;
   text-align: center;
   color: #ef7c53;
   font-size: 3rem;
@@ -438,7 +437,6 @@ h6 {
   border-color: #ef7c53 !important;
   border: 2px solid #ef7c53 !important;
   color: #ffd800 !important;
-
 }
 
 .registerButton:hover {
@@ -465,11 +463,9 @@ h6 {
   overflow-y: scroll;
 }
 
-
-
 /* #signup-app-component { */
-  /* height: 100vh !important;  */
-  /* width: 30rem;
+/* height: 100vh !important;  */
+/* width: 30rem;
   margin-top: 10rem;
   margin-bottom: 5rem; */
 /* } */
@@ -483,7 +479,7 @@ h6 {
 } */
 
 #profile-brand-h1 {
-  font-family: 'Rozha One', serif;
+  font-family: "Rozha One", serif;
   text-align: center;
   color: #ef7c53;
   font-size: 3rem;
@@ -498,7 +494,7 @@ h6 {
 }
 
 #profile-header {
-  background-image: url('../src/components/resources/flower-header.jpeg');
+  background-image: url("../src/components/resources/flower-header.jpeg");
   background-color: #ffffff;
   background-size: cover;
   background-position: center;
@@ -513,7 +509,6 @@ h6 {
   padding-left: 15rem;
   padding-right: 15rem;
   /* background-color: #ffffff; */
-  
 }
 
 #profile-form {
@@ -531,7 +526,6 @@ h6 {
   border: 2px solid #ef7c53 !important;
   color: #ffd800 !important;
   /* z-index: 0; */
-
 }
 
 .profileCard {
@@ -556,25 +550,26 @@ h6 {
 } */
 
 .public-app-component {
-  height: 1000px
+  height: 1000px;
 }
 
 /* PAPAYA APP ICON FONT */
 @font-face {
-  font-family: 'icomoon';
-  src:  url('./fonts/icomoon.eot?vj1a11');
-  src:  url('./fonts/icomoon.eot?vj1a11#iefix') format('embedded-opentype'),
-    url('./fonts/icomoon.ttf?vj1a11') format('truetype'),
-    url('./fonts/icomoon.woff?vj1a11') format('woff'),
-    url('./fonts/icomoon.svg?vj1a11#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("./fonts/icomoon.eot?vj1a11");
+  src: url("./fonts/icomoon.eot?vj1a11#iefix") format("embedded-opentype"),
+    url("./fonts/icomoon.ttf?vj1a11") format("truetype"),
+    url("./fonts/icomoon.woff?vj1a11") format("woff"),
+    url("./fonts/icomoon.svg?vj1a11#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   /* speak: never; */
   font-style: normal;
   font-weight: normal;
@@ -629,10 +624,8 @@ hr {
   height: 1220px !important;
 }
 
-
 #review-app-body {
   height: 100vh !important;
-  
 }
 
 #review-app-main {
@@ -651,7 +644,7 @@ hr {
 }
 
 #review-topbar {
-  height: 138px
+  height: 138px;
 }
 
 .reviewFormMargin {
@@ -659,7 +652,7 @@ hr {
 }
 
 #review-brand-h1 {
-  font-family: 'Rozha One', serif;
+  font-family: "Rozha One", serif;
   text-align: center;
   color: #ef7c53;
   font-size: 3rem;
@@ -682,7 +675,7 @@ hr {
 }
 
 #review-header {
-  background-image: url('../src/components/resources/flower-header.jpeg');
+  background-image: url("../src/components/resources/flower-header.jpeg");
   background-color: #ffffff;
   background-size: cover;
   background-position: center;
@@ -697,7 +690,7 @@ hr {
 } */
 
 #review-form {
-  height: 100vh !important; 
+  height: 100vh !important;
   width: 40rem !important;
 }
 
@@ -710,13 +703,12 @@ hr {
   padding-left: 24rem;
   padding-right: 24rem;
   /* background-color: #ffffff; */
-  
 }
 
 /* BUSINESS PAGE */
 
 #business-brand-h1 {
-  font-family: 'Rozha One', serif;
+  font-family: "Rozha One", serif;
   text-align: center;
   color: #ef7c53;
   font-size: 3rem;
@@ -735,7 +727,7 @@ hr {
 } */
 
 #bus-profile-header {
-  background-image: url('../src/components/resources/flower-header.jpeg');
+  background-image: url("../src/components/resources/flower-header.jpeg");
   background-color: #ffffff;
   background-size: cover;
   background-position: center;
@@ -745,7 +737,9 @@ hr {
   /* opacity: 0.5; */
 }
 
-a { color: inherit !important; }
+a {
+  color: inherit !important;
+}
 
 .input-group .btn {
   z-index: 0 !important;
@@ -755,46 +749,49 @@ a { color: inherit !important; }
 
 /* entire container, keeps perspective */
 .flip-container {
-	perspective: 1000px;
+  perspective: 1000px;
   transform: rotateY(180deg);
 }
-	/* flip the pane when hovered */
-	/* .flip-container:hover .flipper, .flip-container.hover .flipper {
+/* flip the pane when hovered */
+/* .flip-container:hover .flipper, .flip-container.hover .flipper {
     transform: rotateY(180deg); 
 	} */
 
-.flip-container, .front, .back {
-	width: 100%;
-	height: 100%;
+.flip-container,
+.front,
+.back {
+  width: 100%;
+  height: 100%;
 }
 
 /* flip speed goes here */
 .flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
+  transition: 0.6s;
+  transform-style: preserve-3d;
 
-	position: relative;
+  position: relative;
 }
 
 /* hide back of pane during swap */
-.front, .back {
-	backface-visibility: hidden;
+.front,
+.back {
+  backface-visibility: hidden;
 
-	position: absolute;
-	top: 0;
-	left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* front pane, placed above back */
 .front {
-	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .back {
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .onTop {
@@ -821,12 +818,12 @@ a { color: inherit !important; }
 
 /* CATEGORY SEARCH */
 
-#category-search-container{
+#category-search-container {
   padding-left: 15rem !important;
   padding-right: 15rem !important;
 }
 
-#category-main-container{
+#category-main-container {
   padding-left: 15rem !important;
   padding-right: 15rem !important;
 }

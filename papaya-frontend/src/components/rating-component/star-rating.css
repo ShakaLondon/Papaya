@@ -1,42 +1,48 @@
 .star {
-    color: gray;
- 
-    /* font-size: 3rem;
-vertical-align: middle; */
-  }
+  color: gray;
 
-  .halfRating {
-    /* font-size: 3rem;
+  /* font-size: 3rem;
+vertical-align: middle; */
+}
+
+.halfRating {
+  /* font-size: 3rem;
 vertical-align: middle; */
 
-    /* font-size: 32px; */
+  /* font-size: 32px; */
   /* color: #9c47fc; */
   /* display: block; */
-  background: -webkit-linear-gradient( right, gray 0%, gray 50%, yellow 51%, yellow 100%);
+  background: -webkit-linear-gradient(
+    right,
+    gray 0%,
+    gray 50%,
+    yellow 51%,
+    yellow 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-    /* position: relative !important; */
-    /* width: 50% !important;
+  /* position: relative !important; */
+  /* width: 50% !important;
     height: 100% !important; */
-    /* background: linear-gradient(to right, #bada55 0%, #bada55 50%,rgba(255,255,255,1) 51%,rgba(255,255,255,1) 100%); 
+  /* background: linear-gradient(to right, #bada55 0%, #bada55 50%,rgba(255,255,255,1) 51%,rgba(255,255,255,1) 100%); 
         background: linear-gradient(to right, #bada55 0%, #bada55 50%,rgba(255,255,255,1) 51%,rgba(255,255,255,1) 100%);
         background: linear-gradient(to right, #bada55 0%, #bada55 50%,rgba(255,255,255,1) 51%,rgba(255,255,255,1) 100%); */
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
-        background-clip: text;
-    /* background: linear-gradient(to right, #bada55 0%, #bada55 50%,rgba(255,255,255,1) 51%,rgba(255,255,255,1) 100%); */
-  }
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  /* background: linear-gradient(to right, #bada55 0%, #bada55 50%,rgba(255,255,255,1) 51%,rgba(255,255,255,1) 100%); */
+}
 
-  .papayaRatingLogo {
-    width: 1rem !important;
-    height: 1rem !important;
-  }
+.papayaRatingLogo {
+  width: 1rem !important;
+  height: 1rem !important;
+}
 
-  .halfStar {
-    /* background: linear-gradient(to bottom, #f69ec4 0%, #32557f 50%); */
+.halfStar {
+  /* background: linear-gradient(to bottom, #f69ec4 0%, #32557f 50%); */
   /* color: #9c47fc; */
   display: block;
   /* background: -webkit-linear-gradient(left, green 50%, gray 50%); */
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  }
+}

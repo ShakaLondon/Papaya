@@ -1,23 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { configureStore, persistor } from "./redux/store";
-import setupInterceptors from "./services/setupInterceptors.js"
-import { PersistGate } from 'redux-persist/integration/react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import setupInterceptors from "./services/setupInterceptors.js";
+import { PersistGate } from "redux-persist/integration/react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <React.StrictMode>
     <PersistGate persistor={persistor} loading={null}>
-        <Provider store={configureStore}>
+      <Provider store={configureStore}>
         <App />
       </Provider>
     </PersistGate>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 setupInterceptors(configureStore);

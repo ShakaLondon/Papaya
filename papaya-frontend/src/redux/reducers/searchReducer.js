@@ -1,5 +1,4 @@
-
-import initialState from '../initialState';
+import initialState from "../initialState";
 
 const searchReducer = (state = initialState.searchRes, action) => {
   switch (action.type) {

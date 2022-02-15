@@ -1,12 +1,13 @@
 import axios from "axios";
-import api from "../api.js"
+import api from "../api.js";
 
 const register = (userObject) => {
   return api.post("user/business/register", userObject);
 };
 
 const login = (email, password) => {
-  return api.post("user/business/me", {
+  return api
+    .post("user/business/me", {
       email,
       password,
     })
@@ -22,7 +23,6 @@ const login = (email, password) => {
 const logout = () => {
   localStorage.removeItem("user");
 };
-
 
 export default {
   register,

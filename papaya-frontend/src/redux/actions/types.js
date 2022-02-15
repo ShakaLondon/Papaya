@@ -8,12 +8,11 @@ export const REFRESH_TOKEN = "REFRESH_TOKEN";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 export const OPEN_NAV = "OPEN_NAV";
-export const COLOR_CHANGE = "COLOR_CHANGE"
+export const COLOR_CHANGE = "COLOR_CHANGE";
 
 export const LOADING = "LOADING";
 export const ERROR = "ERROR";
 
-export const UPDATE_USER = "UPDATE_USER"
-export const UPDATE_AVATAR = "UPDATE_AVATAR"
-export const UPDATE_COVER = "UPDATE_COVER"
-
+export const UPDATE_USER = "UPDATE_USER";
+export const UPDATE_AVATAR = "UPDATE_AVATAR";
+export const UPDATE_COVER = "UPDATE_COVER";

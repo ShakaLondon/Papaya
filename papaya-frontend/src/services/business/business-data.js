@@ -1,7 +1,6 @@
 import axios from "axios";
 import authHeader from "./header.js";
-import api from "../api.js"
-
+import api from "../api.js";
 
 const getBusinessReviews = () => {
   return api.get("/users/business/reviews");

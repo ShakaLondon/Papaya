@@ -19,10 +19,8 @@ const initialState = {
     businessID: {},
     reviews: [],
     isLoggedIn: false,
-    userFound: false
+    userFound: false,
   },
-
-  
 };
 
 export default initialState;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import authHeader from "../header.js";
-import api from "../api.js"
+import api from "../api.js";
 
 // const getPublicContent = () => {
 //   return axios.get(API_URL + "all");
@@ -15,11 +15,15 @@ const editUser = (userUpdate) => {
 };
 
 const editAvatar = (userUpdateImage) => {
-  return api.post("image/upload/avatar", userUpdateImage, { headers: authHeader() });
+  return api.post("image/upload/avatar", userUpdateImage, {
+    headers: authHeader(),
+  });
 };
 
 const editCover = (userUpdateCover) => {
-  return api.post("image/upload/cover", userUpdateCover, { headers: authHeader() });
+  return api.post("image/upload/cover", userUpdateCover, {
+    headers: authHeader(),
+  });
 };
 
 const addReview = (website, review) => {
@@ -31,11 +35,13 @@ const editUserReview = (reviewID) => {
 };
 
 const deleteUserReview = (reviewID) => {
-    return api.delete(`users/me/reviews/${reviewID}`, { headers: authHeader() });
-  };
+  return api.delete(`users/me/reviews/${reviewID}`, { headers: authHeader() });
+};
 
 const UserReviewforBusiness = (businessID) => {
-  return api.post(`users/me/reviews/business/${businessID}`, { headers: authHeader() });
+  return api.post(`users/me/reviews/business/${businessID}`, {
+    headers: authHeader(),
+  });
 };
 
 export default {
@@ -46,5 +52,5 @@ export default {
   editUser,
   editAvatar,
   editCover,
-  addReview
+  addReview,
 };

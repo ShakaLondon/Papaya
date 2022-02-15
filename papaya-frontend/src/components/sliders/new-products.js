@@ -12,29 +12,29 @@ export default class NewProductSlider extends Component {
       autoplay: true,
       speed: 5000,
       autoplaySpeed: 5000,
-      cssEase: "linear"
+      cssEase: "linear",
     };
     return (
-    <div id="product-slider-comp" className="py-5">
+      <div id="product-slider-comp" className="py-5">
         <h4 className="px-3 mb-3">Recent Added</h4>
         <Slider {...settings}>
           <div>
-            <ProductCard/>
+            <ProductCard />
           </div>
           <div>
-            <ProductCard/>
+            <ProductCard />
           </div>
           <div>
-            <ProductCard/>
+            <ProductCard />
           </div>
           <div>
-            <ProductCard/>
+            <ProductCard />
           </div>
           <div>
-            <ProductCard/>
+            <ProductCard />
           </div>
           <div>
-            <ProductCard/>
+            <ProductCard />
           </div>
         </Slider>
       </div>

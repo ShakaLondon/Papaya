@@ -1,4 +1,4 @@
-import { 
+import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGIN_SUCCESS,
@@ -6,18 +6,16 @@ import {
   LOGOUT,
   LOADING,
   ERROR,
-  REFRESH_TOKEN, 
+  REFRESH_TOKEN,
   UPDATE_USER,
   UPDATE_AVATAR,
-  UPDATE_COVER
-} from '../actions/types.js';
-import initialState from '../initialState';
+  UPDATE_COVER,
+} from "../actions/types.js";
+import initialState from "../initialState";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
-const isLoggedIn = user
-  ? true
-  : false
+const isLoggedIn = user ? true : false;
 
 const authReducer = (state = initialState.user, action) => {
   switch (action.type) {
@@ -25,26 +23,26 @@ const authReducer = (state = initialState.user, action) => {
       return {
         ...state,
         ...action.payload.user,
-          isLoggedIn: true,
-          userFound: true,
+        isLoggedIn: true,
+        userFound: true,
       };
     case REGISTER_FAIL:
       return {
         ...state,
-          isLoggedIn: false,
-          userFound: null
+        isLoggedIn: false,
+        userFound: null,
       };
     case LOGIN_SUCCESS:
       return {
-          ...action.payload.user,
-          isLoggedIn: true,
-          userFound: true,
+        ...action.payload.user,
+        isLoggedIn: true,
+        userFound: true,
       };
     case LOGIN_FAIL:
       return {
         ...state,
         isLoggedIn: false,
-        userFound: null
+        userFound: null,
       };
     case LOGOUT:
       return {
@@ -64,33 +62,33 @@ const authReducer = (state = initialState.user, action) => {
       return {
         ...state,
         accessToken: action.payload,
-        };
+      };
 
-       // USER FUNCTIONS
+    // USER FUNCTIONS
 
-       case UPDATE_USER:
-        return {
-          ...state,
-          ...action.payload.user,
-            isLoggedIn: true,
-            userFound: true,
-        };
+    case UPDATE_USER:
+      return {
+        ...state,
+        ...action.payload.user,
+        isLoggedIn: true,
+        userFound: true,
+      };
 
-        case UPDATE_AVATAR:
-        return {
-          ...state,
-          ...action.payload.user,
-            isLoggedIn: true,
-            userFound: true,
-        };
+    case UPDATE_AVATAR:
+      return {
+        ...state,
+        ...action.payload.user,
+        isLoggedIn: true,
+        userFound: true,
+      };
 
-        case UPDATE_COVER:
-        return {
-          ...state,
-          ...action.payload.user,
-            isLoggedIn: true,
-            userFound: true,
-        };
+    case UPDATE_COVER:
+      return {
+        ...state,
+        ...action.payload.user,
+        isLoggedIn: true,
+        userFound: true,
+      };
     default:
       return state;
   }

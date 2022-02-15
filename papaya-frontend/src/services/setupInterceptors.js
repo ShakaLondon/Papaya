@@ -5,7 +5,6 @@ import { logoutAction, refreshToken } from "../redux/actions/auth.js";
 const setup = (store) => {
   axiosInstance.interceptors.request.use(
     (config) => {
-
       const token = TokenService.getLocalAccessToken();
 
       if (token) {
@@ -26,7 +25,11 @@ const setup = (store) => {
     async (err) => {
       const originalConfig = err.config;
 
-      if (((originalConfig.url !== "/users/register") || (originalConfig.url !== "/users/business/register")) && err.response) {
+      if (
+        (originalConfig.url !== "/users/register" ||
+          originalConfig.url !== "/users/business/register") &&
+        err.response
+      ) {
         // Access Token was expired
         if (err.response.status === 401 && !originalConfig._retry) {
           originalConfig._retry = true;
@@ -41,30 +44,25 @@ const setup = (store) => {
             dispatch(refreshToken(accessToken));
             TokenService.updateLocalAccessToken(accessToken);
 
-            console.log(accessToken, "Interceptor")
+            console.log(accessToken, "Interceptor");
 
             return axiosInstance(originalConfig);
           } catch (err) {
-
-          //  dispatch(logoutAction())
+            //  dispatch(logoutAction())
 
             return Promise.reject(err);
           }
         } else if (err.response.status === 401) {
-
           try {
-        
             dispatch(logoutAction());
             TokenService.removeUser();
 
             return Promise.reject(err);
           } catch (err) {
-
-          //  dispatch(logoutAction())
+            //  dispatch(logoutAction())
 
             return Promise.reject(err);
           }
-
         }
       }
 
