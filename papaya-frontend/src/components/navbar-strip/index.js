@@ -31,16 +31,7 @@ const NavBar = ({
   colorChange,
   colorChangeState,
 }) => {
-  // console.log(colour)
-
-  // const [colorChange, setColorchange] = useState(false);
-  // const [navSize, setnavSize] = useState("10rem");
-  // const [navColor, setnavColor] = useState("#ffd800");
-
-  // const listenScrollEvent = () => {
-  //   window.scrollY > 30 ? setnavColor("#ffd800") : setnavColor("transparent");
-  //   window.scrollY > 30 ? setnavSize("5rem") : setnavSize("10rem");
-  // };
+ 
 
   const locationUrl = useLocation();
 
@@ -54,7 +45,6 @@ const NavBar = ({
 
   const currentPath = splitPath[1];
 
-  // const businessNamePath = routePath.replace("/review/", 'www.')
   console.log(currentPath);
 
   useEffect(() => {
@@ -78,14 +68,7 @@ const NavBar = ({
     };
   }, []);
 
-  // const profileApp = document.getElementById('profile-app-main')
-  // const reviewApp = document.getElementById('review-app-component')
-  // // const mainApp = document.getElementById('profile-app-component')
-  // const footerApp = document.getElementById('footer-app-component')
-  // const publicApp = document.getElementById('public-app-component')
-  // const businessApp = document.getElementById('business-app-component')
-  // const loginApp = document.getElementById('login-app-component')
-  // const signupApp = document.getElementById('signup-app-component')
+
 
   const changeNavbarColor = (scroll) => {
     if (currentPath === "main") {
@@ -102,65 +85,6 @@ const NavBar = ({
       }
     }
   };
-  // window.addEventListener('scroll', changeNavbarColor);
-
-  // appPages?.addEventListener('scroll', () => {
-  //   console.log(appPages.scrollTop);
-
-  //   changeNavbarColor(appPages.scrollTop)
-  // });
-
-  // console.log(appPages)
-
-  // appPages.forEach(page => {
-  //   page.addEventListener('scroll', () => {
-  //     console.log(appPages.scrollTop);
-
-  //     changeNavbarColor(appPages.scrollTop)
-  //   });
-  // });
-
-  //   profileApp.addEventListener('scroll', () => {
-  //     console.log(profileApp.scrollTop);
-
-  //     changeNavbarColor(profileApp.scrollTop)
-  //   });
-
-  // reviewApp?.addEventListener('scroll', () => {
-  //     console.log(mainApp.scrollTop);
-
-  //     changeNavbarColor(mainApp.scrollTop)
-  //   });
-
-  // footerApp?.addEventListener('scroll', () => {
-  //     console.log(mainApp.scrollTop);
-
-  //     changeNavbarColor(mainApp.scrollTop)
-  //   });
-
-  // publicApp?.addEventListener('scroll', () => {
-  //     console.log(mainApp.scrollTop);
-
-  //     changeNavbarColor(mainApp.scrollTop)
-  //   });
-
-  // businessApp?.addEventListener('scroll', () => {
-  //     console.log(mainApp.scrollTop);
-
-  //     changeNavbarColor(mainApp.scrollTop)
-  //   });
-
-  // loginApp?.addEventListener('scroll', () => {
-  //     console.log(mainApp.scrollTop);
-
-  //     changeNavbarColor(mainApp.scrollTop)
-  //   });
-
-  // signupApp?.addEventListener('scroll', () => {
-  //     console.log(mainApp.scrollTop);
-
-  //     changeNavbarColor(mainApp.scrollTop)
-  //   });
 
   return (
     <Navbar
@@ -204,8 +128,8 @@ const NavBar = ({
           {colorChangeState && (
             <FontAwesomeIcon
               icon={faSearch}
-              className="mx-4 my-4"
-              id="main-nav-bar-icon"
+              className="mx-4 my-4 main-nav-bar-icon"
+              // id="main-nav-bar-icon"
               style={{ fontSize: `${colorChangeState ? "2rem" : "3rem"}` }}
               onClick={() => setMenuState(true)}
             />
@@ -213,8 +137,8 @@ const NavBar = ({
           {!sideMenuState && (
             <FontAwesomeIcon
               icon={faBars}
-              className="mx-4 my-4"
-              id="main-nav-bar-icon"
+              className="mx-4 my-4 main-nav-bar-icon"
+              // id="main-nav-bar-icon"
               style={{ fontSize: `${colorChangeState ? "2rem" : "3rem"}` }}
               onClick={() => setMenuState(true)}
             />

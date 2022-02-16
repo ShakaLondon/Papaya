@@ -9,7 +9,7 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBarcode } from "@fortawesome/free-solid-svg-icons";
+import { faBarcode, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { openNavAction } from "../../redux/actions";
 
@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const SearchBar = ({ sideMenuState, setMenuState }) => {
   return (
-    <Navbar expand="lg" id="search-bar-strip">
-      <Container fluid className="d-flex mx-0 justify-content-center">
+    <Navbar expand="lg" id="search-bar-strip" className="d-flex align-items-center my-0 py-0">
+      <Container fluid className="d-flex mx-0 justify-content-center align=items-center my-0 py-0">
         <Row>
           <Col md={12}>
             <Form
@@ -45,7 +45,7 @@ const SearchBar = ({ sideMenuState, setMenuState }) => {
                   />
                 </Button>
                 <Button id="button-addon2" className="px-4 searchBarButton">
-                  Search
+                  <FontAwesomeIcon icon={faSearch} className="fa-md"/>
                 </Button>
               </InputGroup>
             </Form>

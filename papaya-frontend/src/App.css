@@ -16,12 +16,12 @@
 }
 
 #papaya-logo-nav {
-  width: 5rem;
-  height: 5rem;
+  /* width: 5rem;
+  height: 5rem; */
   z-index: 0 !important;
 }
 
-#main-nav-bar-icon {
+.main-nav-bar-icon {
   color: #ef7c53;
   font-size: 3rem;
 }
@@ -120,6 +120,7 @@ a {
 
 #main-app-body {
   height: 100vh !important;
+  /* width: 100vw !important; */
 }
 
 .full-height {
@@ -129,6 +130,7 @@ a {
 #main-app-component {
   height: 100vh !important;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #main-jumbo {
@@ -854,3 +856,138 @@ a {
   overflow-y: scroll;
   background-color: #ffef93;
 }
+
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 600px) {
+  #papaya-logo-nav {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .main-nav-bar-icon {
+    color: #ef7c53;
+    font-size: 2rem !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
+  }
+
+  .brand-heading-h1 {
+    font-size: 2rem !important;
+  }
+
+  .navbar-brand {
+    margin-right: 0px !important;
+  }
+
+  .svg-inline--fa.fa-w-16 {
+    margin-left: 0.5px !important;
+    margin-right: 0.5px !important;
+    width: 1.5rem !important;
+  }
+
+  #brand-heading {
+    font-size: 4rem;
+  }
+
+  #jumbo-contents {
+    padding-top: 150px !important;
+  }
+
+  #brand-tag {
+    font-size: 1rem !important;
+  }
+
+  #brand-sub {
+    font-size: 0.75rem !important;
+  }
+
+  #main-jumbo {
+    height: 400px !important;
+  }
+
+  .mainpageSmall {
+    display: none;
+  }
+
+  #side-nav-jumbo {
+    width: 100vw;
+  }
+
+  button.searchBarButton {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  
+  }
+
+  #search-bar-form {
+    width: 95vw;
+    height: 2rem;
+  }
+
+  #search-bar-strip {
+    height: 10vh;
+  }
+
+  #search-input {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #category-slider-comp {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #category-slider-cont {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  div.categoryListCont {
+    padding-right: 0.2rem !important;
+    padding-left: 0.2rem !important;
+  }
+
+  div.categoryCard {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+    display: flex !important;
+  }
+
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+
+  .mainpageSmall {
+    display: none !important;
+  }
+
+  #side-nav-jumbo {
+    width: 100vw !important;
+  }  
+
+  #main-jumbo {
+    height: 800px !important;
+  }
+
+  #jumbo-contents {
+    padding-top: 300px !important;
+  }
+
+  #papaya-logo-nav {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+
+  .svg-inline--fa.fa-w-16 {
+    margin-left: 0.5px !important;
+    margin-right: 0.5px !important;
+    width: 1.5rem !important;
+  }
+
+  
+}
+
