@@ -338,6 +338,12 @@ h6 {
   padding-right: 8rem !important;
 }
 
+#footer-slider-comp {
+  /* width: 80%; */
+  padding-left: 8rem !important;
+  padding-right: 8rem !important;
+}
+
 /* REGISTRATION */
 
 #register-app {
@@ -857,6 +863,14 @@ a {
   background-color: #ffef93;
 }
 
+#footerSlider {
+  display: none !important;
+}
+
+.slick-dots li button:before {
+  color: orange !important;
+}
+
 
 /* RESPONSIVE */
 
@@ -941,19 +955,81 @@ a {
   }
 
   #category-slider-cont {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
   }
 
   div.categoryListCont {
-    padding-right: 0.2rem !important;
-    padding-left: 0.2rem !important;
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 
   div.categoryCard {
     padding-right: 0rem !important;
     padding-left: 0rem !important;
     display: flex !important;
+  }
+
+  div.categoryCardCol {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+    font-size: 1em !important;
+  }
+
+  div.categoryCard {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #product-slider-comp {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #footer-slider-comp {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #review-slider-comp {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #product-slider-cont {
+    padding-top: 50px;
+  }
+
+  #reviews-slider-cont {
+    padding-top: 100px;
+    height: 80vh;
+  }
+
+  #footer-container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  #footerLarge {
+    display: none !important;
+  }
+
+  #footerSlider {
+    display: block !important;
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+
+  #footer-slider-comp {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #footer-container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
   }
 
 }

@@ -17,6 +17,7 @@ import {
   faLinkedinIn,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import FooterSlider from "./footer-slider";
 
 export default function Footer(props) {
   return (
@@ -40,6 +41,7 @@ export default function Footer(props) {
             <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
           </Col>
         </Row>
+        <div id="footerLarge">
         <Row>
           <Col md={3} className="py-3">
             <h4>About</h4>
@@ -154,6 +156,32 @@ export default function Footer(props) {
             <h6 className="px-2">Cookie preferences</h6>
           </Col>
         </Row>
+        </div>
+        <div id="footerSlider">
+                    <FooterSlider/>
+                    <Container className="mx-2">
+                    <Row>
+          <Col md={12} className="d-flex py-2 mt-3">
+            <h6 className="px-2 text-bold ps-0">Legal</h6>
+            </Col>
+                    <Col md={12} className="px-0 d-flex">
+            <h6 className="px-2 text-bold">Privacy Policy</h6>
+            </Col>
+                    <Col md={12} className="px-0">
+            <h6 className="px-2 text-bold">Terms & Conditions</h6>
+            </Col>
+                    <Col md={12} className="px-0">
+            <h6 className="px-2 text-bold">Guidelines for Reviewers</h6>
+            </Col>
+                    <Col md={12} className="px-0">
+            <h6 className="px-2 text-bold">System status</h6>
+            </Col>
+                    <Col md={12} className="px-0">
+            <h6 className="px-2 text-bold">Cookie preferences</h6>
+          </Col>
+        </Row>
+                    </Container>
+        </div>
       </Container>
     </Container>
   );
