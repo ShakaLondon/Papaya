@@ -17,6 +17,7 @@ import { Redirect, useLocation } from "react-router";
 import PublicProfileNav from "./profile-nav";
 import PublicProfileMain from "./profile-main";
 import LoadingSpinner from "../loading/index";
+import { colorChangeAction } from "../../redux/actions";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -24,11 +25,13 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.user.isLoggedIn,
   userFound: state.user.userFound,
   userProf: state.user,
+  colorChangeState: state.appState.colorChange,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   //functions
   register: (userObj) => dispatch(registerAction(userObj)),
+  colorChange: (action) => dispatch(colorChangeAction(action)),
 });
 
 const PublicProfileContainer = ({
@@ -39,6 +42,8 @@ const PublicProfileContainer = ({
   userFound,
   register,
   userProf,
+  colorChange,
+  colorChangeState
 }) => {
   const locationUrl = useLocation();
 
@@ -59,6 +64,38 @@ const PublicProfileContainer = ({
   const [searchRequest, setSearchRequest] = useState(userNamePath);
   const [searchResult, setSearchResult] = useState({});
   const [dataLoading, setDataLoading] = useState(true);
+
+
+  useEffect(() => {
+    colorChange(false);
+  }, []);
+
+  useEffect(() => {
+    const appPages = document.getElementsByClassName("scrollNav");
+
+    console.log(appPages);
+
+    const elemArray = Array.from(appPages);
+
+    elemArray.forEach((page) => {
+      page.addEventListener("scroll", () => {
+        console.log(page.scrollTop);
+
+        changeNavbarColor(page.scrollTop);
+      });
+    });
+    return () => {
+      // window.removeEventListener("scroll", listenScrollEvent);
+    };
+  }, []);
+
+  const changeNavbarColor = (scroll) => {
+    if (scroll >= 30) {
+      colorChange(true);
+    } else {
+      colorChange(false);
+    }
+  };
 
   useEffect(() => {
     const url = `http://localhost:3005/users/profile/${searchRequest}`;
@@ -90,7 +127,7 @@ const PublicProfileContainer = ({
       <Container
         fluid
         id="public-app-component"
-        className="mx-0 d-flex justify-content-center px-0"
+        className="mx-0 d-flex justify-content-center px-0 scrollNav"
       >
         {dataLoading ? (
           <Container fluid id="public-form" className="flex-row mx-0 px-0">
@@ -109,7 +146,7 @@ const PublicProfileContainer = ({
             <Row className="mx-0 px-0">
               <PublicProfileNav profile={searchResult} />
             </Row>
-            <Row className="mx-0 px-0" id="public-main-cont">
+            <Row className="mx-0 px-0" id="public-main-cont" style={{ paddingTop: `${colorChangeState ? "250px" : "360px"}` }}>
               <PublicProfileMain profile={searchResult} />
             </Row>
           </Container>

@@ -21,7 +21,7 @@ const HomePage = ({ sideMenuState, setMenuState }) => {
       <NavBar colour="rgba(255, 255, 255, 0)" />
       <Container fluid id="main-app-body" className="px-0 mx-0">
         <Row className="full-height mx-0 px-0">
-          <Col sm={12} md={sideMenuState ? 9 : 12} className={`px-0 ${sideMenuState ? "mainpageSmall" : " "}`}>
+          <Col sm={12} md={sideMenuState ? 9 : 12} className={`px-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}>
             {/* <Container className="px-0 flex-row"> */}
             <MainContainer />
             {/* <Footer/> */}

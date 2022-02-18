@@ -39,7 +39,7 @@ export default function PublicProfile(props) {
         {/* </Card.Title> */}
         <Container className="px-2">
           <Row>
-            <Col md={6} className="px-4">
+            <Col md={6} className="px-4 user-profile-input">
               <Row>
                 {/* <Card.Text> */}
                 <h6 className="px-0 mb-1">Profile picture</h6>
@@ -52,7 +52,7 @@ export default function PublicProfile(props) {
                 </Button>
               </Row>
             </Col>
-            <Col md={6} className="px-4">
+            <Col md={6} className="px-4 user-profile-input">
               <Row>
                 {/* <Card.Text> */}
                 <h6 className="px-0 mb-1">Profile header</h6>

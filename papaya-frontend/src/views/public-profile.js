@@ -46,22 +46,25 @@ const PublicProfilePage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
       <Container fluid id="profile-app-body" className="px-0 mx-0">
         <Row className="full-height mx-0 px-0">
           <Col
+          sm={12}
             md={sideMenuState ? 9 : 12}
-            className="px-0 mx-0 scrollNav"
+            // className="px-0 mx-0 scrollNav"
             id="profile-app-main"
+            className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
           >
-            <Container
+            {/* <Container
               fluid
               className="px-0 mx-0"
               style={{ maxWidth: "100vw" }}
-            >
+            > */}
               <PublicProfileContainer />
               {/* <Footer/> */}
-            </Container>
+            {/* </Container> */}
           </Col>
-          <Col md={3} className="px-0 onTop">
-            {sideMenuState && <SideMenu />}
+          {sideMenuState && <Col sm={12} md={3} className="px-0">
+             <SideMenu />
           </Col>
+}
         </Row>
       </Container>
     </Container>

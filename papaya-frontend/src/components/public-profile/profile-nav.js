@@ -77,65 +77,89 @@ const PublicProfileNav = ({
   };
 
   return (
-    <Navbar bg="light" expand="lg" className="py-0 px-0" id="profile-header">
-      <div className={`overlay container-fluid py-5`}>
+    <Navbar 
+    bg="light" 
+    // expand="lg" 
+    className="py-0 px-0" 
+    id="profile-header"
+    fixed="top">
+            {!loading && (
+        <div
+          className={`overlay container-fluid ${
+            colorChangeState ? "py-" : "py-3"
+          }`}
+        >
         <Container
           fluid
-          className="d-flex fullopacity"
+          className="d-flex fullopacity align-items-center"
           id="profile-container"
-          style={{ paddingTop: `${colorChangeState ? "100px" : "140px"}` }}
+          style={{ paddingTop: `${colorChangeState ? "110px" : "140px"}` }}
         >
           <Navbar.Brand>
             <img
               src={profile.avatar?.avatar}
               alt="User Avatar"
-              className="rounded-circle"
-              style={{ width: "6rem", height: "6rem", objectFit: "cover" }}
+              className="rounded-circle my-2"
+              style={{
+                width: `${colorChangeState ? "4rem" : "10rem"}`,
+                  height: `${colorChangeState ? "4rem" : "10rem"}`,
+                  objectFit: "cover",
+              }}
+              id="profile-avatar"
             />
           </Navbar.Brand>
           <Navbar.Brand>
-            <Container fluid>
-              <h1 className="text-white">{profile?.name}</h1>
+            <Container fluid className="px-0">
+            {colorChangeState ? (
+                  <h4 className="text-white mb-0 px-2">{profile?.name}</h4>
+                ) : (
+                  <h1 className="text-white mb-0 px-3">{profile?.name}</h1>
+                )}
+              
             </Container>
-            <Container fluid>
-              <h6 className="text-white">{`@${profile?.username}`}</h6>
+            <Container fluid className="px-0">
+            {colorChangeState ? (
+                  <h6 className="text-white mb-0 px-2">{`@${profile?.username}`}</h6>
+                ) : (
+                  <h4 className="text-white mb-0 px-3">{`@${profile?.username}`}</h4>
+                )}
             </Container>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Container>
+              <Container id="user-stats" className={`${colorChangeState? "px-4" : "px-0"}`}>
                 <Row>
-                  <Col md={6}>
-                    <Container>
+                  <Col xs={6} sm={6} md={6}>
+                    <Container className="px-4">
                       <Row>
-                        <Col md={12} className="d-flex justify-content-center">
-                          <h1>{profile.reviews?.length}</h1>
+                        <Col md={12} xs={12} sm={12} className="d-flex justify-content-center">
+                          <h1 className="profile-nav-number">{profile.reviews?.length}</h1>
                         </Col>
                       </Row>
                       <Row className="d-flex justify-content-center">
-                        <Col md={4} className="d-flex align-items-center">
+                        <Col xs={4} sm={4} md={4} className="d-flex align-items-center justify-content-center">
                           <FontAwesomeIcon icon={faStar} />
                         </Col>
-                        <Col md={8} className="d-flex align-items-center">
-                          <h6 className="mb-0">reviews</h6>
+                        <Col md={8}  sm={8} xs={8} className="d-flex align-items-center  px-0">
+                          <h6 className="mb-0 profile-user-stats">reviews</h6>
                         </Col>
                       </Row>
                     </Container>
                   </Col>
-                  <Col md={6}>
-                    <Container>
+                  <Col md={6} xs={6} sm={6}>
+                    <Container className="px-4">
                       <Row>
-                        <Col md={12} className="d-flex justify-content-center">
-                          <h1>0</h1>
+                        <Col xs={12} sm={12} md={12} className="d-flex justify-content-center">
+                          <h1 className="profile-nav-number">0</h1>
                         </Col>
                       </Row>
                       <Row>
-                        <Col md={4} className="d-flex align-items-center">
+                        <Col xs={4} sm={4} md={4} className="d-flex align-items-center justify-content-center">
                           <FontAwesomeIcon icon={faThumbsUp} />
                         </Col>
-                        <Col md={8} className="d-flex align-items-center">
-                          <h6 className="mb-0">useful</h6>
+                        <Col md={8} sm={8} xs={8} className="d-flex align-items-center px-0">
+                          <h6 className="mb-0 profile-user-stats">useful</h6>
                         </Col>
                       </Row>
                     </Container>
@@ -148,6 +172,7 @@ const PublicProfileNav = ({
           </Navbar.Collapse>
         </Container>
       </div>
+      )}
     </Navbar>
   );
 };
