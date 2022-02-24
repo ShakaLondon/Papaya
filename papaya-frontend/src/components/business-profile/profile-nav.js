@@ -1,6 +1,7 @@
 import {
   faCircle,
   faDotCircle,
+  faGlobe,
   faStar,
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
@@ -69,8 +70,8 @@ const BusinessNav = ({
   const history = useHistory();
   // const [colorChange, setColorchange] = useState(false);
   const [reviewScore, setReviewScore] = useState({
-    businessScore: score.avgTotal[0]?.average,
-    totalReviews: score.avgTotal[0]?.count,
+    businessScore: score?.avgTotal[0].average,
+    totalReviews: score?.avgTotal[0].count,
     one: {
       reviews: [],
       percentage: 0,
@@ -151,7 +152,7 @@ const BusinessNav = ({
   return (
     <Navbar
       bg="light"
-      expand="lg"
+      // expand="lg"
       className="px-0 py-0"
       id="bus-profile-header"
       fixed="top"
@@ -168,7 +169,7 @@ const BusinessNav = ({
             id="profile-container"
             style={{ paddingTop: `${colorChangeState ? "110px" : "150px"}` }}
           >
-            <Navbar.Brand>
+            <Navbar.Brand className="d-flex align-items-center justify-content-center">
               <img
                 src={profile.avatar?.avatar}
                 alt="User Avatar"
@@ -177,10 +178,12 @@ const BusinessNav = ({
                   width: `${colorChangeState ? "4rem" : "10rem"}`,
                   height: `${colorChangeState ? "4rem" : "10rem"}`,
                   objectFit: "cover",
+                  
                 }}
+                id="profile-bus-avatar"
               />
             </Navbar.Brand>
-            <Navbar.Brand>
+            <Navbar.Brand className="flex-col align-self-center">
               <Container fluid>
                 {colorChangeState ? (
                   <h3 className="text-white mb-0">{profile.businessName}</h3>
@@ -192,7 +195,7 @@ const BusinessNav = ({
                         <h6 className="text-white">{`@${profile.username}`}</h6>
                     </Container> */}
               {!colorChangeState && (
-                <Container fluid className="d-flex align-items-center">
+                <Container fluid className="d-flex align-items-center" id="bus-nav-stats">
                   <h6 className="text-white mb-0">{`Reviews`}</h6>
                   <h6 className="text-white mb-0 ms-2">{`${profile.reviewIDs?.length}`}</h6>
                   <FontAwesomeIcon
@@ -219,14 +222,30 @@ const BusinessNav = ({
                   colorChange ? "my-1" : "my-2 mt-4"
                 }`}
               >
+                <div id="bus-nav-rating">
                 {reviewScore.businessScore > 0 && (
                   <StarRating
                     current={reviewScore.businessScore}
                     fontSize={colorChangeState ? "1.5rem" : "3rem"}
                     changeable={false}
                     selected={selected}
+                    
                   />
                 )}
+
+</div>
+<div id="bus-nav-rating-resp">
+{reviewScore.businessScore > 0 && (
+                  <StarRating
+                    current={reviewScore.businessScore}
+                    fontSize={"1.2rem"}
+                    changeable={false}
+                    selected={selected}
+                   
+                  />
+                )}
+</div>
+              
                 <h6 className="text-white mb-0">
                   {reviewScore.businessScore.toFixed(1)}
                 </h6>
@@ -236,11 +255,11 @@ const BusinessNav = ({
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
                 {!colorChangeState ? (
-                  <Container>
+                  <Container className="responsive-hide">
                     <WebsiteContainer website={profile.website} />
                   </Container>
                 ) : (
-                  <Container className="px-0">
+                  <Container className="px-0 responsive-hide">
                     <Button className="btn-light">
                       <a href={`https://${profile.website}`}>
                         {profile.website}
@@ -258,6 +277,14 @@ const BusinessNav = ({
                     </Button>
                   </Container>
                 )}
+                <div>
+                  <FontAwesomeIcon icon={faGlobe} style={{ fontSize: "2rem" }} onClick={() =>
+                        history.push(
+                          `/review/${profile.website.replace("www.", "")}/new`
+                        )
+                      }
+                      className="responsive-show"/>
+                </div>
                 {/* <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#link">Link</Nav.Link> */}
               </Nav>

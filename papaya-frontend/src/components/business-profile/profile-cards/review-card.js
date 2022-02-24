@@ -79,7 +79,7 @@ const ReviewCard = (props) => {
           <Card.Body>
             <Container className="px-2">
               <Row>
-                <Col md={2} className="">
+                <Col md={2} xs={3} sm={3} className="">
                   <img
                     onClick={() =>
                       history.push(`/profile/${review.userID.username}`)
@@ -92,12 +92,13 @@ const ReviewCard = (props) => {
                       height: "3rem",
                       objectFit: "cover",
                     }}
+                    id="review-card-av"
                   />
                 </Col>
-                <Col md={10} className="d-inline-flex px-0 align-items-center">
+                <Col md={10} xs={9} sm={9} className="d-inline-flex px-0 align-items-center">
                   <Container className="px-0">
                     <Row>
-                      <Col md={12} className="px-0">
+                      <Col md={12}  sm={12} xs={12} className="px-0 padding-x-zero">
                         <h5
                           onClick={() =>
                             history.push(`/profile/${review.userID.username}`)
@@ -107,15 +108,15 @@ const ReviewCard = (props) => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col md={12} className="py-1 px-0 d-inline-flex">
-                        <div className="d-inline-flex px-0 align-items-center">
+                      <Col md={12} sm={12} xs={12} className="py-1 px-0 d-inline-flex">
+                        <div className="d-inline-flex pe-2 align-items-center">
                           <FontAwesomeIcon
                             icon={faPencilAlt}
                             className="fa-xs"
                           />
                           <Card.Text className="px-2 mb-0">{`${review.userID.reviews.length} reviews`}</Card.Text>
                         </div>
-                        <div className="d-inline-flex px-2 align-items-center">
+                        <div className="d-inline-flex pe-2 align-items-center">
                           <FontAwesomeIcon
                             icon={faMapMarkerAlt}
                             className="fa-xs"
@@ -134,7 +135,7 @@ const ReviewCard = (props) => {
             <hr className="mx-2" />
             <Container className="px-2 py-2">
               <Row>
-                <Col md={6} className="">
+                <Col md={6} xs={6} sm={6} className="d-flex align-items-center">
                   <Row>
                     <StarRating
                       current={review.rating}
@@ -145,7 +146,7 @@ const ReviewCard = (props) => {
                     />
                   </Row>
                 </Col>
-                <Col md={6} className="d-flex justify-content-end">
+                <Col md={6} xs={6} sm={6} className="d-flex justify-content-end align-items-center">
                   <Row>
                     <h6 className="px-2 mb-0">
                       {moment(review.createdAt).fromNow()}
@@ -161,7 +162,7 @@ const ReviewCard = (props) => {
 
             <Container className="px-2 py-2">
               <Row>
-                <Col md={6} className="d-inline-flex">
+                <Col md={6} xs={6} sm={6} className="d-inline-flex align-items-center">
                   <div className="d-inline-flex align-items-center">
                     <FontAwesomeIcon icon={faThumbsUp} className="" />
                     <h6 className="px-2 mb-0">Useful</h6>
@@ -171,7 +172,7 @@ const ReviewCard = (props) => {
                     <h6 className="px-2 mb-0">Share</h6>
                   </div>
                 </Col>
-                <Col md={6} className="d-flex justify-content-end">
+                <Col md={6} xs={6} sm={6} className="d-flex justify-content-end align-items-center">
                   <FontAwesomeIcon icon={faFlag} />
                 </Col>
               </Row>

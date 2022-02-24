@@ -45,8 +45,9 @@ const BusinessPage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
       <Container fluid id="profile-app-body" className="px-0 mx-0">
         <Row className="full-height mx-0 px-0">
           <Col
+            sm={12}
             md={sideMenuState ? 9 : 12}
-            className="px-0 mx-0 scrollNav"
+            className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
             id="profile-app-main"
           >
             <Container
@@ -58,9 +59,10 @@ const BusinessPage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
               {/* <Footer/> */}
             </Container>
           </Col>
-          <Col md={3} className="px-0 onTop">
-            {sideMenuState && <SideMenu />}
+          {sideMenuState && <Col sm={12} md={3} className="px-0 onTop">
+             <SideMenu />
           </Col>
+            }
         </Row>
       </Container>
     </Container>

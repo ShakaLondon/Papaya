@@ -186,7 +186,7 @@ a {
 
 #search-bar-strip {
   background-color: #ffd800;
-  height: 20vh;
+  height: 20vh !important;
   z-index: 0 !important;
 }
 
@@ -807,7 +807,7 @@ a {
 }
 
 .percentageWidth {
-  width: 50px !important;
+  width: 3rem !important;
 }
 
 .categoryCard {
@@ -870,6 +870,26 @@ a {
 .slick-dots li button:before {
   color: orange !important;
 }
+
+div#bus-nav-rating-resp {
+  display: none;
+}
+
+.responsive-hide {
+  display: block !important;
+}
+
+.responsive-show {
+  display: none !important;
+}
+
+.keywordScroll {
+  white-space: nowrap;
+  overflow: auto;
+}
+
+
+
 
 
 /* RESPONSIVE */
@@ -1081,6 +1101,75 @@ a {
     padding-top: 260px !important;
   }
 
+  img#profile-bus-avatar {
+    height: 4rem !important;
+    width: 4rem !important;
+  }
+
+  div#bus-nav-stats {
+    display: none !important;
+  }
+
+  div#bus-nav-rating {
+    display: none !important;
+  }
+
+  div#bus-nav-rating-resp {
+    display: block !important;
+  }
+
+  .responsive-hide {
+    display: none !important;
+  }
+
+  .responsive-show {
+    display: block !important;
+  }
+
+  #business-main-cont {
+    padding-top: 280px !important;
+  }
+
+  img#write-review-av {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .img-col {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #rating-card {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .padding-x-one {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  img#review-card-av {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+
+  div.padding-x-two {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .padding-x-zero {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+
+  .padding-xs {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+
 }
 
 
@@ -1113,6 +1202,7 @@ a {
     width: 1.5rem !important;
   }
 
+ 
   
 }
 

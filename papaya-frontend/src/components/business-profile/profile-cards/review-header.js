@@ -115,7 +115,7 @@ const ReviewHeader = ({
         {/* EXCELLENT BAR */}
         <Container className="px-2 py-2">
           <Row className="d-flex justify-content-between">
-            <Col md={1} className="">
+            <Col xs={1} sm={1} md={1} className="padding-x-one">
               <Row>
                 <Form>
                   <div key={`default-checkbox`} className="">
@@ -124,14 +124,14 @@ const ReviewHeader = ({
                 </Form>
               </Row>
             </Col>
-            <Col md={1} className="px-0 d-flex align-items-center">
+            <Col xs={2} sm={2} md={1} className="px-1 d-flex align-items-center padding-x-one">
               <Row className="px-0">
                 <h6 className="px-0 mb-0">Excellent</h6>
               </Row>
             </Col>
-            <Col md={8} className="px-0 flex-row align-self-center">
+            <Col xs={6} sm={6} md={8} className="px-0 flex-row align-self-center">
               <Row>
-                <Container>
+                <Container className="mx-2">
                   {reviewScore !== null && (
                     <ProgressBar
                       now={reviewScore.five.percentage}
@@ -142,13 +142,15 @@ const ReviewHeader = ({
               </Row>
             </Col>
             <Col
+            xs={1}
+            sm={1}
               md={2}
               className="d-flex justify-content-end px-2 align-items-center percentageWidth"
             >
               <Row>
                 {reviewScore !== null && (
                   <h6 className=" mb-0">{`${reviewScore.five.percentage.toFixed(
-                    1
+                    0
                   )}%`}</h6>
                 )}
               </Row>
@@ -158,7 +160,7 @@ const ReviewHeader = ({
         {/* GOOD BAR */}
         <Container className="px-2 py-2">
           <Row className="d-flex justify-content-between">
-            <Col md={1} className="">
+            <Col xs={1} sm={1} md={1} className="padding-x-one">
               <Row>
                 <Form>
                   <div key={`default-checkbox`} className="">
@@ -167,14 +169,14 @@ const ReviewHeader = ({
                 </Form>
               </Row>
             </Col>
-            <Col md={1} className="px-0 d-flex align-items-center">
+            <Col xs={2} sm={2} md={1} className="px-1 d-flex align-items-center padding-x-one">
               <Row className="px-0">
                 <h6 className="px-0 mb-0">Good</h6>
               </Row>
             </Col>
-            <Col md={8} className="px-0 flex-row align-self-center">
+            <Col xs={6} sm={6} md={8} className="px-0 flex-row align-self-center">
               <Row>
-                <Container>
+                <Container  className="mx-2">
                   {reviewScore !== null && (
                     <ProgressBar
                       now={reviewScore.four.percentage}
@@ -185,13 +187,15 @@ const ReviewHeader = ({
               </Row>
             </Col>
             <Col
-              md={2}
-              className="d-flex justify-content-end px-2 align-items-center percentageWidth"
-            >
+              xs={1}
+              sm={1}
+                md={2}
+                className="d-flex justify-content-end px-2 align-items-center percentageWidth"
+              >
               <Row>
                 {reviewScore !== null && (
                   <h6 className=" mb-0">{`${reviewScore.four.percentage.toFixed(
-                    1
+                    0
                   )}%`}</h6>
                 )}
               </Row>
@@ -201,7 +205,7 @@ const ReviewHeader = ({
         {/* AVERAGE BAR */}
         <Container className="px-2 py-2">
           <Row className="d-flex justify-content-between">
-            <Col md={1} className="">
+            <Col xs={1} sm={1} md={1} className="padding-x-one">
               <Row>
                 <Form>
                   <div key={`default-checkbox`} className="">
@@ -210,14 +214,14 @@ const ReviewHeader = ({
                 </Form>
               </Row>
             </Col>
-            <Col md={1} className="px-0 d-flex align-items-center">
+            <Col xs={2} sm={2} md={1} className="px-1 d-flex align-items-center padding-x-one">
               <Row className="px-0">
                 <h6 className="px-0 mb-0">Average</h6>
               </Row>
             </Col>
-            <Col md={8} className="px-0 flex-row align-self-center">
+            <Col xs={6} sm={6} md={8} className="px-0 flex-row align-self-center">
               <Row>
-                <Container>
+                <Container className="mx-2">
                   {reviewScore !== null && (
                     <ProgressBar
                       now={reviewScore.three.percentage}
@@ -228,13 +232,15 @@ const ReviewHeader = ({
               </Row>
             </Col>
             <Col
-              md={2}
-              className="d-flex justify-content-end px-2 align-items-center percentageWidth"
-            >
+               xs={1}
+               sm={1}
+                 md={2}
+                 className="d-flex justify-content-end px-2 align-items-center percentageWidth"
+               >
               <Row>
                 {reviewScore !== null && (
                   <h6 className=" mb-0">{`${reviewScore.three.percentage.toFixed(
-                    1
+                    0
                   )}%`}</h6>
                 )}
               </Row>
@@ -244,7 +250,7 @@ const ReviewHeader = ({
         {/* POOR BAR */}
         <Container className="px-2 py-2">
           <Row className="d-flex justify-content-between">
-            <Col md={1} className="">
+            <Col xs={1} sm={1} md={1} className="padding-x-one">
               <Row>
                 <Form>
                   <div key={`default-checkbox`} className="">
@@ -253,14 +259,14 @@ const ReviewHeader = ({
                 </Form>
               </Row>
             </Col>
-            <Col md={1} className="px-0 d-flex align-items-center">
+            <Col xs={2} sm={2} md={1} className="px-1 d-flex align-items-center padding-x-one">
               <Row className="px-0">
                 <h6 className="px-0 mb-0">Poor</h6>
               </Row>
             </Col>
-            <Col md={8} className="px-0 flex-row align-self-center">
+            <Col xs={6} sm={6} md={8} className="px-0 flex-row align-self-center">
               <Row>
-                <Container>
+                <Container className="mx-2">
                   {reviewScore !== null && (
                     <ProgressBar
                       now={reviewScore.two.percentage}
@@ -271,13 +277,15 @@ const ReviewHeader = ({
               </Row>
             </Col>
             <Col
-              md={2}
-              className="d-flex justify-content-end px-2 align-items-center percentageWidth"
-            >
+                xs={1}
+                sm={1}
+                  md={2}
+                  className="d-flex justify-content-end px-2 align-items-center percentageWidth"
+                >
               <Row>
                 {reviewScore !== null && (
                   <h6 className=" mb-0">{`${reviewScore.two.percentage.toFixed(
-                    1
+                    0
                   )}%`}</h6>
                 )}
               </Row>
@@ -287,7 +295,7 @@ const ReviewHeader = ({
         {/* BAD BAR */}
         <Container className="px-2 py-2">
           <Row className="d-flex justify-content-between">
-            <Col md={1} className="">
+            <Col xs={1} sm={1} md={1} className="padding-x-one">
               <Row>
                 <Form>
                   <div key={`default-checkbox`} className="">
@@ -296,14 +304,14 @@ const ReviewHeader = ({
                 </Form>
               </Row>
             </Col>
-            <Col md={1} className="px-0 d-flex align-items-center">
+            <Col xs={2} sm={2} md={1} className="px-1 d-flex align-items-center padding-x-one">
               <Row className="px-0">
                 <h6 className="px-0 mb-0">Bad</h6>
               </Row>
             </Col>
-            <Col md={8} className="px-0 flex-row align-self-center">
+            <Col xs={6} sm={6} md={8} className="px-0 flex-row align-self-center">
               <Row>
-                <Container>
+                <Container className="mx-2">
                   {reviewScore !== null && (
                     <ProgressBar
                       now={reviewScore.one.percentage}
@@ -314,23 +322,29 @@ const ReviewHeader = ({
               </Row>
             </Col>
             <Col
-              md={2}
-              className="d-flex justify-content-end px-2 align-items-center percentageWidth"
-            >
+              xs={1}
+              sm={1}
+                md={2}
+                className="d-flex justify-content-end px-2 align-items-center percentageWidth"
+              >
               <Row>
                 {reviewScore !== null && (
                   <h6 className=" mb-0">{`${reviewScore.one.percentage.toFixed(
-                    1
+                    0
                   )}%`}</h6>
                 )}
               </Row>
             </Col>
           </Row>
         </Container>
-        <Container className="px-2 py-3">
+        <Container className="px-2 py-3 keywordScroll">
+          {/* <Row>
+            <Col sm={12} xs={12} md={12}> */}
           <Keywords
             keywords={["All Reviews", "Service", "Booking", "Options"]}
           />
+          {/* </Col>
+          </Row> */}
         </Container>
         <Container className="px-2 py-3">
           <Form className="container-fluid d-flex px-0" id="search-review-form">

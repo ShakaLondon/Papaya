@@ -52,19 +52,19 @@ const PublicProfilePage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
             id="profile-app-main"
             className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
           >
-            {/* <Container
+            <Container
               fluid
               className="px-0 mx-0"
               style={{ maxWidth: "100vw" }}
-            > */}
+            >
               <PublicProfileContainer />
               {/* <Footer/> */}
-            {/* </Container> */}
+            </Container>
           </Col>
-          {sideMenuState && <Col sm={12} md={3} className="px-0">
+          {sideMenuState && <Col sm={12} md={3} className="px-0 onTop">
              <SideMenu />
           </Col>
-}
+            }
         </Row>
       </Container>
     </Container>

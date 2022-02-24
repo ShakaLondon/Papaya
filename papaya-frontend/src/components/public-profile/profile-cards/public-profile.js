@@ -42,7 +42,7 @@ export default function PublicProfile(props) {
             <Col md={6} className="px-4 user-profile-input">
               <Row>
                 {/* <Card.Text> */}
-                <h6 className="px-0 mb-1">Profile picture</h6>
+                <h6 className="px-0 mb-3">Profile picture</h6>
                 {/* </Card.Text> */}
                 {/* <FilesUploadComponent addFile={addFile}/> */}
               </Row>
@@ -55,7 +55,7 @@ export default function PublicProfile(props) {
             <Col md={6} className="px-4 user-profile-input">
               <Row>
                 {/* <Card.Text> */}
-                <h6 className="px-0 mb-1">Profile header</h6>
+                <h6 className="px-0 mb-3">Profile header</h6>
                 {/* <FilesUploadComponent addFile={addFileCover}/> */}
                 {/* </Card.Text> */}
               </Row>
