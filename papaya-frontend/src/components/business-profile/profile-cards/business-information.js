@@ -70,7 +70,7 @@ const BusinessInfo = ({
   const [percentage, setPercentage] = useState(30);
 
   return (
-    <Card style={{ width: "100%" }} className="my-4 pt-4 profileCard">
+    <Card style={{ width: "100%" }} className="py-4 pt-4 profileCard  bus-info-drop">
       {profile.businessUserID && (
         <Card className="profileCard borderBottom">
           <Card.Body className>

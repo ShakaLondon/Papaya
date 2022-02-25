@@ -8,7 +8,7 @@ export default function DropdownCard({ innerText, dropdownText }) {
 
   return (
     <Card className="profileCard borderBottom">
-      <Card.Body className="px-4 d-flex align-items-center pb-2">
+      <Card.Body className="mx-4 d-flex align-items-center pb-2">
         <Row>
           <Col md={11} className="d-flex align-items-center">
             <h6 className="">{innerText}</h6>

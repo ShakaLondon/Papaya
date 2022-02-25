@@ -539,6 +539,7 @@ h6 {
 .profileCard {
   border-color: #ffef93 !important;
   background-color: #ffef93 !important;
+  /* margin-top: 0rem !important; */
 }
 
 .categoryListCard {
@@ -888,6 +889,15 @@ div#bus-nav-rating-resp {
   overflow: auto;
 }
 
+.dropdown-section-hide {
+  display: none;
+}
+
+.dropdownCard {
+  border-color: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
 
 
 
@@ -962,7 +972,7 @@ div#bus-nav-rating-resp {
   }
 
   #search-bar-strip {
-    height: 10vh;
+    height: 10vh !important;
   }
 
   #search-input {
@@ -1127,7 +1137,7 @@ div#bus-nav-rating-resp {
   }
 
   #business-main-cont {
-    padding-top: 280px !important;
+    padding-top: 320px !important;
   }
 
   img#write-review-av {
@@ -1168,6 +1178,23 @@ div#bus-nav-rating-resp {
   .padding-xs {
     padding-right: 0rem !important;
     padding-left: 0rem !important;
+  }
+
+  .hide-column {
+    display: none;
+  }
+
+  .dropdown-section-hide {
+    display: block;
+  }
+
+  /* div.profileCard {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  } */
+
+  .bus-info-drop {
+    margin-top: 1.5rem !important;
   }
 
 }

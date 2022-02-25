@@ -22,7 +22,7 @@ export default function AddRatingContainer(props) {
     // setWriteReview({ ...writeReview, stars: value})
   };
   return (
-    <Card style={{ width: "100%" }} className="my-4 py-4 profileCard" id="rating-card">
+    <Card style={{ width: "100%" }} className="py-4 profileCard" id="rating-card">
       <Card.Body className="py-2">
         <Container className="px-2">
           <Row className="">

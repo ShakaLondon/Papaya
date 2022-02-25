@@ -207,7 +207,7 @@ const BusinessContainer = ({
             <Row
               className="mx-0 px-0"
               id="business-main-cont"
-              style={{ paddingTop: `${colorChangeState ? "280px" : "400px"}` }}
+              style={{ paddingTop: `${colorChangeState ? "280px" : "410px"}` }}
             >
               <ProfileMain
                 profile={searchResult}
