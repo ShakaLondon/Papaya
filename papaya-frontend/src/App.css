@@ -898,6 +898,10 @@ div#bus-nav-rating-resp {
   background-color: #ffffff !important;
 }
 
+.bus-info-drop {
+  padding-top: 1.5rem !important;
+}
+
 
 
 
@@ -1137,7 +1141,7 @@ div#bus-nav-rating-resp {
   }
 
   #business-main-cont {
-    padding-top: 320px !important;
+    padding-top: 300px !important;
   }
 
   img#write-review-av {
@@ -1195,6 +1199,15 @@ div#bus-nav-rating-resp {
 
   .bus-info-drop {
     margin-top: 1.5rem !important;
+  }
+
+  #review-app-component {
+    height: 1330px !important;
+  }
+
+  #review-container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 
 }

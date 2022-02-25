@@ -70,10 +70,10 @@ const BusinessInfo = ({
   const [percentage, setPercentage] = useState(30);
 
   return (
-    <Card style={{ width: "100%" }} className="py-4 pt-4 profileCard  bus-info-drop">
+    <Card style={{ width: "100%" }} className="mt-4 py-4 pt-4 profileCard bus-info-drop">
       {profile.businessUserID && (
         <Card className="profileCard borderBottom">
-          <Card.Body className>
+          <Card.Body className="px-4">
             {/* <Card.Title > */}
             <h5 className="px-2 mb-1">Business Title</h5>
             <h6 className="extraSmallTxt mb-0 px-2 py-2">
@@ -126,19 +126,20 @@ const BusinessInfo = ({
       </Card>
 
       <Card className="profileCard borderBottom">
-        <Card.Body className>
+        <Card.Body className="px-4">
           {/* <Card.Title > */}
           <h5 className="px-2 mb-1">Contact</h5>
 
           <Container className="px-2 py-2">
             <Row>
-              <Col md={1} className="pe-3">
+              <Col md={1} xs={1} sm={1} className="me-2 d-flex pt-2">
                 <FontAwesomeIcon icon={faPhone} className="fa-xs" />
               </Col>
-              <Col md={10} className="px-0 d-flex align-items-center">
+              <Col md={10} xs={10} sm={10} className="px-0 d-flex align-items-center justify-content-center">
                 {/* <Row className="px-0"> */}
-                <Card.Text className="px-1 mb-0">
-                  Claimed their Papaya profile: December 2017.
+                <Card.Text className="px-2 mb-0">
+                  {`Claimed their Papaya profile: 
+                   December 2017`}
                   <FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2" />
                 </Card.Text>
 
@@ -146,12 +147,12 @@ const BusinessInfo = ({
               </Col>
             </Row>
             <Row>
-              <Col md={1} className="pe-3">
+              <Col md={1} xs={1} sm={1} className="me-2 d-flex pt-2">
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="fa-xs" />
               </Col>
-              <Col md={10} className="px-0 d-flex align-items-center">
+              <Col md={10}  xs={10} sm={10} className="px-0 d-flex align-items-center justify-content-center">
                 {/* <Row className="px-0"> */}
-                <Card.Text className="px-1 mb-0">
+                <Card.Text className="px-2 mb-0">
                   Verified additional company details{" "}
                   <FontAwesomeIcon icon={faInfoCircle} className="fa-xs mx-2" />
                 </Card.Text>
@@ -165,7 +166,7 @@ const BusinessInfo = ({
         </Card.Body>
       </Card>
       <Card className="profileCard">
-        <Card.Body className>
+        <Card.Body className="px-4">
           <h5 className="px-2 mb-1">Category</h5>
         </Card.Body>
       </Card>

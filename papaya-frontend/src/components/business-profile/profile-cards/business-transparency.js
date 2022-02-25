@@ -70,24 +70,24 @@ const BusinessTrans = ({
   return (
     <Card style={{ width: "100%" }} className="py-4 pt-4 profileCard bus-info-drop">
       <Card className="profileCard borderBottom">
-        <Card.Body className>
+        <Card.Body className="px-4">
           {/* <Card.Title > */}
           <h5 className="px-2 mb-1">Business Transparency</h5>
 
           <Container className="px-2 py-2">
             <Row>
-              <Col md={1} className="pe-3">
+              <Col md={1} xs={1} sm={1} className="me-2 d-flex pt-2">
                 <FontAwesomeIcon
                   icon={faCalendarAlt}
                   className="fa-xs text-secondary"
                 />
               </Col>
-              <Col md={10} className="px-0 d-flex align-items-center">
+              <Col md={10} xs={10} sm={10} className="px-0 d-flex align-items-center">
                 {/* <Row className="px-0"> */}
                 <Card.Text className="px-1 mb-0">
                   {profile.businessUserID
                     ? `Claimed their Papaya profile: ${profile.businessUserID.createdAt}.`
-                    : "This Papaya profile has never been claimed."}
+                    : "This Papaya profile has never been claimed"}
                   <FontAwesomeIcon
                     icon={faInfoCircle}
                     className="fa-xs mx-2 text-secondary"
@@ -98,7 +98,7 @@ const BusinessTrans = ({
               </Col>
             </Row>
             <Row>
-              <Col md={1} className="pe-3">
+              <Col md={1} xs={1} sm={1} className="me-2 d-flex pt-2">
                 <FontAwesomeIcon
                   icon={faCheckCircle}
                   className={`fa-xs ${
@@ -106,7 +106,7 @@ const BusinessTrans = ({
                   }`}
                 />
               </Col>
-              <Col md={10} className="px-0 d-flex align-items-center">
+              <Col md={10} xs={10} sm={10} className="px-0 d-flex align-items-center">
                 {/* <Row className="px-0"> */}
                 {profile.businessUserID ? (
                   <Card.Text className="px-1 mb-0">
@@ -136,7 +136,7 @@ const BusinessTrans = ({
       </Card>
       <Card className="profileCard borderBottom">
         <Card.Body className="px-4">
-          <h6 className="extraSmallTxt mb-0">
+          <h6 className="extraSmallTxt mb-0 px-2">
             See how this company has been using Papaya for the past 12 months
           </h6>
         </Card.Body>
