@@ -914,11 +914,21 @@ div#bus-nav-rating-resp {
     height: 2rem !important;
   }
 
+  #main-nav-bar-icon-close {
+    font-size: 2rem !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
+  }
+
   .main-nav-bar-icon {
     color: #ef7c53;
     font-size: 2rem !important;
     margin-right: 0.5rem !important;
     margin-left: 0.5rem !important;
+  }
+
+  #sidenav-topbar {
+    height: 100px !important;
   }
 
   h1.brand-heading-h1 {
@@ -1208,6 +1218,24 @@ div#bus-nav-rating-resp {
   #review-container {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
+  }
+
+  #login-app-component {
+    width: 100vw !important;
+  }
+
+  #papaya-logo-login {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  #papaya-logo-signup {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  #signup-app-component {
+    width: 100vw !important;
   }
 
 }

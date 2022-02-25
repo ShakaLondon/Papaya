@@ -119,9 +119,9 @@ const NavBar = ({
         >
           {routePath != "/main" &&
             routePath != "/login" &&
-            routePath != "/signup" &&
+            routePath != "/register" &&
             !colorChangeState && (
-              <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
+              <h1 className="brand-heading-h1 mb-0">Papaya.</h1>
             )}
         </Navbar.Brand>
         <Navbar.Brand className="d-flex align-items-center">

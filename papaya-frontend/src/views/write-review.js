@@ -35,13 +35,15 @@ const WriteReview = ({ sideMenuState, setMenuState }) => {
   // });
 
   return (
-    <Container fluid id="review-app" className="mx-0">
+    <Container fluid id="review-app" className="mx-0 px-0">
       <NavBar colour="rgba(255, 255, 255, 0)" />
       <Container fluid id="review-app-body" className="px-0 mx-0">
-        <Row className="full-height">
+        <Row className="full-height mx-0 px-0">
           <Col
+          xs={12}
+            sm={12}
             md={sideMenuState ? 9 : 12}
-            className="px-0 scrollNav"
+            className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
             id="review-app-main"
           >
             <Container className="px-0" style={{ maxWidth: "100vw" }}>
@@ -49,9 +51,10 @@ const WriteReview = ({ sideMenuState, setMenuState }) => {
               {/* <Footer/> */}
             </Container>
           </Col>
-          <Col md={3} className="px-0 onTop">
-            {sideMenuState && <SideMenu />}
+          {sideMenuState && <Col sm={12} md={3} className="px-0 onTop">
+             <SideMenu />
           </Col>
+            }
         </Row>
       </Container>
     </Container>

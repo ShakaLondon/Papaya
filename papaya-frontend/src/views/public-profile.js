@@ -46,6 +46,7 @@ const PublicProfilePage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
       <Container fluid id="profile-app-body" className="px-0 mx-0">
         <Row className="full-height mx-0 px-0">
           <Col
+          xs={12}
           sm={12}
             md={sideMenuState ? 9 : 12}
             // className="px-0 mx-0 scrollNav"

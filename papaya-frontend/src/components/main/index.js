@@ -44,6 +44,7 @@ const MainContainer = ({
 
   useEffect(() => {
     colorChange(false);
+    // ADD SIDE MENU STATE AND ADD TO ALL PAGES
   }, []);
 
   useEffect(() => {

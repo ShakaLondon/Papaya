@@ -30,13 +30,13 @@ export default function Footer(props) {
         <Row>
           <Col
             md={12}
-            className="d-inline-flex justify-content-start align-content-center my-4"
+            className="d-inline-flex justify-content-start align-items-center my-4"
           >
             <img
               src="https://res.cloudinary.com/shakalondon/image/upload/v1636974558/Papaya/papaya-round_y4c6uq.png"
               alt="Papaya Logo"
               id="papaya-logo-footer"
-              className="d-flex align-self-center mr-2"
+              className="d-flex align-self-center me-2"
             />
             <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
           </Col>

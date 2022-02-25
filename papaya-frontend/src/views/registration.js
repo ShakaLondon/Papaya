@@ -40,19 +40,23 @@ const RegisterPage = ({ sideMenuState, setMenuState }) => {
       <Container fluid id="register-app-body" className="px-0 mx-0">
         <Row className="full-height">
           <Col
-            md={sideMenuState ? 9 : 12}
+             xs={12}
+             sm={12}
+               md={sideMenuState ? 9 : 12}
             className="px-0"
             id="register-app-main"
+            className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
           >
             <Container className="px-0" style={{ maxWidth: "100vw" }}>
               {location.pathname === "/login" && <LoginContainer />}
               {location.pathname === "/register" && <SignUpContainer />}
-              <Footer />
+              {/* <Footer /> */}
             </Container>
           </Col>
-          <Col md={3} className="px-0">
-            {sideMenuState && <SideMenu />}
+          {sideMenuState && <Col sm={12} md={3} className="px-0 onTop">
+             <SideMenu />
           </Col>
+            }
         </Row>
       </Container>
     </Container>
