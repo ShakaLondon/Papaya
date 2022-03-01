@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.user.isLoggedIn,
   userFound: state.user.userFound,
   userProf: state.user,
+  colorChangeState: state.appState.colorChange,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -37,7 +38,8 @@ const ProfileContainer = ({
   register,
   userProf,
   setMenuState,
-  colorChange
+  colorChange,
+  colorChangeState
 }) => {
 
   const dispatch = useDispatch();
@@ -96,7 +98,7 @@ const ProfileContainer = ({
             <Row className="mx-0 px-0">
               <ProfileNav user={userProf} />
             </Row>
-            <Row className="mx-0 px-0">
+            <Row className="mx-0 px-0"  style={{ paddingTop: `${colorChangeState ? "250px" : "360px"}` }}>
               <ProfileMain user={userProf} />
             </Row>
           </Container>

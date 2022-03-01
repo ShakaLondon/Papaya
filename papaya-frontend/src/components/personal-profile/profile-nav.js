@@ -81,7 +81,7 @@ const ProfileNav = ({
   }, [dispatch]);
 
   return (
-    <Navbar bg="light" expand="lg" className="px-0 py-0 bus-profile-header" id="profile-header">
+    <Navbar bg="light" expand="lg" className="px-0 py-0 bus-profile-header"  fixed="top" id="profile-header">
       {!loading && (
       <div
       className={`overlay container-fluid ${
