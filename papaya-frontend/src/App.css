@@ -262,8 +262,8 @@ a {
 
 #category-slider-comp {
   /* width: 80%; */
-  padding-left: 8rem !important;
-  padding-right: 8rem !important;
+  padding-left: 8rem ;
+  padding-right: 8rem ;
 }
 
 #category-slider-cont {
@@ -318,8 +318,8 @@ h6 {
 
 #review-slider-comp {
   /* width: 80%; */
-  padding-left: 8rem !important;
-  padding-right: 8rem !important;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 
 /* NEW PRODUCTS */
@@ -334,8 +334,8 @@ h6 {
 
 #product-slider-comp {
   /* width: 80%; */
-  padding-left: 8rem !important;
-  padding-right: 8rem !important;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 
 #footer-slider-comp {
@@ -902,6 +902,12 @@ div#bus-nav-rating-resp {
   padding-top: 1.5rem !important;
 }
 
+.hide-hr {
+  display: none !important;
+}
+
+
+
 
 
 
@@ -928,7 +934,7 @@ div#bus-nav-rating-resp {
   }
 
   #sidenav-topbar {
-    height: 100px !important;
+    height: 85px !important;
   }
 
   h1.brand-heading-h1 {
@@ -1220,6 +1226,21 @@ div#bus-nav-rating-resp {
     padding-right: 0.5rem !important;
   }
 
+  #category-main-container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #category-search-container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #category-search-main-container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
   #login-app-component {
     width: 100vw !important;
   }
@@ -1236,6 +1257,40 @@ div#bus-nav-rating-resp {
 
   #signup-app-component {
     width: 100vw !important;
+  }
+
+  #search-input-cat {
+    display: none !important;
+  }
+
+  .category-title {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .hide-hr {
+    display: block !important;
+  }
+
+  .category-sidebar {
+    display: none !important;
+  }
+
+  /* .categorySearchButton {
+    display: none !important;
+  }
+
+  .category-nav-input {
+    border-color: #ffef93 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 0.25rem !important;
+    border: 1px solid #ffef93 !important;
+  } */
+
+  button.categorySearchButton {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 
 }

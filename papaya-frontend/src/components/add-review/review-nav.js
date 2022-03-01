@@ -1,23 +1,9 @@
 import {
-  faCircle,
-  faDotCircle,
-  faStar,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Nav,
   Container,
   Navbar,
-  NavDropdown,
-  Row,
-  Col,
-  Button,
 } from "react-bootstrap";
-import StarRating from "../rating-component/index";
-import WebsiteContainer from "../business-profile/profile-cards/website-card";
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useEffect } from "react";
+import { connect, useDispatch } from "react-redux";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
 import {
   updateUserAction,
@@ -52,19 +38,21 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const ReviewNav = ({
-  sideMenuState,
-  setMenuState,
-  userProf,
-  updateUserProf,
-  updateUserImage,
-  updateUserCover,
   profile,
-  score,
-  loading,
   colorChange,
   colorChangeState,
 }) => {
   // const [colorChange, setColorchange] = useState(false);
+
+  // const changeNavbarColor = (scroll) => {
+  //   if (scroll >= 30) {
+  //     colorChange(true);
+  //   } else {
+  //     colorChange(false);
+  //   }
+  // };
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -72,6 +60,14 @@ const ReviewNav = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 30) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -83,15 +79,15 @@ const ReviewNav = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 30) {
-      colorChange(true);
-    } else {
-      colorChange(false);
-    }
-  };
+  // const changeNavbarColor = (scroll) => {
+  //   if (scroll >= 30) {
+  //     colorChange(true);
+  //   } else {
+  //     colorChange(false);
+  //   }
+  // };
 
   return (
     <Navbar

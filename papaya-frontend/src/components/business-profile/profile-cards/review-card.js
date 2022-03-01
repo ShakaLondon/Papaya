@@ -1,26 +1,15 @@
 import {
-  faFlag as faFlagFill,
   faMapMarkerAlt,
   faPencilAlt,
-  faSearch,
   faShareAlt,
-  faStar,
-  faThumbsUp as faThumbsUpFill,
 } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp, faFlag } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import {
   Card,
-  Button,
   Container,
   Row,
   Col,
-  Form,
-  FloatingLabel,
-  FormControl,
-  ProgressBar,
-  InputGroup,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { openNavAction } from "../../../redux/actions";
@@ -30,8 +19,6 @@ import {
   updateUserCoverAction,
 } from "../../../redux/actions/user";
 import StarRating from "../../rating-component";
-import FilesUploadComponent from "../upload";
-import Keywords from "./keywords.js";
 import moment from "moment";
 import { useHistory } from "react-router";
 
@@ -59,7 +46,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const ReviewCard = (props) => {
-  const [percentage, setPercentage] = useState(30);
+
 
   const selected = (value) => {
     // console.log(value + "selected")

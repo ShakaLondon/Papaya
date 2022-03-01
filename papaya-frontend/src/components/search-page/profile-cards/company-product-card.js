@@ -1,6 +1,5 @@
-import { faCircle, faDotCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router";
 import StarRating from "../../rating-component/index.js";
@@ -37,14 +36,14 @@ function CompanyProductCard({ catList }) {
               <Card.Body className="d-flex px-2 py-2 text-nowrap">
                 <Container>
                   <Row>
-                    <Col md={4}>
+                    <Col md={4} xs={12} sm={12}>
                       <Card.Img
                         className="my-2"
                         src={item.business.avatar.avatar}
                         style={{ height: "auto", width: "100%" }}
                       />
                     </Col>
-                    <Col md={8}>
+                    <Col md={8} xs={12} sm={12}>
                       <Card.Title>
                         <h4 className="px-2 my-2">
                           {item.business.businessName}

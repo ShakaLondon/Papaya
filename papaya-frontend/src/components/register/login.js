@@ -2,18 +2,15 @@ import {
   Button,
   Container,
   Form,
-  FormControl,
   FloatingLabel,
   Row,
   Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Footer from "../footer";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { loginAction, logoutAction } from "../../redux/actions/auth.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
+import { colorChangeAction, openNavAction } from "../../redux/actions";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -26,6 +23,10 @@ const mapDispatchToProps = (dispatch) => ({
   //functions
   login: (email, password) => dispatch(loginAction(email, password)),
   logout: () => dispatch(logoutAction()),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
+  colorChange: (action) => dispatch(colorChangeAction(action)),
 });
 
 const LoginContainer = ({
@@ -35,11 +36,22 @@ const LoginContainer = ({
   isLoggedIn,
   userFound,
   logout,
+  setMenuState,
+  colorChange
 }) => {
+
+  const dispatch = useDispatch();
+
+
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    dispatch(colorChangeAction(false))
+    dispatch(openNavAction(false))
+  }, [dispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,6 +1,4 @@
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router";
 
 export default function CategoryCard(props) {

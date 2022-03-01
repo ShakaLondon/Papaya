@@ -1,6 +1,4 @@
-import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Container } from "react-bootstrap";
 import MainJumbo from "./main-jumbo";
 import SearchBar from "../search-bar";
 import Categories from "../categories";
@@ -9,7 +7,7 @@ import NewProducts from "../new-products";
 import Footer from "../footer";
 import LoginJumbo from "./login-jumbo";
 
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { loginAction } from "../../redux/actions/auth.js";
 import { colorChangeAction, openNavAction } from "../../redux/actions/index.js";
 import { useEffect, useState } from "react";
@@ -21,12 +19,16 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.user.isLoggedIn,
   userFound: state.user.userFound,
   colorChangeState: state.appState.colorChange,
+  sideMenuState: state.appState.sideMenu,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   //functions
   login: (email, password) => dispatch(loginAction(email, password)),
   colorChange: (action) => dispatch(colorChangeAction(action)),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
 });
 
 const MainContainer = ({
@@ -37,15 +39,20 @@ const MainContainer = ({
   userFound,
   colorChangeState,
   colorChange,
+  setMenuState,
+  sideMenuState
 }) => {
+
+  const dispatch = useDispatch();
+
   const [categories, setCategories] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [dataLoading, setDataLoading] = useState(true);
 
   useEffect(() => {
-    colorChange(false);
-    // ADD SIDE MENU STATE AND ADD TO ALL PAGES
-  }, []);
+    dispatch(colorChangeAction(false))
+    dispatch(openNavAction(false))
+  }, [dispatch])
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -53,6 +60,14 @@ const MainContainer = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 280) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -64,15 +79,9 @@ const MainContainer = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 280) {
-      colorChange(true);
-    } else {
-      colorChange(false);
-    }
-  };
+ 
 
   useEffect(() => {
     const url = `http://localhost:3005/category?limit=3&columns=8`;
@@ -146,9 +155,9 @@ const MainContainer = ({
         <>
           {isLoggedIn ? <LoginJumbo></LoginJumbo> : <MainJumbo></MainJumbo>}
           <SearchBar></SearchBar>
-          <Categories categories={categories}></Categories>
-          <RecentReviews reviews={reviews}></RecentReviews>
-          <NewProducts></NewProducts>
+          <Categories categories={categories} sideMenu={sideMenuState}></Categories>
+          <RecentReviews reviews={reviews} sideMenu={sideMenuState}></RecentReviews>
+          <NewProducts sideMenu={sideMenuState}></NewProducts>
           <Footer />
         </>
       )}

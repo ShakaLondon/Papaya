@@ -1,21 +1,14 @@
 import {
   Button,
   Container,
-  Form,
-  FormControl,
-  FloatingLabel,
   Row,
   Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Footer from "../footer";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { registerAction } from "../../redux/actions/auth";
-import { connect } from "react-redux";
-import { Redirect, useHistory, useLocation } from "react-router";
-import LoadingStar from "./loading-star";
-import { colorChangeAction } from "../../redux/actions";
+import { connect, useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router";
+import { colorChangeAction, openNavAction } from "../../redux/actions";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -30,6 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
   //functions
   register: (userObj) => dispatch(registerAction(userObj)),
   colorChange: (action) => dispatch(colorChangeAction(action)),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
 });
 
 const ThankyouReviewPage = ({
@@ -42,6 +38,7 @@ const ThankyouReviewPage = ({
   userProf,
   colorChange,
   colorChangeState,
+  setMenuState
 }) => {
   const locationUrl = useLocation();
 
@@ -53,20 +50,21 @@ const ThankyouReviewPage = ({
   const businessNamePath = routePath.replace("/review/", "www.");
   console.log(businessNamePath);
 
+  const dispatch = useDispatch();
+
   //   const [updateUser, setUpdateUser] = useState({
   //       email: userProf.email,
   //       name: userProf.name,
   //       surname: userProf.surname,
   //     })
 
-  const [searchRequest, setSearchRequest] = useState(businessNamePath);
-  const [searchResult, setSearchResult] = useState({});
 
   const history = useHistory();
 
   useEffect(() => {
-    colorChange(true);
-  }, []);
+    dispatch(colorChangeAction(false))
+    dispatch(openNavAction(true))
+  }, [dispatch])
 
   // const [colorChange, setColorchange] = useState(false);
 
@@ -76,6 +74,15 @@ const ThankyouReviewPage = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 0) {
+        dispatch(colorChangeAction(true));
+      } 
+      // else {
+      //   dispatch(colorChangeAction(false));
+      // }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -87,16 +94,9 @@ const ThankyouReviewPage = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 0) {
-      colorChange(true);
-    }
-    //  else{
-    //    colorChange(false);
-    //  }
-  };
+
 
   // useEffect(() => {
   //     const url = `http://localhost:3005/business/${searchRequest}`

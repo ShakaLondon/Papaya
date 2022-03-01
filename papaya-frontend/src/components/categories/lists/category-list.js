@@ -1,6 +1,4 @@
 import { ListGroup, Container } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import CategoryCard from "../card";
 
 export default function CategoryList ({ category }) {

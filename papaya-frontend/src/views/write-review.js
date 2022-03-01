@@ -3,11 +3,8 @@ import SideMenu from "../components/side-menu";
 import { connect } from "react-redux";
 import { openNavAction } from "../redux/actions";
 import { Container, Row, Col } from "react-bootstrap";
-import { useLocation } from "react-router";
-import LoginContainer from "../components/register/login";
 import ReviewContainer from "../components/add-review/index";
-import { useEffect } from "react";
-import Footer from "../components/footer";
+
 
 const mapStateToProps = (state) => ({ sideMenuState: state.appState.sideMenu });
 const mapDispatchToProps = (dispatch) => ({
@@ -25,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
 // }
 
 const WriteReview = ({ sideMenuState, setMenuState }) => {
-  let location = useLocation();
+  // let location = useLocation();
 
   // useEffect(() => {
   //   console.log(location)

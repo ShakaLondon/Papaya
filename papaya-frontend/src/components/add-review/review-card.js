@@ -1,6 +1,4 @@
 import {
-  faStar,
-  faThumbsUp,
   faPencilAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,10 +10,8 @@ import {
   Row,
   Col,
   Form,
-  FloatingLabel,
   FormControl,
   InputGroup,
-  FormGroup,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
@@ -26,7 +22,6 @@ import {
   updateUserCoverAction,
 } from "../../redux/actions/user";
 import StarRating from "../rating-component/index.js";
-import FilesUploadComponent from "./upload";
 import UserData from "../../services/user/user-data.js";
 
 const mapStateToProps = (state) => ({
@@ -53,13 +48,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const ReviewCard = ({
-  sideMenuState,
-  setMenuState,
   userProf,
-  updateUserProf,
-  updateUserImage,
-  updateUserCover,
-  reDirect,
 }) => {
   const locationUrl = useLocation();
 
@@ -93,35 +82,7 @@ const ReviewCard = ({
     setWriteReview({ ...writeReview, [name]: e.target.value });
   };
 
-  const [formData, setFormData] = useState({
-    image: null,
-  });
 
-  const [coverFormData, setCoverFormData] = useState({
-    cover: null,
-  });
-
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     const url = `http://localhost:3005/reviews/${website}`
-  //         const options = {
-  //             method: 'POST',
-  //             body: JSON.stringify(writeReview),
-  //             headers: {
-  //   'Accept': 'application/json',
-  //   'Content-Type': 'application/json'
-  // }
-  //         }
-  //         fetch(`${url}`, options)
-  //         .then(res => res.json())
-  //         .then((user) => {
-  //             const userFound = user
-  //             console.log(userFound)
-  //             // setSearchResult(user)
-  //             // console.log(searchResult)
-  //         })
-  //         .catch((error) => {console.log(error)})
-  //   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -148,46 +109,6 @@ const ReviewCard = ({
       });
   };
 
-  // const handleSubmitImage = (e) => {
-  //   e.preventDefault();
-  //   updateUserImage(formData.image)
-  // }
-
-  // const handleSubmitCover = (e) => {
-  //   e.preventDefault();
-  //   updateUserCover(coverFormData.cover)
-  // }
-
-  // const addFile = (e) => {
-
-  //   // event to update state when form inputs change
-  //   console.log(e.target.files)
-  //   const files = e.target.files
-  //   const fd = new FormData();
-  //   fd.append('avatar', files[0]);
-
-  //   console.log(fd)
-
-  //   setFormData({ image: fd });
-  // }
-
-  // const addFileCover = (e) => {
-
-  //   // event to update state when form inputs change
-  //   console.log(e.target.files)
-  //   const files = e.target.files
-  //   const fd = new FormData();
-  //   fd.append('cover', files[0]);
-
-  //   console.log(fd)
-
-  //   setCoverFormData({ cover: fd });
-  // }
-
-  const selected = (value) => {
-    console.log(value + "selected");
-    setWriteReview({ ...writeReview, stars: value });
-  };
 
   return (
     <Card style={{ width: "100%" }} className="my-4 py-4 profileCard">

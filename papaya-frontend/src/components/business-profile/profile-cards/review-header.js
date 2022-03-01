@@ -1,7 +1,5 @@
 import {
   faSearch,
-  faStar,
-  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -12,7 +10,6 @@ import {
   Row,
   Col,
   Form,
-  FloatingLabel,
   FormControl,
   ProgressBar,
   InputGroup,
@@ -24,7 +21,6 @@ import {
   updateUserImageAction,
   updateUserCoverAction,
 } from "../../../redux/actions/user";
-import FilesUploadComponent from "../upload";
 import Keywords from "./keywords.js";
 
 const mapStateToProps = (state) => ({
@@ -60,7 +56,7 @@ const ReviewHeader = ({
   loading,
   score,
 }) => {
-  const [percentage, setPercentage] = useState(30);
+
   const [reviewScore, setReviewScore] = useState({
     businessScore: score.avgTotal[0]?.average,
     totalReviews: score.avgTotal[0]?.count,
@@ -85,10 +81,10 @@ const ReviewHeader = ({
       percentage: 0,
     },
   });
-  const [currentRating, setCurrentRating] = useState(0);
+
 
   useEffect(() => {
-    score.reviewNo?.map((reviewNum) => {
+    score.reviewNo?.forEach((reviewNum) => {
       const number = reviewNum;
       const valueArray = ["one", "two", "three", "four", "five"];
       const valueText = valueArray[number._id - 1];
@@ -102,7 +98,7 @@ const ReviewHeader = ({
         },
       }));
     });
-  }, [score]);
+  }, [score, reviewScore]);
 
   return (
     <Card style={{ width: "100%" }} className="my-4 pt-4 profileCard">

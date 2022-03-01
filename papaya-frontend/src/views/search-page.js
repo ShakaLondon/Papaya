@@ -3,10 +3,8 @@ import SideMenu from "../components/side-menu";
 import { connect } from "react-redux";
 import { openNavAction } from "../redux/actions";
 import { Container, Row, Col } from "react-bootstrap";
-import { Redirect, useLocation } from "react-router";
 import SearchContainer from "../components/search-page/index";
-import { useEffect } from "react";
-import Footer from "../components/footer";
+
 
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,
@@ -45,8 +43,10 @@ const SearchPage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
       <Container fluid id="profile-app-body" className="px-0 mx-0">
         <Row className="full-height mx-0 px-0">
           <Col
-            md={sideMenuState ? 9 : 12}
-            className="px-0 mx-0 scrollNav"
+             xs={12}
+             sm={12}
+               md={sideMenuState ? 9 : 12}
+               className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
             id="profile-app-main"
           >
             <Container
@@ -58,9 +58,10 @@ const SearchPage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
               {/* <Footer/> */}
             </Container>
           </Col>
-          <Col md={3} className="px-0 onTop">
-            {sideMenuState && <SideMenu />}
+          {sideMenuState && <Col sm={12} md={3} className="px-0 onTop">
+             <SideMenu />
           </Col>
+            }
         </Row>
       </Container>
     </Container>

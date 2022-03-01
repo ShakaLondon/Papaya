@@ -1,8 +1,4 @@
-import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, Container, Navbar, NavDropdown, Row, Col } from "react-bootstrap";
-import userAuth from "../../services/user/user-auth";
-import PersonalSettings from "./profile-cards/review-header";
+import { Container, Row, Col } from "react-bootstrap";
 import AddRatingContainer from "./profile-cards/add-rating";
 import ReviewHeader from "./profile-cards/review-header";
 import ReviewCard from "./profile-cards/review-card";

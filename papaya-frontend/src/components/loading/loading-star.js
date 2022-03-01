@@ -1,6 +1,3 @@
-// import { FaStar } from "react-icons/fa";
-
-import { propTypes } from "react-bootstrap/esm/Image";
 import { animated, useSpring } from "react-spring";
 
 // import './star-rating.css';

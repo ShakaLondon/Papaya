@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import api from "../api.js";
 
 const register = (userObject) => {
@@ -24,8 +24,13 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
-export default {
+
+
+const auth = {
   register,
   login,
   logout,
 };
+
+
+export default auth;

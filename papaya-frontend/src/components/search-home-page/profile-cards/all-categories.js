@@ -1,21 +1,7 @@
 import {
-  faSearch,
-  faStar,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
-import {
   Card,
-  Button,
-  Container,
   Row,
   Col,
-  Form,
-  FloatingLabel,
-  FormControl,
-  ProgressBar,
-  InputGroup,
   ListGroup,
   ListGroupItem,
 } from "react-bootstrap";
@@ -27,8 +13,6 @@ import {
   updateUserImageAction,
   updateUserCoverAction,
 } from "../../../redux/actions/user";
-import FilesUploadComponent from "../upload";
-import CompanyProductCard from "./company-product-card";
 
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,
@@ -120,7 +104,7 @@ const AllCategoryList = ({
               <ListGroupItem key={cat._id} className="categoryListCard py-0">
                 <Card
                   style={{ width: "100%", border: "none" }}
-                  className="categoryListCard bottomLine py-2"
+                  className="categoryListCard bottomLine py-2 px-2"
                 >
                   <Row>
                     <Col md={4}>
@@ -128,11 +112,14 @@ const AllCategoryList = ({
                         onClick={() =>
                           history.push(`/search/category/${cat.name}`)
                         }
-                        className="px-0 mb-0 noBold"
+                        className="px-0 mb-0 category-title"
                       >
                         {cat.name}
                       </h5>
                     </Col>
+                    <div className="hide-hr">
+                   {cat?.subCategories.length > 0 && <hr className="my-2"/>}
+                   </div>
                     <Col md={8}>
                       {cat?.subCategories.map((subCat, idx) => {
                         console.log(halfValue);

@@ -1,32 +1,20 @@
 import {
-  faGlobe,
-  faStar,
-  faThumbsUp,
-  faChevronRight,
   faArrowCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import {
-  Nav,
   Container,
-  Navbar,
-  NavDropdown,
   Row,
   Col,
   Card,
 } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
 import { useHistory } from "react-router";
-import StarRating from "../../rating-component/index.js";
 
 export default function CategoryList({ category }) {
   const [currentCategory, setCurrentCategory] = useState(category?.name);
 
-  const selected = (value) => {
-    // console.log(value + "selected")
-    // setWriteReview({ ...writeReview, stars: value})
-  };
+
 
   const history = useHistory();
 
@@ -39,7 +27,7 @@ export default function CategoryList({ category }) {
     // return () => {
     // window.removeEventListener("scroll", listenScrollEvent);
     //   };
-  }, [currentCategory]);
+  }, [currentCategory, history, category.name]);
 
   //   function setCurrentCategory (categoryname) {
   //     let path = `/search/category/${categoryname}`;
@@ -58,14 +46,14 @@ export default function CategoryList({ category }) {
                 <h4>Categories</h4>
               </Row>
               <Row className="d-flex py-0">
-                <Col md={1} className="d-flex align-items-center pe-4">
+                <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                   <FontAwesomeIcon
                     icon={faArrowCircleLeft}
                     className="fa-sm align-self-center fa-regular"
                   />
                   {/* <h5 className="px-2 mb-0">Categories</h5> */}
                 </Col>
-                <Col md={10} className="d-flex align-items-center px-0">
+                <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt"
@@ -80,11 +68,11 @@ export default function CategoryList({ category }) {
                 </Col>
               </Row>
               <Row className="d-flex py-1">
-                <Col md={1} className="d-flex align-items-center pe-4">
+                <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className="fa-sm align-self-center"/> */}
                   {/* <h5 className="px-2 mb-0">Categories</h5> */}
                 </Col>
-                <Col md={10} className="d-flex align-items-center px-0">
+                <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt"
@@ -97,11 +85,11 @@ export default function CategoryList({ category }) {
                 </Col>
               </Row>
               <Row className="d-flex px-2 py-1">
-                <Col md={2} className="d-flex align-items-center pe-4">
+                <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className="fa-sm align-self-center"/> */}
                   {/* <h5 className="px-2 mb-0">Categories</h5> */}
                 </Col>
-                <Col md={10} className="d-flex align-items-center px-0">
+                <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt text-bold"
@@ -112,16 +100,16 @@ export default function CategoryList({ category }) {
                 </Col>
               </Row>
               {category.parentCategory[0].subCategories.length > 0 &&
-                category.parentCategory[0].subCategories?.map((subCat) => {
+                category.parentCategory[0].subCategories?.forEach((subCat) => {
                   console.log(currentCategory, subCat);
                   if (subCat.name !== currentCategory) {
                     return (
                       <Row className="d-flex px-2 py-1" key={subCat._id}>
-                        <Col md={2} className="d-flex align-items-center pe-4">
+                        <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                           {/* <FontAwesomeIcon icon={faArrowCircleLeft} className="fa-sm align-self-center"/> */}
                           {/* <h5 className="px-2 mb-0">Categories</h5> */}
                         </Col>
-                        <Col md={10} className="d-flex align-items-center px-0">
+                        <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                           {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                           <h6
                             className="mb-0 align-self-center smallTxt"
@@ -171,14 +159,14 @@ export default function CategoryList({ category }) {
                 <h4>Categories</h4>
               </Row>
               <Row className="d-flex py-0">
-                <Col md={1} className="d-flex align-items-center pe-4">
+                <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                   <FontAwesomeIcon
                     icon={faArrowCircleLeft}
                     className="fa-sm align-self-center fa-regular"
                   />
                   {/* <h5 className="px-2 mb-0">Categories</h5> */}
                 </Col>
-                <Col md={10} className="d-flex align-items-center px-0">
+                <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt"
@@ -191,11 +179,11 @@ export default function CategoryList({ category }) {
                 </Col>
               </Row>
               <Row className="d-flex py-1">
-                <Col md={1} className="d-flex align-items-center pe-4">
+                <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className="fa-sm align-self-center"/> */}
                   {/* <h5 className="px-2 mb-0">Categories</h5> */}
                 </Col>
-                <Col md={10} className="d-flex align-items-center px-0">
+                <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt text-bold"
@@ -219,11 +207,11 @@ export default function CategoryList({ category }) {
 
                 return (
                   <Row className="d-flex px-2 py-1" key={subCat._id}>
-                    <Col md={2} className="d-flex align-items-center pe-4">
+                    <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                       {/* <FontAwesomeIcon icon={faArrowCircleLeft} className="fa-sm align-self-center"/> */}
                       {/* <h5 className="px-2 mb-0">Categories</h5> */}
                     </Col>
-                    <Col md={10} className="d-flex align-items-center px-0">
+                    <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                       {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                       <h6
                         className="mb-0 align-self-center smallTxt"
@@ -280,14 +268,14 @@ export default function CategoryList({ category }) {
                 <h4>Categories</h4>
               </Row>
               <Row className="d-flex py-0">
-                <Col md={1} className="d-flex align-items-center pe-4">
+                <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                   <FontAwesomeIcon
                     icon={faArrowCircleLeft}
                     className="fa-sm align-self-center fa-regular"
                   />
                   {/* <h5 className="px-2 mb-0">Categories</h5> */}
                 </Col>
-                <Col md={10} className="d-flex align-items-center px-0">
+                <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     onClick={() => history.push(`/search/category/All`)}
@@ -298,11 +286,11 @@ export default function CategoryList({ category }) {
                 </Col>
               </Row>
               <Row className="d-flex py-1">
-                <Col md={1} className="d-flex align-items-center pe-4">
+                <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className="fa-sm align-self-center"/> */}
                   {/* <h5 className="px-2 mb-0">Categories</h5> */}
                 </Col>
-                <Col md={10} className="d-flex align-items-center px-0">
+                <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt text-bold"
@@ -333,11 +321,11 @@ export default function CategoryList({ category }) {
 
                 return (
                   <Row className="d-flex px-2 py-1" key={subCat._id}>
-                    <Col md={2} className="d-flex align-items-center pe-4">
+                    <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
                       {/* <FontAwesomeIcon icon={faArrowCircleLeft} className="fa-sm align-self-center"/> */}
                       {/* <h5 className="px-2 mb-0">Categories</h5> */}
                     </Col>
-                    <Col md={10} className="d-flex align-items-center px-0">
+                    <Col md={10} xs={10} sm={10} className="d-flex align-items-center px-0">
                       {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                       <h6
                         className="mb-0 align-self-center smallTxt"

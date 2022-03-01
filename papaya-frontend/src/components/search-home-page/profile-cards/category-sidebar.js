@@ -1,21 +1,9 @@
-import {
-  faSearch,
-  faStar,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+
 import {
   Card,
-  Button,
   Container,
   Row,
   Col,
-  Form,
-  FloatingLabel,
-  FormControl,
-  ProgressBar,
-  InputGroup,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
@@ -25,8 +13,6 @@ import {
   updateUserImageAction,
   updateUserCoverAction,
 } from "../../../redux/actions/user";
-import FilesUploadComponent from "../upload";
-import CatKeywords from "./keywords.js";
 
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,
@@ -103,7 +89,7 @@ const CategorySideBar = ({
   //    }, [score]);
 
   return (
-    <Card style={{ width: "100%" }} className="my-4 py-2 profileCard">
+    <Card style={{ width: "100%" }} className="my-4 py-2 profileCard category-sidebar">
       <Card.Body className="">
         <Container className="px-2">
           <Row>

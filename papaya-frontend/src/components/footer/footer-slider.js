@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "react-slick";
-import ProductCard from "../new-products/card";
 
 export default class FooterSlider extends Component {
   render() {

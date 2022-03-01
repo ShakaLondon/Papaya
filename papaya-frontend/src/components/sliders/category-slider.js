@@ -3,12 +3,12 @@ import Slider from "react-slick";
 import CategoryList from "../categories/lists/category-list.js";
 
 export default class CategorySlider extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     categories: this.props.categories,
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      sideMenuState: this.props.sideMenu,
+    };
+  }
 
   // componentDidMount() {
   //   fetch(`http://localhost:3005/category?limit=3&columns=8`)
@@ -20,6 +20,12 @@ export default class CategorySlider extends Component {
   //       });
   //     });
   // }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.sideMenu !== prevProps.sideMenu){ //<---- see here
+       this.setState({ sideMenuState: this.props.sideMenu});//<---- see here
+    }
+ }
 
   render() {
     // const { categories } = this.state;
@@ -58,11 +64,16 @@ export default class CategorySlider extends Component {
       ],
     };
     return (
-      <div id="category-slider-comp" className="py-5">
+      <div 
+      id="category-slider-comp" 
+      className="py-5"
+      // className={`${ this.state.sideMenuState? "px-0 py-5": "py-5"}`}
+      style={{ padding: `${this.state.sideMenuState? "0rem 0rem 0rem" : "0rem 8rem 0rem"}`}}
+      >
         <h4 className="px-3 mb-3">Explore Categories</h4>
         <Slider {...settings}>
           {this.props.categories.pages?.length > 0 &&
-            this.props.categories.pages?.map((category, idx) => {
+            this.props.categories.pages?.forEach((category, idx) => {
               if (category.length > 0) {
                 return (
                   <div key={idx}>

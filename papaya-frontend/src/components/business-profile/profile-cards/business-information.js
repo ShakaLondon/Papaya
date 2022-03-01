@@ -1,28 +1,14 @@
 import {
-  faArrowRight,
-  faCalendar,
-  faCalendarAlt,
-  faCheckCircle,
   faInfoCircle,
   faMapMarkerAlt,
   faPhone,
-  faSearch,
-  faStar,
-  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import {
   Card,
-  Button,
   Container,
   Row,
   Col,
-  Form,
-  FloatingLabel,
-  FormControl,
-  ProgressBar,
-  InputGroup,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { openNavAction } from "../../../redux/actions";
@@ -31,9 +17,6 @@ import {
   updateUserImageAction,
   updateUserCoverAction,
 } from "../../../redux/actions/user";
-import FilesUploadComponent from "../upload";
-import DropdownCard from "./dropdown-card";
-import Keywords from "./keywords.js";
 
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,
@@ -59,15 +42,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const BusinessInfo = ({
-  sideMenuState,
-  setMenuState,
-  userProf,
-  updateUserProf,
-  updateUserImage,
-  updateUserCover,
   profile,
 }) => {
-  const [percentage, setPercentage] = useState(30);
+
 
   return (
     <Card style={{ width: "100%" }} className="mt-4 py-4 pt-4 profileCard bus-info-drop">
@@ -84,7 +61,7 @@ const BusinessInfo = ({
 
             <img
               src="https://res.cloudinary.com/shakalondon/image/upload/v1636933603/Papaya/618db3c8935db55fdd67108c-ShakaLondon.jpg"
-              alt="Business Image"
+              alt="Business Avatar"
               className="px-4 py-3 img-fluid"
               // style={{ width: "3rem", height: "3rem", objectFit: "cover" }}
             />

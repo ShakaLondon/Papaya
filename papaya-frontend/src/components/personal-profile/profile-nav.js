@@ -1,7 +1,6 @@
 import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, Container, Navbar, NavDropdown, Row, Col } from "react-bootstrap";
-import userAuth from "../../services/user/user-auth";
+import { Nav, Container, Navbar, Row, Col } from "react-bootstrap";
 
 export default function ProfileNav(props) {
   return (

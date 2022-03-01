@@ -1,21 +1,13 @@
 import {
-  Button,
   Container,
-  Form,
-  FormControl,
-  FloatingLabel,
   Row,
-  Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Footer from "../footer";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { registerAction } from "../../redux/actions/auth";
-import { connect } from "react-redux";
-import { Redirect, useLocation } from "react-router";
+import { connect, useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 import LoadingStar from "./loading-star";
-import { colorChangeAction } from "../../redux/actions";
+import { colorChangeAction, openNavAction } from "../../redux/actions";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -30,18 +22,13 @@ const mapDispatchToProps = (dispatch) => ({
   //functions
   register: (userObj) => dispatch(registerAction(userObj)),
   colorChange: (action) => dispatch(colorChangeAction(action)),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
 });
 
 const LoadingSpinner = ({
-  login,
-  loading,
-  error,
-  isLoggedIn,
-  userFound,
-  register,
-  userProf,
   colorChange,
-  colorChangeState,
 }) => {
   const locationUrl = useLocation();
 
@@ -53,18 +40,18 @@ const LoadingSpinner = ({
   const businessNamePath = routePath.replace("/review/", "www.");
   console.log(businessNamePath);
 
+  const dispatch = useDispatch();
+
   //   const [updateUser, setUpdateUser] = useState({
   //       email: userProf.email,
   //       name: userProf.name,
   //       surname: userProf.surname,
   //     })
 
-  const [searchRequest, setSearchRequest] = useState(businessNamePath);
-  const [searchResult, setSearchResult] = useState({});
-
   useEffect(() => {
-    colorChange(false);
-  }, []);
+    dispatch(colorChangeAction(false))
+    dispatch(openNavAction(false))
+  }, [dispatch])
 
   // const [colorChange, setColorchange] = useState(false);
 
@@ -74,6 +61,14 @@ const LoadingSpinner = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 30) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -85,60 +80,11 @@ const LoadingSpinner = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 30) {
-      colorChange(true);
-    } else {
-      colorChange(false);
-    }
-  };
 
-  // useEffect(() => {
-  //     const url = `http://localhost:3005/business/${searchRequest}`
-  //     const options = {
-  //         method: 'GET',
-  //         // headers: {
-  //         //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
-  //         // }
-  //     }
-  //     fetch(`${url}`, options)
-  //     .then(res => res.json())
-  //     .then((business) => {
-  //         const busFound = business
-  //         console.log(busFound)
-  //         setSearchResult(busFound[0])
-  //         // console.log(searchResult)
-  //     })
-  //     .catch((error) => {console.log(error)})
-  // }, [])
 
-  // const [userInfo, setUserInfo] = useState({
-  //     email: "",
-  //     password: "",
-  //     name: "",
-  //     surname: "",
-  //     email: "",
-  //     username: "",
-  //     password: "",
-  //     dateOfBirth: "",
-  //   })
 
-  //   const handleSubmit= (e) => {
-  //     e.preventDefault();
-  //     register(userInfo)
-  //   }
-
-  //   const handleChange= (e) => {
-  //     console.log(e.target.value)
-  //     let name = e.target.name
-  //     setUserInfo({ ...userInfo, [name]: e.target.value});
-  //   }
-
-  //   if (isLoggedIn) {
-  //     return <Redirect to='/main' />
-  // } else {
   return (
     // <>
     <Container

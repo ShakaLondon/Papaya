@@ -1,6 +1,5 @@
 import { OPEN_NAV, COLOR_CHANGE } from "./types.js";
 
-import UserAuth from "../../services/user/user-auth.js";
 
 // SIDE MENU
 

@@ -38,7 +38,7 @@ function Star({
   // if remainer is not modular 0
 
   const valueCheck =
-    hoverValue == 0 ? ratingColour : half ? currentRatingHalf : hoverColour;
+    hoverValue === 0 ? ratingColour : half ? currentRatingHalf : hoverColour;
   // const
   const fillColour = filled ? valueCheck : "gray";
 

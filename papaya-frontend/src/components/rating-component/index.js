@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Redirect, useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import Star from "./rating-star.js";
 
 function StarRating({
@@ -18,7 +18,7 @@ function StarRating({
   // let currentRating = props.currentRating
 
   const history = useHistory();
-  const location = useLocation();
+
 
   const changeRating = (newRating, website) => {
     setRating(newRating);
@@ -71,7 +71,7 @@ function StarRating({
     const roundDown = Math.floor(currentRate);
     const remainder = currentRate - roundDown;
 
-    const roundUp = Math.ceil(currentRate);
+    // const roundUp = Math.ceil(currentRate);
 
     const halfValue = remainder < 0.3 ? 0 : remainder < 0.8 ? 0.5 : 1;
 

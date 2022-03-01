@@ -1,15 +1,9 @@
-import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import {
   Card,
   Button,
   Container,
   Row,
   Col,
-  Form,
-  FloatingLabel,
-  FormControl,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { openNavAction } from "../../../redux/actions";
@@ -26,21 +20,21 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const ProfileDelete = ({ sideMenuState, setMenuState, userProf }) => {
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    username: "",
-  });
+  // const [userInfo, setUserInfo] = useState({
+  //   email: "",
+  //   username: "",
+  // });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // login(userInfo.email, userInfo.password)
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // login(userInfo.email, userInfo.password)
+  // };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    let name = e.target.name;
-    setUserInfo({ ...userInfo, [name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   console.log(e.target.value);
+  //   let name = e.target.name;
+  //   setUserInfo({ ...userInfo, [name]: e.target.value });
+  // };
 
   return (
     <Card style={{ width: "100%" }} className="my-4 py-4 profileCard">

@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { loginAction, logoutAction } from "../../redux/actions/auth.js";
 import { colorChangeAction, openNavAction } from "../../redux/actions/index.js";
-import { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
+import { useEffect, useRef } from "react";
+import { connect, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 const mapStateToProps = (state) => ({
@@ -37,8 +37,6 @@ const SideMenu = ({
 }) => {
   const node = useRef();
 
-  const [open, setOpen] = useState(sideMenu);
-
   // const [colorChange, setColorchange] = useState(false);
 
   const locationUrl = useLocation();
@@ -56,12 +54,30 @@ const SideMenu = ({
   // const businessNamePath = routePath.replace("/review/", 'www.')
   console.log(currentPath);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
 
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (currentPath === "main") {
+        if (scroll >= 280) {
+          dispatch(colorChangeAction(true));
+        } else {
+          dispatch(colorChangeAction(false));
+        }
+      } else {
+        if (scroll >= 30) {
+          dispatch(colorChangeAction(true));
+        } else {
+          dispatch(colorChangeAction(false));
+        }
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -70,46 +86,43 @@ const SideMenu = ({
         changeNavbarColor(page.scrollTop);
       });
     });
-
-    // window.addEventListener("scroll", listenScrollEvent);
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch, currentPath]);
 
-  const changeNavbarColor = (scroll) => {
-    if (currentPath === "main") {
-      if (scroll >= 280) {
-        colorChange(true);
-      } else {
-        colorChange(false);
-      }
-    } else {
-      if (scroll >= 30) {
-        colorChange(true);
-      } else {
-        colorChange(false);
-      }
-    }
-  };
 
-  const handleClick = (e) => {
-    if (node.current.contains(e.target)) {
-      // inside click
-      return;
-    } else {
-      // outside click
-      openMenu(false);
-    }
-  };
+
+  // const handleClick = (e) => {
+  //   if (node.current.contains(e.target)) {
+  //     // inside click
+  //     return;
+  //   } else {
+  //     // outside click
+  //     openMenu(false);
+  //   }
+  // };
 
   useEffect(() => {
+
+    const handleClick = (e) => {
+      if (node.current.contains(e.target)) {
+        // inside click
+        return;
+      } else {
+        // outside click
+        dispatch(openNavAction(false));
+        // openMenu(false);
+      }
+    };
+
+
     document.addEventListener("mousedown", handleClick);
 
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container

@@ -1,15 +1,10 @@
 import {
   faGlobe,
-  faStar,
-  faThumbsUp,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Nav,
   Container,
-  Navbar,
-  NavDropdown,
   Row,
   Col,
   Card,

@@ -1,5 +1,3 @@
-import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import {
   Card,
@@ -9,7 +7,6 @@ import {
   Col,
   Form,
   FloatingLabel,
-  FormControl,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { openNavAction } from "../../../redux/actions";

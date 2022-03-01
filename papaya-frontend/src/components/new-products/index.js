@@ -1,12 +1,10 @@
-import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Container } from "react-bootstrap";
 import NewProductSlider from "../sliders/new-products.js";
 
-export default function NewProducts(props) {
+export default function NewProducts({sideMenu}) {
   return (
     <Container fluid className="px-5" id="product-slider-cont">
-      <NewProductSlider />
+      <NewProductSlider sideMenu={sideMenu} />
     </Container>
   );
 }

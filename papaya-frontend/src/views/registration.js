@@ -6,8 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router";
 import LoginContainer from "../components/register/login";
 import SignUpContainer from "../components/register/signup";
-import { useEffect } from "react";
-import Footer from "../components/footer";
+
 
 const mapStateToProps = (state) => ({ sideMenuState: state.appState.sideMenu });
 const mapDispatchToProps = (dispatch) => ({
@@ -43,7 +42,7 @@ const RegisterPage = ({ sideMenuState, setMenuState }) => {
              xs={12}
              sm={12}
                md={sideMenuState ? 9 : 12}
-            className="px-0"
+            // className="px-0"
             id="register-app-main"
             className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
           >

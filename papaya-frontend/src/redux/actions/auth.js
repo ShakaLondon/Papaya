@@ -70,7 +70,7 @@ export const registerAction = (userObject) => {
 
           dispatch({
             type: ERROR,
-            payload: true,
+            payload: message,
           });
 
           dispatch({
@@ -140,7 +140,7 @@ export const loginAction = (email, password) => {
 
           dispatch({
             type: ERROR,
-            payload: true,
+            payload: message,
           });
 
           dispatch({
@@ -218,7 +218,7 @@ export const registerBusinessUserAction = (userObject) => {
 
           dispatch({
             type: ERROR,
-            payload: true,
+            payload: message,
           });
 
           dispatch({
@@ -287,7 +287,7 @@ export const loginBusinessUserAction = (email, password) => {
 
           dispatch({
             type: ERROR,
-            payload: true,
+            payload: message,
           });
 
           dispatch({

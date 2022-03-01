@@ -1,23 +1,16 @@
 import {
-  Button,
   Container,
-  Form,
-  FormControl,
-  FloatingLabel,
   Row,
-  Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../footer";
 import { useEffect, useState } from "react";
 import { registerAction } from "../../redux/actions/auth";
-import { connect } from "react-redux";
-import { Redirect, useLocation } from "react-router";
+import { connect, useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 import ProfileNav from "./profile-nav";
 import ProfileMain from "./profile-main";
 import LoadingSpinner from "../loading/index.js";
-import { colorChangeAction } from "../../redux/actions";
+import { colorChangeAction, openNavAction } from "../../redux/actions";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -26,24 +19,25 @@ const mapStateToProps = (state) => ({
   userFound: state.user.userFound,
   userProf: state.user,
   colorChangeState: state.appState.colorChange,
+  sideMenuState: state.appState.sideMenu,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   //functions
   register: (userObj) => dispatch(registerAction(userObj)),
   colorChange: (action) => dispatch(colorChangeAction(action)),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
 });
 
 const BusinessContainer = ({
-  login,
   loading,
-  error,
   isLoggedIn,
-  userFound,
-  register,
   userProf,
   colorChange,
   colorChangeState,
+  setMenuState
 }) => {
   const locationUrl = useLocation();
 
@@ -55,21 +49,25 @@ const BusinessContainer = ({
   const businessNamePath = routePath.replace("/review/", "www.");
   console.log(businessNamePath);
 
+  const dispatch = useDispatch();
+
   //   const [updateUser, setUpdateUser] = useState({
   //       email: userProf.email,
   //       name: userProf.name,
   //       surname: userProf.surname,
   //     })
 
-  const [searchRequest, setSearchRequest] = useState(businessNamePath);
+  const [searchRequest] = useState(businessNamePath);
   const [searchResult, setSearchResult] = useState({});
   const [dataLoading, setDataLoading] = useState(true);
   const [companyReviews, setCompanyReviews] = useState([]);
   const [reviews, setReviews] = useState({});
 
+
   useEffect(() => {
-    colorChange(false);
-  }, []);
+    dispatch(colorChangeAction(false))
+    dispatch(openNavAction(false))
+  }, [dispatch])
 
   // const [colorChange, setColorchange] = useState(false);
 
@@ -79,6 +77,14 @@ const BusinessContainer = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 30) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -90,15 +96,9 @@ const BusinessContainer = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 30) {
-      colorChange(true);
-    } else {
-      colorChange(false);
-    }
-  };
+
 
   useEffect(() => {
     const url = `http://localhost:3005/business/${searchRequest}`;
@@ -117,11 +117,11 @@ const BusinessContainer = ({
         // console.log(busFound.reviewIDs)
         // const reviews = busFound.reviewIDs
         setSearchResult(busFound);
-        console.log(searchResult);
+        // console.log(searchResult);
 
         setCompanyReviews(busFound.reviewIDs);
 
-        setDataLoading(false);
+        // setDataLoading(false);
       })
       // .then(() => { setCompanyReviews([searchResult.reviewIDs])
 
@@ -139,6 +139,7 @@ const BusinessContainer = ({
         // console.log(busFound.reviewIDs)
         // const reviews = busFound.reviewIDs
         setReviews(busResult);
+        setDataLoading(false);
       })
       // .then(() => { setCompanyReviews([searchResult.reviewIDs])
 
@@ -147,42 +148,8 @@ const BusinessContainer = ({
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [searchRequest]);
 
-  // useEffect(async () => {
-  // const reviewsList = companyReviews
-
-  // console.log(reviewsList)
-
-  // setReviews({...reviews, reviewList: companyReviews})
-
-  // companyReviews?.forEach(review => {
-  //     setReviews({ ...reviews, total: (reviews.total + review.rating)})
-  //     console.log({...reviews})
-
-  //     review.rating === 5 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, reviews: [...reviews.ratingNo.five.reviews, review] } }}) :
-  //     review.rating === 4 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, reviews: [...reviews.ratingNo.four.reviews, review] } }}) :
-  //     review.rating === 3 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, reviews: [...reviews.ratingNo.three.reviews, review] } }}) :
-  //     review.rating === 2 ? setReviews({...reviews, ratingNo: { ...reviews.ratingNo, two: {...reviews.ratingNo.two, reviews: [...reviews.ratingNo.two.reviews, review] } }}) :
-  //     setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, reviews: [...reviews.ratingNo.one.reviews, review] } }})
-
-  // });
-
-  // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, five: {...reviews.ratingNo.five, percentage: (reviews.ratingNo.five.reviews?.length/reviews.reviewsList?.length)*100 } }})
-  // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
-  // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, three: {...reviews.ratingNo.three, percentage: (reviews.ratingNo.three.reviews?.length/reviews.reviewsList?.length)*100 } }})
-  // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, four: {...reviews.ratingNo.four, percentage: (reviews.ratingNo.four.reviews?.length/reviews.reviewsList?.length)*100 } }})
-  // setReviews({...reviews, ratingNo: { ...reviews.ratingNo, one: {...reviews.ratingNo.one, percentage: (reviews.ratingNo.one.reviews?.length/reviews.reviewsList?.length)*100 } }})
-
-  // setReviews({...reviews, average: (reviews.total/reviews.reviewsList?.length)*100})
-  // console.log(reviews)
-  //   if (companyReviews.length > 0) {
-  //     await getAverages({...companyReviews})
-  //     console.log({...companyReviews})
-
-  //     setReviews(reviews => ({...reviews, average: (reviews.total/reviews.reviewList.length)}))
-  //   }
-  // }, [dataLoading, companyReviews]);
 
   return (
     <>
@@ -202,6 +169,7 @@ const BusinessContainer = ({
                 profile={searchResult}
                 loading={loading}
                 score={reviews}
+                reviews={companyReviews}
               />
             </Row>
             <Row

@@ -1,7 +1,5 @@
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import React, { Component, useState } from "react";
+import { Card, Container, Row, Col } from "react-bootstrap";
+import React, { Component, } from "react";
 
 export default class ReviewCardMain extends Component {
   // export default function ReviewCardMain ({review}) {

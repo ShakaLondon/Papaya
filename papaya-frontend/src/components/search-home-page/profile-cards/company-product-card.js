@@ -1,6 +1,5 @@
-import { faCircle, faDotCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router";
 import StarRating from "../../rating-component/index.js";

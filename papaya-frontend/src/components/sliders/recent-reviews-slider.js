@@ -6,7 +6,8 @@ export default class RecentSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: this.props.reviews,
+      sideMenuState: this.props.sideMenu,
+      reviews: this.props.reviews
     };
   }
 
@@ -20,6 +21,12 @@ export default class RecentSlider extends Component {
   //       });
   //     });
   // }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.sideMenu !== prevProps.sideMenu){ //<---- see here
+       this.setState({ sideMenuState: this.props.sideMenu});//<---- see here
+    }
+ }
 
   render() {
     // const { reviews } = this.state;
@@ -61,7 +68,9 @@ export default class RecentSlider extends Component {
       ],
     };
     return (
-      <div id="review-slider-comp" className="py-5">
+      <div id="review-slider-comp" className="py-5" 
+      style={{ padding: `${this.state.sideMenuState? "0rem 0rem 0rem" : "0rem 8rem 0rem"}`}}
+      >
         <h4 className="px-3 mb-3">Recent Reviews</h4>
         <Slider {...settings}>
           {this.state.reviews?.length > 0 &&

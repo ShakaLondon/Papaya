@@ -3,11 +3,8 @@ import SideMenu from "../components/side-menu";
 import { connect } from "react-redux";
 import { openNavAction } from "../redux/actions";
 import { Container, Row, Col } from "react-bootstrap";
-import { Redirect, useLocation } from "react-router";
 import PublicProfileContainer from "../components/public-profile/index";
 
-import { useEffect } from "react";
-import Footer from "../components/footer";
 
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,

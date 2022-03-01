@@ -1,20 +1,12 @@
 import {
-  Button,
   Container,
-  Form,
-  FormControl,
-  FloatingLabel,
   Row,
-  Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../footer";
 import { useEffect, useState } from "react";
 import { registerAction } from "../../redux/actions/auth";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Redirect, useLocation } from "react-router";
-import AddReviewContainer from "./review-form";
 import ReviewNav from "./review-nav";
 import ReviewMain from "./review-main";
 import { colorChangeAction } from "../../redux/actions";
@@ -57,7 +49,9 @@ const ReviewContainer = ({
   const businessNamePath = businessNamePa.replace("/new", "");
   console.log(businessNamePath);
 
-  const [searchRequest, setSearchRequest] = useState(businessNamePath);
+  const dispatch = useDispatch();
+
+  const [searchRequest] = useState(businessNamePath);
   const [searchResult, setSearchResult] = useState({});
   const [dataLoading, setDataLoading] = useState(true);
 
@@ -70,8 +64,10 @@ const ReviewContainer = ({
   };
 
   useEffect(() => {
-    colorChange(false);
-  }, []);
+    dispatch(colorChangeAction(false))
+  }, [dispatch])
+
+
 
   useEffect(() => {
     const url = `http://localhost:3005/business/${searchRequest}`;
@@ -93,7 +89,9 @@ const ReviewContainer = ({
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [searchRequest]);
+
+
   if (reDirect) {
     return <Redirect to="/review/thankyou" />;
   } else {

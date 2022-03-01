@@ -4,8 +4,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  LOADING,
-  ERROR,
   REFRESH_TOKEN,
   UPDATE_USER,
   UPDATE_AVATAR,
@@ -13,9 +11,9 @@ import {
 } from "../actions/types.js";
 import initialState from "../initialState";
 
-const user = JSON.parse(localStorage.getItem("user"));
+// const user = JSON.parse(localStorage.getItem("user"));
 
-const isLoggedIn = user ? true : false;
+// const isLoggedIn = user ? true : false;
 
 const authReducer = (state = initialState.user, action) => {
   switch (action.type) {

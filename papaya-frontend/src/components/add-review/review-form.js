@@ -1,19 +1,10 @@
 import {
-  Button,
   Container,
-  Form,
-  FormControl,
-  FloatingLabel,
   Row,
   Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Footer from "../footer";
 import { connect } from "react-redux";
 import { loginAction, logoutAction } from "../../redux/actions/auth.js";
-import { useState } from "react";
-import { Redirect } from "react-router-dom";
 import ReviewCard from "./review-card";
 
 const mapStateToProps = (state) => ({
@@ -31,35 +22,25 @@ const mapDispatchToProps = (dispatch) => ({
 
 const AddReviewContainer = ({
   login,
-  loading,
-  error,
-  isLoggedIn,
-  userFound,
-  logout,
   reDirect,
 }) => {
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    password: "",
-  });
+  // const [userInfo, setUserInfo] = useState({
+  //   email: "",
+  //   password: "",
+  // });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(userInfo.email, userInfo.password);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   login(userInfo.email, userInfo.password);
+  // };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    let name = e.target.name;
-    setUserInfo({ ...userInfo, [name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   console.log(e.target.value);
+  //   let name = e.target.name;
+  //   setUserInfo({ ...userInfo, [name]: e.target.value });
+  // };
 
-  // if (isLoggedIn) {
-  //     return <Redirect to='/main' />
-  // } else if ( !isLoggedIn && userFound === null ) {
-  //     logout()
-  //     return <Redirect to='/register' />
-  // } else {
+
   return (
     <>
       <Container

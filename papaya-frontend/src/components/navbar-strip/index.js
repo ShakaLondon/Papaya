@@ -1,14 +1,12 @@
-import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
+import { Navbar, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faSearch,
-  faTimes,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
-import { useRef, useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 
 const mapStateToProps = (state) => ({
@@ -47,12 +45,30 @@ const NavBar = ({
 
   console.log(currentPath);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
 
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (currentPath === "main") {
+        if (scroll >= 280) {
+          dispatch(colorChangeAction(true));
+        } else {
+          dispatch(colorChangeAction(false));
+        }
+      } else {
+        if (scroll >= 30) {
+          dispatch(colorChangeAction(true));
+        } else {
+          dispatch(colorChangeAction(false));
+        }
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -61,30 +77,13 @@ const NavBar = ({
         changeNavbarColor(page.scrollTop);
       });
     });
-
-    // window.addEventListener("scroll", listenScrollEvent);
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch, currentPath]);
 
 
 
-  const changeNavbarColor = (scroll) => {
-    if (currentPath === "main") {
-      if (scroll >= 280) {
-        colorChange(true);
-      } else {
-        colorChange(false);
-      }
-    } else {
-      if (scroll >= 30) {
-        colorChange(true);
-      } else {
-        colorChange(false);
-      }
-    }
-  };
 
   return (
     <Navbar
@@ -117,9 +116,9 @@ const NavBar = ({
           href="/"
           className="d-inline-flex align-items-center mx-auto"
         >
-          {routePath != "/main" &&
-            routePath != "/login" &&
-            routePath != "/register" &&
+          {routePath !== "/main" &&
+            routePath !== "/login" &&
+            routePath !== "/register" &&
             !colorChangeState && (
               <h1 className="brand-heading-h1 mb-0">Papaya.</h1>
             )}

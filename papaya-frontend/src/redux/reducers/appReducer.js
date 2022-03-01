@@ -6,7 +6,7 @@ const appReducer = (state = initialState.appState, action) => {
     case OPEN_NAV:
       return {
         ...state,
-        sideMenu: !state.sideMenu,
+        sideMenu: action.payload,
       };
     case COLOR_CHANGE:
       return {

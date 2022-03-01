@@ -1,12 +1,10 @@
-import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Container } from "react-bootstrap";
 import CategorySlider from "../sliders/category-slider.js";
 
-export default function Categories(props) {
+export default function Categories({sideMenu, categories}) {
   return (
     <Container fluid className="px-5" id="category-slider-cont">
-      <CategorySlider categories={props.categories} />
+      <CategorySlider categories={categories} sideMenu={sideMenu}/>
     </Container>
   );
 }

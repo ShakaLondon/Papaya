@@ -1,24 +1,17 @@
 import {
   faCircle,
-  faDotCircle,
   faGlobe,
-  faStar,
-  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Nav,
   Container,
   Navbar,
-  NavDropdown,
-  Row,
-  Col,
   Button,
 } from "react-bootstrap";
-import userAuth from "../../services/user/user-auth";
 import StarRating from "../rating-component/index.js";
 import WebsiteContainer from "./profile-cards/website-card.js";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
 import {
   updateUserAction,
@@ -55,19 +48,16 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const BusinessNav = ({
-  sideMenuState,
-  setMenuState,
-  userProf,
-  updateUserProf,
-  updateUserImage,
-  updateUserCover,
   profile,
   score,
   loading,
   colorChange,
   colorChangeState,
 }) => {
+
   const history = useHistory();
+
+  const dispatch = useDispatch();
   // const [colorChange, setColorchange] = useState(false);
   const [reviewScore, setReviewScore] = useState({
     businessScore: score?.avgTotal[0].average,
@@ -93,7 +83,7 @@ const BusinessNav = ({
       percentage: 0,
     },
   });
-  const [currentRating, setCurrentRating] = useState(0);
+
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -101,6 +91,14 @@ const BusinessNav = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 30) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -112,11 +110,11 @@ const BusinessNav = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
-    score.reviewNo?.map((reviewNum) => {
-      const number = reviewNum;
+    score.reviewNo?.forEach((reviewNum) => {
+
       const valueArray = ["one", "two", "three", "four", "five"];
       const valueText = valueArray[reviewNum._id - 1];
       console.log(valueText);
@@ -129,18 +127,12 @@ const BusinessNav = ({
         },
       });
     });
-  }, [score]);
+  }, [score, reviewScore]);
   //   return () => {
   // window.removeEventListener("scroll", listenScrollEvent);
   // };
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 30) {
-      colorChange(true);
-    } else {
-      colorChange(false);
-    }
-  };
+
 
   // console.log(companyReviews)
 

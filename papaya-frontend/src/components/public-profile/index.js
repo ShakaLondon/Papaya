@@ -1,23 +1,16 @@
 import {
-  Button,
   Container,
-  Form,
-  FormControl,
-  FloatingLabel,
   Row,
-  Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../footer";
 import { useEffect, useState } from "react";
 import { registerAction } from "../../redux/actions/auth";
-import { connect } from "react-redux";
-import { Redirect, useLocation } from "react-router";
+import { connect, useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 import PublicProfileNav from "./profile-nav";
 import PublicProfileMain from "./profile-main";
 import LoadingSpinner from "../loading/index";
-import { colorChangeAction } from "../../redux/actions";
+import { colorChangeAction, openNavAction } from "../../redux/actions";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -32,6 +25,9 @@ const mapDispatchToProps = (dispatch) => ({
   //functions
   register: (userObj) => dispatch(registerAction(userObj)),
   colorChange: (action) => dispatch(colorChangeAction(action)),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
 });
 
 const PublicProfileContainer = ({
@@ -43,7 +39,8 @@ const PublicProfileContainer = ({
   register,
   userProf,
   colorChange,
-  colorChangeState
+  colorChangeState,
+  setMenuState
 }) => {
   const locationUrl = useLocation();
 
@@ -55,20 +52,23 @@ const PublicProfileContainer = ({
   const userNamePath = routePath.replace("/profile/", "");
   console.log(userNamePath);
 
-  const [updateUser, setUpdateUser] = useState({
-    email: userProf.email,
-    name: userProf.name,
-    surname: userProf.surname,
-  });
+  const dispatch = useDispatch();
 
-  const [searchRequest, setSearchRequest] = useState(userNamePath);
+  // const [updateUser, setUpdateUser] = useState({
+  //   email: userProf.email,
+  //   name: userProf.name,
+  //   surname: userProf.surname,
+  // });
+
+  const [searchRequest] = useState(userNamePath);
   const [searchResult, setSearchResult] = useState({});
   const [dataLoading, setDataLoading] = useState(true);
 
 
   useEffect(() => {
-    colorChange(false);
-  }, []);
+    dispatch(colorChangeAction(false))
+    dispatch(openNavAction(false))
+  }, [dispatch])
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -76,6 +76,14 @@ const PublicProfileContainer = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 30) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -87,15 +95,9 @@ const PublicProfileContainer = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 30) {
-      colorChange(true);
-    } else {
-      colorChange(false);
-    }
-  };
+
 
   useEffect(() => {
     const url = `http://localhost:3005/users/profile/${searchRequest}`;
@@ -117,7 +119,7 @@ const PublicProfileContainer = ({
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [searchRequest]);
 
   //   if (isLoggedIn) {
   //     return <Redirect to='/main' />

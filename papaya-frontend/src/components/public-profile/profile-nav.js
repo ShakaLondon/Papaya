@@ -1,8 +1,8 @@
 import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
-import { Nav, Container, Navbar, NavDropdown, Row, Col } from "react-bootstrap";
-import { connect } from "react-redux";
+import { Nav, Container, Navbar, Row, Col } from "react-bootstrap";
+import { connect, useDispatch } from "react-redux";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
 import {
   updateUserAction,
@@ -49,12 +49,23 @@ const PublicProfileNav = ({
   colorChange,
   colorChangeState,
 }) => {
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
 
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 30) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -66,15 +77,7 @@ const PublicProfileNav = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
-
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 30) {
-      colorChange(true);
-    } else {
-      colorChange(false);
-    }
-  };
+  }, [dispatch]);
 
   return (
     <Navbar 

@@ -1,4 +1,3 @@
-import axios from "axios";
 import authHeader from "../header.js";
 import api from "../api.js";
 
@@ -44,7 +43,7 @@ const UserReviewforBusiness = (businessID) => {
   });
 };
 
-export default {
+const userData = {
   getUserReviews,
   editUserReview,
   deleteUserReview,
@@ -54,3 +53,5 @@ export default {
   editCover,
   addReview,
 };
+
+export default userData

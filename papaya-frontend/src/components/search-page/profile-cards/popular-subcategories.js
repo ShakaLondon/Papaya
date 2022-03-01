@@ -1,21 +1,6 @@
-import {
-  faSearch,
-  faStar,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+
 import {
   Card,
-  Button,
-  Container,
-  Row,
-  Col,
-  Form,
-  FloatingLabel,
-  FormControl,
-  ProgressBar,
-  InputGroup,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { openNavAction } from "../../../redux/actions";
@@ -24,7 +9,6 @@ import {
   updateUserImageAction,
   updateUserCoverAction,
 } from "../../../redux/actions/user";
-import FilesUploadComponent from "../upload";
 import CatKeywords from "./keywords.js";
 
 const mapStateToProps = (state) => ({

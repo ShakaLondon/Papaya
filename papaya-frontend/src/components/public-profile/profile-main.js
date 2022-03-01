@@ -1,6 +1,5 @@
-import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, Container, Navbar, NavDropdown, Row, Col } from "react-bootstrap";
+
+import { Container, Row, Col } from "react-bootstrap";
 import PublicProfile from "./profile-cards/public-profile";
 
 export default function ProfileMain(props) {

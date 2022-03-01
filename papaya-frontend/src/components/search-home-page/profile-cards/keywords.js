@@ -1,4 +1,4 @@
-import { Card, Container } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useHistory } from "react-router";
 
 function CatKeywords({ keywords }) {

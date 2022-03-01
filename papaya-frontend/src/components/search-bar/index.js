@@ -9,7 +9,7 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBarcode, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { openNavAction } from "../../redux/actions";
 
@@ -42,6 +42,7 @@ const SearchBar = ({ sideMenuState, setMenuState }) => {
                   <img
                     src="https://img.icons8.com/pastel-glyph/64/000000/barcode-scanner--v2.png"
                     id="searchBarcode"
+                    alt="Barcode Icon"
                   />
                 </Button>
                 <Button id="button-addon2" className="px-4 searchBarButton">

@@ -1,22 +1,15 @@
 import {
-  Button,
   Container,
-  Form,
-  FormControl,
-  FloatingLabel,
   Row,
-  Col,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../footer";
 import { useEffect, useState } from "react";
 import { registerAction } from "../../redux/actions/auth";
-import { connect } from "react-redux";
-import { Redirect, useLocation } from "react-router";
+import { connect, useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 import CategoryMainNav from "./search-nav";
 import LoadingSpinner from "../loading/index.js";
-import { colorChangeAction } from "../../redux/actions";
+import { colorChangeAction, openNavAction } from "../../redux/actions";
 import CategoryMain from "./search-main";
 
 const mapStateToProps = (state) => ({
@@ -32,6 +25,9 @@ const mapDispatchToProps = (dispatch) => ({
   //functions
   register: (userObj) => dispatch(registerAction(userObj)),
   colorChange: (action) => dispatch(colorChangeAction(action)),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
 });
 
 const AllCategories = ({
@@ -44,6 +40,7 @@ const AllCategories = ({
   userProf,
   colorChange,
   colorChangeState,
+  setMenuState
 }) => {
   const locationUrl = useLocation();
 
@@ -55,6 +52,8 @@ const AllCategories = ({
   const catNamePath = routePath.replace("/search/category/", "");
   console.log(catNamePath);
 
+  const dispatch = useDispatch();
+
   //   const [updateUser, setUpdateUser] = useState({
   //       email: userProf.email,
   //       name: userProf.name,
@@ -64,27 +63,13 @@ const AllCategories = ({
   // const [searchRequest, setSearchRequest] = useState(catNamePath);
   const [allCategories, setAllCategories] = useState();
   const [dataLoading, setDataLoading] = useState(true);
-  // const [companyReviews, setCompanyReviews] = useState([])
-  //   const [reviews, setReviews] = useState({});
 
-  // const [colorChange, setColorchange] = useState(false);
-
-  // useEffect(() => {
-  //  const routePath = locationUrl.pathname
-  //   console.log(routePath)
-
-  //   const categoryNamePath = routePath.replace("/search/category/", '')
-  //   console.log(categoryNamePath)
-
-  //   // if(categoryNamePath) {
-  //     setSearchRequest(() => categoryNamePath)
-  //   // }
-
-  // });
 
   useEffect(() => {
-    colorChange(true);
-  }, []);
+    dispatch(colorChangeAction(true))
+    dispatch(openNavAction(false))
+  }, [dispatch])
+
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -92,6 +77,15 @@ const AllCategories = ({
     console.log(appPages);
 
     const elemArray = Array.from(appPages);
+
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 0) {
+        dispatch(colorChangeAction(true));
+      } 
+      // else {
+      //   dispatch(colorChangeAction(false));
+      // }
+    };
 
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
@@ -103,16 +97,9 @@ const AllCategories = ({
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
-  const changeNavbarColor = (scroll) => {
-    if (scroll >= 0) {
-      colorChange(true);
-    }
-    //  else{
-    //   colorChange(false);
-    //  }
-  };
+
 
   //   const getLocation = (scroll) =>{
 

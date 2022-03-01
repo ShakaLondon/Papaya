@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FloatingLabel, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 export default class FilesUploadComponent extends Component {
   // constructor() {

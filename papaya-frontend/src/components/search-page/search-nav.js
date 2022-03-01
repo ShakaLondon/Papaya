@@ -1,30 +1,20 @@
 import {
   faChevronLeft,
-  faCircle,
-  faDotCircle,
   faInfoCircle,
-  faStar,
-  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Nav,
   Container,
   Navbar,
-  NavDropdown,
-  Row,
-  Col,
-  Button,
 } from "react-bootstrap";
-import userAuth from "../../services/user/user-auth";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
 import {
   updateUserAction,
   updateUserImageAction,
   updateUserCoverAction,
 } from "../../redux/actions/user";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router";
 
 const mapStateToProps = (state) => ({
@@ -67,6 +57,8 @@ const CategorySearchNav = ({
   colorChangeState,
 }) => {
   const history = useHistory();
+
+  const dispatch = useDispatch();
   // const [colorChange, setColorchange] = useState(false);
   // const [reviewScore, setReviewScore] = useState({
   //   businessScore: score.avgTotal[0]?.average,
@@ -101,17 +93,25 @@ const CategorySearchNav = ({
 
     const elemArray = Array.from(appPages);
 
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 0) {
+        dispatch(colorChangeAction(true));
+      } else {
+        dispatch(colorChangeAction(false));
+      }
+    };
+
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
         console.log(page.scrollTop);
 
-        colorChange(true);
+        changeNavbarColor(page.scrollTop);
       });
     });
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
   // useEffect(() => {
 
@@ -142,10 +142,7 @@ const CategorySearchNav = ({
 
   // console.log(companyReviews)
 
-  const selected = (value) => {
-    // console.log(value + "selected")
-    // setWriteReview({ ...writeReview, stars: value})
-  };
+ 
 
   // console.log(category, "category")
   return (
@@ -174,7 +171,7 @@ const CategorySearchNav = ({
                   icon={faChevronLeft}
                   className="fa-sm text-white"
                 />
-                {category?.categoryID.categoryLevel == 1 ? (
+                {category?.categoryID.categoryLevel === 1 ? (
                   <h6
                     onClick={() => history.push(`/search/category/All`)}
                     className="text-white mb-0 mx-2"

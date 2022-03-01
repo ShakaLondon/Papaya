@@ -1,35 +1,15 @@
-import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+
 import {
   Card,
   Button,
   Container,
   Row,
   Col,
-  Form,
-  FloatingLabel,
-  FormControl,
 } from "react-bootstrap";
-import { connect } from "react-redux";
-import { useLocation } from "react-router";
-import { openNavAction } from "../../../redux/actions";
-import {
-  updateUserAction,
-  updateUserImageAction,
-  updateUserCoverAction,
-} from "../../../redux/actions/user";
+
 
 export default function PublicProfile(props) {
-  // let locationUrl = useLocation();
 
-  //   console.log(locationUrl)
-
-  //   const params = new URLSearchParams(locationUrl.search);
-  //   const searchReq = params.get('username');
-  //   console.log(searchReq)
-
-  const [userProf, setUserProf] = useState(props.profile);
 
   return (
     <Card style={{ width: "100%" }} className="my-4 py-4 profileCard">

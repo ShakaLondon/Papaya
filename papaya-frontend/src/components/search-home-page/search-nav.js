@@ -1,35 +1,24 @@
 import {
-  faChevronLeft,
-  faCircle,
-  faDotCircle,
-  faInfoCircle,
-  faStar,
-  faThumbsUp,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Nav,
   Container,
   Navbar,
-  NavDropdown,
-  Row,
-  Col,
   Button,
   Form,
   FormControl,
   InputGroup,
 } from "react-bootstrap";
-import userAuth from "../../services/user/user-auth";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
 import {
   updateUserAction,
   updateUserImageAction,
   updateUserCoverAction,
 } from "../../redux/actions/user";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useEffect } from "react";
+
 
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,
@@ -70,7 +59,7 @@ const CategoryMainNav = ({
   colorChange,
   colorChangeState,
 }) => {
-  const history = useHistory();
+  
   // const [colorChange, setColorchange] = useState(false);
   // const [reviewScore, setReviewScore] = useState({
   //   businessScore: score.avgTotal[0]?.average,
@@ -98,6 +87,8 @@ const CategoryMainNav = ({
   // })
   // const [currentRating, setCurrentRating] = useState(0)
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
 
@@ -105,17 +96,26 @@ const CategoryMainNav = ({
 
     const elemArray = Array.from(appPages);
 
+    const changeNavbarColor = (scroll) => {
+      if (scroll >= 0) {
+        dispatch(colorChangeAction(true));
+      } 
+      // else {
+      //   dispatch(colorChangeAction(false));
+      // }
+    };
+
     elemArray.forEach((page) => {
       page.addEventListener("scroll", () => {
         console.log(page.scrollTop);
 
-        colorChange(true);
+        changeNavbarColor(page.scrollTop);
       });
     });
     return () => {
       // window.removeEventListener("scroll", listenScrollEvent);
     };
-  }, []);
+  }, [dispatch]);
 
   // useEffect(() => {
 
@@ -146,10 +146,7 @@ const CategoryMainNav = ({
 
   // console.log(companyReviews)
 
-  const selected = (value) => {
-    // console.log(value + "selected")
-    // setWriteReview({ ...writeReview, stars: value})
-  };
+
 
   // console.log(category, "category")
   return (
@@ -185,12 +182,12 @@ const CategoryMainNav = ({
                   className="container-fluid d-flex my-4 onTop"
                   id="category-search-form"
                 >
-                  <InputGroup className="">
+                  <InputGroup className="search-input-cat">
                     <Button
                       id="button-addon2"
                       className="px-3 categorySearchButton"
                     >
-                      <FontAwesomeIcon icon={faSearch} />
+                      <FontAwesomeIcon icon={faSearch} className="search-input-cat"/>
                     </Button>
                     <FormControl
                       placeholder="Search"
