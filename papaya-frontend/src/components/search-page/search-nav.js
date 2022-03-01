@@ -55,10 +55,13 @@ const CategorySearchNav = ({
   loading,
   colorChange,
   colorChangeState,
+  categoryData
 }) => {
   const history = useHistory();
 
   const dispatch = useDispatch();
+
+  // const [currentCategory, setCurrentCategory] = useState(category?.name);
   // const [colorChange, setColorchange] = useState(false);
   // const [reviewScore, setReviewScore] = useState({
   //   businessScore: score.avgTotal[0]?.average,
@@ -85,6 +88,19 @@ const CategorySearchNav = ({
   //   }
   // })
   // const [currentRating, setCurrentRating] = useState(0)
+
+  // useEffect(() => {
+  //   if (currentCategory !== null && currentCategory !== category.name) {
+  //     let path = `/search/category/${currentCategory}`;
+  //     history.push(path);
+  //   }
+
+  //   // return () => {
+  //   // window.removeEventListener("scroll", listenScrollEvent);
+  //   //   };
+  // }, [currentCategory, history, category.name]);
+
+
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -149,8 +165,8 @@ const CategorySearchNav = ({
     <Navbar
       bg="light"
       expand="lg"
-      className="px-0 py-0"
-      id="bus-profile-header"
+      className="px-0 py-0 bus-profile-header"
+      // id="bus-profile-header"
       fixed="top"
     >
       {!loading && (
@@ -161,8 +177,8 @@ const CategorySearchNav = ({
         >
           <Container
             fluid
-            className="d-flex fullopacity"
-            id="profile-container"
+            className="d-flex fullopacity padding-top-container container-padding"
+            id="search-profile-container"
             style={{ paddingTop: `${colorChangeState ? "110px" : "150px"}` }}
           >
             <Navbar.Brand>
@@ -182,9 +198,8 @@ const CategorySearchNav = ({
                   <h6
                     className="text-white mb-0 mx-2"
                     onClick={() =>
-                      history.push(
-                        `/search/category/${category.categoryID.parentCategory[0]?.name}`
-                      )
+                      categoryData((state) => category.categoryID.parentCategory[0]?.name)
+                      
                     }
                   >
                     {category.categoryID.parentCategory[0]?.name}

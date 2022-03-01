@@ -83,7 +83,7 @@ const PublicProfileNav = ({
     <Navbar 
     bg="light" 
     // expand="lg" 
-    className="py-0 px-0" 
+    className="py-0 px-0 bus-profile-header" 
     id="profile-header"
     fixed="top">
             {!loading && (
@@ -94,8 +94,8 @@ const PublicProfileNav = ({
         >
         <Container
           fluid
-          className="d-flex fullopacity align-items-center"
-          id="profile-container"
+          className="d-flex fullopacity align-items-center padding-top-container container-padding"
+          id="public-profile-container"
           style={{ paddingTop: `${colorChangeState ? "110px" : "140px"}` }}
         >
           <Navbar.Brand>

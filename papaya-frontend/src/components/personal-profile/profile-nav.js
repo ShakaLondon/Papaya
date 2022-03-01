@@ -4,9 +4,9 @@ import { Nav, Container, Navbar, Row, Col } from "react-bootstrap";
 
 export default function ProfileNav(props) {
   return (
-    <Navbar bg="light" expand="lg" className="px-0 py-0" id="profile-header">
+    <Navbar bg="light" expand="lg" className="px-0 py-0 bus-profile-header" id="profile-header">
       <div className="overlay py-5 container-fluid">
-        <Container fluid className="d-flex fullopacity" id="profile-container">
+        <Container fluid className="d-flex fullopacity padding-top-container container-padding" id="profile-nav-container">
           <Navbar.Brand>
             <img
               src={props.user.avatar.avatar}

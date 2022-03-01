@@ -60,7 +60,7 @@ const SearchContainer = ({
   //       surname: userProf.surname,
   //     })
 
-  const [searchRequest,] = useState(catNamePath);
+  const [searchRequest, setSearchRequest] = useState(catNamePath);
   const [searchResult, setSearchResult] = useState();
   const [dataLoading, setDataLoading] = useState(true);
   // const [companyReviews, setCompanyReviews] = useState([])
@@ -69,21 +69,26 @@ const SearchContainer = ({
   // const [colorChange, setColorchange] = useState(false);
 
   useEffect(() => {
-    dispatch(colorChangeAction(false))
+    dispatch(colorChangeAction(true))
     dispatch(openNavAction(false))
-  }, [dispatch])
+  })
 
-  // useEffect(() => {
-  //   const routePath = locationUrl.pathname;
-  //   console.log(routePath);
+  const categoryData = (index) => { // the callback. Use a better name
+    console.log(index);
+    setSearchRequest(index);
+  };
 
-  //   const categoryNamePath = routePath.replace("/search/category/", "");
-  //   console.log(categoryNamePath);
+  useEffect(() => {
+    const routePath = locationUrl.pathname;
+    console.log(routePath);
 
-  //   // if(categoryNamePath) {
-  //   setSearchRequest(() => categoryNamePath);
-  //   // }
-  // });
+    const categoryNamePath = routePath.replace("/search/category/", "");
+    console.log(categoryNamePath);
+
+    // if(categoryNamePath) {
+    setSearchRequest(() => categoryNamePath);
+    // }
+  }, [locationUrl.pathname]);
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -172,7 +177,7 @@ const SearchContainer = ({
     <>
       <Container
         fluid
-        id="business-app-component"
+        id="search-app-component"
         className="mx-0 d-flex justify-content-center px-0"
       >
         {dataLoading ? (
@@ -182,18 +187,19 @@ const SearchContainer = ({
         ) : (
           <Container fluid id="business-form" className="flex-row mx-0 px-0">
             <Row className="mx-0 px-0">
-              <CategorySearchNav category={searchResult} loading={loading} />
+              <CategorySearchNav category={searchResult} loading={loading} categoryData={categoryData}/>
             </Row>
             <Row
               className="mx-0 px-0"
-              id="category-main-cont"
-              style={{ paddingTop: "240px" }}
+              id="category-search-main-cont"
+              style={{ paddingTop: "220px" }}
             >
               <CategorySearchMain
                 category={searchResult}
                 loading={loading}
                 user={userProf}
                 isLoggedIn={isLoggedIn}
+                categoryData={categoryData}
               />
             </Row>
           </Container>

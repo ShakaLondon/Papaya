@@ -87,7 +87,7 @@ const LoginContainer = ({
                   src="https://res.cloudinary.com/shakalondon/image/upload/v1636974558/Papaya/papaya-round_y4c6uq.png"
                   alt="Papaya Logo"
                   id="papaya-logo-login"
-                  className="d-flex align-self-center mx-2"
+                  className="d-flex align-self-center mx-2 logo-size"
                 />
                 <h1 className="brand-heading-h1 mb-0 mx-2">Papaya.</h1>
               </Col>

@@ -36,7 +36,7 @@ const RegisterPage = ({ sideMenuState, setMenuState }) => {
   return (
     <Container fluid id="register-app" className="mx-0">
       <NavBar colour="rgba(255, 255, 255, 0)" />
-      <Container fluid id="register-app-body" className="px-0 mx-0">
+      <Container fluid id="register-app-body" className="px-0 mx-0 full-view-height">
         <Row className="full-height">
           <Col
              xs={12}

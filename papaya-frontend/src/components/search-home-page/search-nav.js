@@ -153,22 +153,21 @@ const CategoryMainNav = ({
     <Navbar
       bg="light"
       expand="lg"
-      className="px-0 py-0"
-      id="bus-profile-header"
+      className="px-0 py-0 bus-profile-header"
+      // id="bus-profile-header"
     >
       {!loading && (
         <div
-          className={`overlay container-fluid ${
-            colorChangeState ? "py-1" : "py-4"
+          className={`overlay category-search-container container-fluid ${
+            colorChangeState ? "py-1 px-0" : "py-4 px-0"
           }`}
         >
           <Container
             fluid
-            className="d-flex fullopacity"
-            id="category-search-container"
-            style={{ paddingTop: `${colorChangeState ? "110px" : "150px"}` }}
+            className="d-flex fullopacity container-padding  padding-top-container  mx-3"
+            style={{ paddingTop: `${colorChangeState ? "200px" : "150px"}` }}
           >
-            <Navbar.Brand className="w-100">
+            <Navbar.Brand className="w-100 mx-0">
               {/* <div className="d-flex align-items-center">
                 <FontAwesomeIcon icon={faChevronLeft} className="fa-sm text-white"/>
                   { (category?.categoryID.categoryLevel == 1) ? <h6  onClick={() => history.push(`/search/category/`)} className="text-white mb-0 mx-2">All Categories</h6> : <h6 className="text-white mb-0 mx-2" onClick={() => history.push(`/search/category/${category.categoryID.parentCategory[0]?.name}`)}>{category.categoryID.parentCategory[0]?.name}</h6>}
@@ -179,7 +178,7 @@ const CategoryMainNav = ({
 
               <div className="d-flex align-items-center justify-content-center">
                 <Form
-                  className="container-fluid d-flex my-4 onTop"
+                  className="container-fluid d-flex my-4 onTop px-0"
                   id="category-search-form"
                 >
                   <InputGroup className="search-input-cat">

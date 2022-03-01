@@ -66,21 +66,21 @@ export default class CategorySlider extends Component {
     return (
       <div 
       id="category-slider-comp" 
-      className="py-5"
+      className="py-5 slider-comp"
       // className={`${ this.state.sideMenuState? "px-0 py-5": "py-5"}`}
       style={{ padding: `${this.state.sideMenuState? "0rem 0rem 0rem" : "0rem 8rem 0rem"}`}}
       >
         <h4 className="px-3 mb-3">Explore Categories</h4>
         <Slider {...settings}>
           {this.props.categories.pages?.length > 0 &&
-            this.props.categories.pages?.forEach((category, idx) => {
-              if (category.length > 0) {
+            this.props.categories.pages?.map((category, idx) => {
+              // if (category.length > 0) {
                 return (
                   <div key={idx}>
                     <CategoryList category={category} />
                   </div>
                 );
-              }
+              // }
             })}
         </Slider>
       </div>

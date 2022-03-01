@@ -68,7 +68,7 @@ const AllCategories = ({
   useEffect(() => {
     dispatch(colorChangeAction(true))
     dispatch(openNavAction(false))
-  }, [dispatch])
+  })
 
 
   useEffect(() => {
@@ -163,7 +163,7 @@ const AllCategories = ({
     <>
       <Container
         fluid
-        id="business-app-component"
+        id="category-app-component"
         className="mx-0 d-flex justify-content-center px-0"
       >
         {dataLoading ? (

@@ -44,6 +44,7 @@ const PopularSubcat = ({
   loading,
   score,
   category,
+  categoryData
 }) => {
   //   const [percentage, setPercentage] = useState(30)
   //   const [reviewScore, setReviewScore] = useState({
@@ -94,7 +95,7 @@ const PopularSubcat = ({
         <div className="px-1 py-0">
           {/* {(category?.subCategories.length > 0) && category?.subCategories.map((subCat) => { */}
 
-          <CatKeywords keywords={category?.subCategories} />
+          <CatKeywords keywords={category?.subCategories} categoryData={categoryData}/>
           {/* })} */}
         </div>
 

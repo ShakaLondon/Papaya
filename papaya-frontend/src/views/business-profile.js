@@ -39,7 +39,7 @@ const BusinessPage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
   return (
     <Container fluid id="profile-app" className="mx-0 px-0">
       <NavBar colour="rgba(255, 255, 255, 0)" />
-      <Container fluid id="profile-app-body" className="px-0 mx-0">
+      <Container fluid id="business-app-body" className="px-0 mx-0 full-view-height">
         <Row className="full-height mx-0 px-0">
           <Col
           xs={12}

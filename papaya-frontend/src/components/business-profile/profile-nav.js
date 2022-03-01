@@ -145,8 +145,8 @@ const BusinessNav = ({
     <Navbar
       bg="light"
       // expand="lg"
-      className="px-0 py-0"
-      id="bus-profile-header"
+      className="px-0 py-0 bus-profile-header"
+      // id="bus-profile-header"
       fixed="top"
     >
       {!loading && (
@@ -157,8 +157,8 @@ const BusinessNav = ({
         >
           <Container
             fluid
-            className="d-flex fullopacity"
-            id="profile-container"
+            className="d-flex fullopacity padding-top-container container-padding"
+            id="business-profile-container"
             style={{ paddingTop: `${colorChangeState ? "110px" : "150px"}` }}
           >
             <Navbar.Brand className="d-flex align-items-center justify-content-center">

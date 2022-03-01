@@ -8,7 +8,7 @@ import DropdownSection from "./profile-cards/dropdown-section";
 
 export default function BusinessMain(props) {
   return (
-    <Container id="profile-main-container">
+    <Container id="business-main-container" className="container-padding">
        <Row className="mx-0 px-0">
         <Col md={12} xs={12} sm={12} className="hide-column dropdown-section-hide">
           <DropdownSection  profile={props.profile} user={props.user} />

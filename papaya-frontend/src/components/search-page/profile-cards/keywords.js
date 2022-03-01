@@ -1,15 +1,15 @@
 import { Card } from "react-bootstrap";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 
-function CatKeywords({ keywords }) {
-  const history = useHistory();
+function CatKeywords({ keywords, categoryData }) {
+  // const history = useHistory();
 
   return (
     <div className="px-0">
       {keywords.map((word, idx) => (
         // <div key={idx} className="ps-0 pe-2">
         <Card
-          onClick={() => history.push(`/search/category/${word.name}`)}
+          onClick={() => categoryData(word.name)}
           // style={{ width: '18rem' }}
           className="d-inline-flex me-2 mb-2"
           key={word.name + idx}

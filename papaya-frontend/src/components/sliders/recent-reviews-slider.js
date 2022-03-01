@@ -68,7 +68,7 @@ export default class RecentSlider extends Component {
       ],
     };
     return (
-      <div id="review-slider-comp" className="py-5" 
+      <div id="review-slider-comp" className="py-5 slider-comp" 
       style={{ padding: `${this.state.sideMenuState? "0rem 0rem 0rem" : "0rem 8rem 0rem"}`}}
       >
         <h4 className="px-3 mb-3">Recent Reviews</h4>

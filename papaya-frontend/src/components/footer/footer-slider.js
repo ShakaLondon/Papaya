@@ -43,7 +43,7 @@ export default class FooterSlider extends Component {
       ],
     };
     return (
-      <div id="footer-slider-comp" className="py-5">
+      <div id="footer-slider-comp" className="py-5 slider-comp">
         {/* <h4 className="px-3 mb-3">Recent Added</h4> */}
         <Slider {...settings} className="px-3">
           <div>

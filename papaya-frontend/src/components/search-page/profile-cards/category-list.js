@@ -2,7 +2,7 @@ import {
   faArrowCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -11,23 +11,23 @@ import {
 } from "react-bootstrap";
 import { useHistory } from "react-router";
 
-export default function CategoryList({ category }) {
-  const [currentCategory, setCurrentCategory] = useState(category?.name);
+export default function CategoryList({ category, categoryData }) {
+  // const [currentCategory, setCurrentCategory] = useState(category?.name);
 
 
 
   const history = useHistory();
 
-  useEffect(() => {
-    if (currentCategory !== null && currentCategory !== category.name) {
-      let path = `/search/category/${currentCategory}`;
-      history.push(path);
-    }
+  // useEffect(() => {
+  //   if (currentCategory !== null && currentCategory !== category.name) {
+  //     let path = `/search/category/${currentCategory}`;
+  //     history.push(path);
+  //   }
 
-    // return () => {
-    // window.removeEventListener("scroll", listenScrollEvent);
-    //   };
-  }, [currentCategory, history, category.name]);
+  //   // return () => {
+  //   // window.removeEventListener("scroll", listenScrollEvent);
+  //   //   };
+  // }, [currentCategory, history, category.name]);
 
   //   function setCurrentCategory (categoryname) {
   //     let path = `/search/category/${categoryname}`;
@@ -58,7 +58,7 @@ export default function CategoryList({ category }) {
                   <h6
                     className="mb-0 align-self-center smallTxt"
                     onClick={() =>
-                      setCurrentCategory(
+                      categoryData(
                         category?.parentCategory[0].parentCategory[0].name
                       )
                     }
@@ -77,7 +77,7 @@ export default function CategoryList({ category }) {
                   <h6
                     className="mb-0 align-self-center smallTxt"
                     onClick={() =>
-                      setCurrentCategory(category?.parentCategory[0].name)
+                      categoryData(category?.parentCategory[0].name)
                     }
                   >
                     {category?.parentCategory[0].name}
@@ -93,7 +93,7 @@ export default function CategoryList({ category }) {
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt text-bold"
-                    onClick={() => setCurrentCategory(category?.name)}
+                    onClick={() => categoryData(category?.name)}
                   >{`${category?.name} (${
                     category.categoryListNo > 0 ? category.categoryListNo : 0
                   })`}</h6>
@@ -101,8 +101,8 @@ export default function CategoryList({ category }) {
               </Row>
               {category.parentCategory[0].subCategories.length > 0 &&
                 category.parentCategory[0].subCategories?.forEach((subCat) => {
-                  console.log(currentCategory, subCat);
-                  if (subCat.name !== currentCategory) {
+                  // console.log(currentCategory, subCat);
+                  if (subCat.name !== category?.name) {
                     return (
                       <Row className="d-flex px-2 py-1" key={subCat._id}>
                         <Col md={2} xs={2} sm={2} className="d-flex align-items-center pe-4">
@@ -113,7 +113,7 @@ export default function CategoryList({ category }) {
                           {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                           <h6
                             className="mb-0 align-self-center smallTxt"
-                            onClick={() => setCurrentCategory(subCat.name)}
+                            onClick={() => categoryData(subCat.name)}
                           >{`${subCat.name} (${
                             subCat.categoryListNo > 0
                               ? subCat.categoryListNo
@@ -171,7 +171,7 @@ export default function CategoryList({ category }) {
                   <h6
                     className="mb-0 align-self-center smallTxt"
                     onClick={() =>
-                      setCurrentCategory(category?.parentCategory[0].name)
+                      categoryData(category?.parentCategory[0].name)
                     }
                   >
                     {category?.parentCategory[0].name}
@@ -187,7 +187,7 @@ export default function CategoryList({ category }) {
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt text-bold"
-                    onClick={() => setCurrentCategory(category.name)}
+                    onClick={() => categoryData(category.name)}
                   >{`${category.name}  (${
                     subCatListNo?.categoryListNo > 0
                       ? subCatListNo?.categoryListNo
@@ -215,7 +215,7 @@ export default function CategoryList({ category }) {
                       {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                       <h6
                         className="mb-0 align-self-center smallTxt"
-                        onClick={() => setCurrentCategory(subCat.name)}
+                        onClick={() => categoryData(subCat.name)}
                       >{`${subCat.name}  (${
                         catListTotal?.categoryListNo > 0
                           ? catListTotal?.categoryListNo
@@ -294,7 +294,7 @@ export default function CategoryList({ category }) {
                   {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                   <h6
                     className="mb-0 align-self-center smallTxt text-bold"
-                    onClick={() => setCurrentCategory(category.name)}
+                    onClick={() => categoryData(category.name)}
                   >{`${category.name} (${
                     catFinalTotal.categoryListNo > 0
                       ? catFinalTotal.categoryListNo
@@ -329,7 +329,7 @@ export default function CategoryList({ category }) {
                       {/* <FontAwesomeIcon icon={faArrowCircleLeft} className=""/> */}
                       <h6
                         className="mb-0 align-self-center smallTxt"
-                        onClick={() => setCurrentCategory(subCat.name)}
+                        onClick={() => categoryData(subCat.name)}
                       >{`${subCat.name} (${
                         catListTotal.categoryListNo > 0
                           ? catListTotal.categoryListNo

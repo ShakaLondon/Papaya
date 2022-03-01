@@ -34,7 +34,7 @@ const WriteReview = ({ sideMenuState, setMenuState }) => {
   return (
     <Container fluid id="review-app" className="mx-0 px-0">
       <NavBar colour="rgba(255, 255, 255, 0)" />
-      <Container fluid id="review-app-body" className="px-0 mx-0">
+      <Container fluid id="review-app-body" className="px-0 mx-0 full-view-height">
         <Row className="full-height mx-0 px-0">
           <Col
           xs={12}

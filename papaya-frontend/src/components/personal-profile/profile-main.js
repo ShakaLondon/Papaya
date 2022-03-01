@@ -5,7 +5,7 @@ import ProfileDelete from "./profile-cards/delete-profile";
 
 export default function ProfileMain(props) {
   return (
-    <Container id="profile-main-container">
+    <Container id="profile-main-container" className="container-padding">
       <Row className="mx-0 px-0">
         <Col md={8}>
           <PersonalSettings />

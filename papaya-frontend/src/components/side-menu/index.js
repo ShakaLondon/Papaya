@@ -5,7 +5,7 @@ import { loginAction, logoutAction } from "../../redux/actions/auth.js";
 import { colorChangeAction, openNavAction } from "../../redux/actions/index.js";
 import { useEffect, useRef } from "react";
 import { connect, useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   userFound: state.user.userFound,
   sideMenu: state.appState.sideMenu,
   colorChangeState: state.appState.colorChange,
+  userDet: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -34,6 +35,7 @@ const SideMenu = ({
   openMenu,
   colorChange,
   colorChangeState,
+  userDet
 }) => {
   const node = useRef();
 
@@ -55,6 +57,8 @@ const SideMenu = ({
   console.log(currentPath);
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -153,11 +157,11 @@ const SideMenu = ({
           </div>
         </Col>
         <Col md={12} className="py-4">
-          <h1 className="display-6 text-center py-2 mb-0">Categories</h1>
+          <h1 className="display-6 text-center py-2 mb-0" onClick={() => history.push(`/search/category/All`)}>Categories</h1>
           <h1 className="display-6 text-center py-2 mb-0">Companies</h1>
           <h1 className="display-6 text-center py-2 mb-0">My Reviews</h1>
           <Link to="/profile">
-            <h1 className="display-6 text-center py-2 mb-0">Profile</h1>
+            <h1 className="display-6 text-center py-2 mb-0" onClick={() => history.push(`/profile/${userDet}`)}>Profile</h1>
           </Link>
         </Col>
         {/* <Col md={12} className="side-text-box">

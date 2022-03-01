@@ -5,9 +5,9 @@ import CategorySideBar from "./profile-cards/category-sidebar";
 
 export default function CategoryMain({ category, user, isLoggedIn }) {
   return (
-    <Container id="category-main-container">
+    <Container id="category-main-container" className="container-padding category-cont">
       <Row className="mx-0 px-0">
-        <Col md={4}  sm={4} xs={4}>
+        <Col md={4}  sm={12} xs={12}>
           <CategorySideBar
             category={category.allCategories}
             user={user}
@@ -16,7 +16,7 @@ export default function CategoryMain({ category, user, isLoggedIn }) {
           {/* <ReviewHeader profile={props.profile} user={props.profile} score={props.score} loading={props.loading}/>
                     <ReviewCard profile={props.profile} user={props.user}/>  */}
         </Col>
-        <Col md={8}  sm={8} xs={8}>
+        <Col md={8}  sm={12} xs={12}>
           <AllCategoryList category={category.allCategories} />
           {/* <BestCompaniesProducts 
                     // categoryItems={category.categoryItemScores} category={category.categoryID}

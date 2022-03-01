@@ -55,7 +55,7 @@ export default class NewProductSlider extends Component {
       ],
     };
     return (
-      <div id="product-slider-comp" className="py-5"
+      <div id="product-slider-comp" className="py-5 slider-comp"
       style={{ padding: `${this.state.sideMenuState? "0rem 0rem 0rem" : "0rem 8rem 0rem"}`}}>
         <h4 className="px-3 mb-3">Recent Added</h4>
         <Slider {...settings}>
