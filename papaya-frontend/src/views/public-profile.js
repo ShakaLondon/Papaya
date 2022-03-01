@@ -38,9 +38,9 @@ const PublicProfilePage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
   //     return <Redirect to='/main' />
   // } else {
   return (
-    <Container fluid id="profile-app" className="mx-0 px-0">
+    <Container fluid className="mx-0 px-0 profile-app">
       <NavBar colour="rgba(255, 255, 255, 0)" />
-      <Container fluid id="profile-" className="px-0 mx-0">
+      <Container fluid id="public-profile-app-body" className="px-0 mx-0 full-view-height">
         <Row className="full-height mx-0 px-0">
           <Col
           xs={12}
@@ -59,7 +59,7 @@ const PublicProfilePage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
               {/* <Footer/> */}
             </Container>
           </Col>
-          {sideMenuState && <Col sm={12} md={3} className="px-0 onTop">
+          {sideMenuState && <Col xs={12} sm={12} md={3} className="px-0 onTop">
              <SideMenu />
           </Col>
             }

@@ -131,7 +131,7 @@ const PersonalSettings = ({
                 </Button>
               </Row>
             </Col>
-            <Col md={6} className="px-4">
+            <Col md={6} className="px-4 form-padding">
               <Row>
                 {/* <Card.Text> */}
                 <h6 className="px-0 mb-1">Profile header</h6>
@@ -182,12 +182,12 @@ const PersonalSettings = ({
               />
             </FloatingLabel>
             <Container fluid className="mx-0 px-0">
-              <Row className="mx-0 px-0">
-                <Col md={6} className="ps-0">
+              <Row className="mx-0 px-0 d-flex justify-content-between">
+                <Col md={6} xs={12} sm={12} className="ps-0 px-2">
                   <FloatingLabel
                     controlId="floatingInput"
                     label="First Name"
-                    className="my-0"
+                    className="my-2"
                   >
                     <Form.Control
                       type="text"
@@ -198,11 +198,11 @@ const PersonalSettings = ({
                     />
                   </FloatingLabel>
                 </Col>
-                <Col md={6} className="pe-0">
+                <Col md={6} xs={12} sm={12} className="pe-0 padding-end px-2">
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Last Name"
-                    className="my-0"
+                    className="my-2"
                   >
                     <Form.Control
                       type="text"
@@ -215,7 +215,7 @@ const PersonalSettings = ({
                 </Col>
               </Row>
               <Row className="mx-0 px-0">
-                <Col md={6} className="ps-0 mt-3">
+                <Col md={6} className="ps-0 mt-3 px-2">
                   <Button
                     type="submit"
                     className="container-fluid rounded text-center py-2 profileButton"

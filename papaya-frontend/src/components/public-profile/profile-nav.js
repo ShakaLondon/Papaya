@@ -89,7 +89,7 @@ const PublicProfileNav = ({
             {!loading && (
         <div
           className={`overlay container-fluid ${
-            colorChangeState ? "py-" : "py-3"
+            colorChangeState ? "py-0" : "py-3"
           }`}
         >
         <Container
@@ -102,13 +102,13 @@ const PublicProfileNav = ({
             <img
               src={profile.avatar?.avatar}
               alt="User Avatar"
-              className="rounded-circle my-2"
+              className="rounded-circle my-2 profile-avatar"
               style={{
                 width: `${colorChangeState ? "4rem" : "10rem"}`,
                   height: `${colorChangeState ? "4rem" : "10rem"}`,
                   objectFit: "cover",
               }}
-              id="profile-avatar"
+              id=""
             />
           </Navbar.Brand>
           <Navbar.Brand>
@@ -129,9 +129,9 @@ const PublicProfileNav = ({
             </Container>
           </Navbar.Brand>
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar id="basic-navbar-nav" className="ms-auto">
             <Nav className="ms-auto">
-              <Container id="user-stats" className={`${colorChangeState? "px-4" : "px-0"}`}>
+              <Container id="" className={`${colorChangeState? "user-stats px-4" : "user-stats px-0"}`}>
                 <Row>
                   <Col xs={6} sm={6} md={6}>
                     <Container className="px-4">
@@ -141,7 +141,7 @@ const PublicProfileNav = ({
                         </Col>
                       </Row>
                       <Row className="d-flex justify-content-center">
-                        <Col xs={4} sm={4} md={4} className="d-flex align-items-center justify-content-center">
+                        <Col xs={12} sm={12} md={4} className="d-flex align-items-center justify-content-center">
                           <FontAwesomeIcon icon={faStar} />
                         </Col>
                         <Col md={8}  sm={8} xs={8} className="d-flex align-items-center  px-0">
@@ -158,10 +158,10 @@ const PublicProfileNav = ({
                         </Col>
                       </Row>
                       <Row>
-                        <Col xs={4} sm={4} md={4} className="d-flex align-items-center justify-content-center">
+                        <Col xs={12} sm={12} md={4} className="d-flex align-items-center justify-content-center">
                           <FontAwesomeIcon icon={faThumbsUp} />
                         </Col>
-                        <Col md={8} sm={8} xs={8} className="d-flex align-items-center px-0">
+                        <Col md={8} sm={12} xs={12} className="d-flex align-items-center px-0">
                           <h6 className="mb-0 profile-user-stats">useful</h6>
                         </Col>
                       </Row>
@@ -172,7 +172,7 @@ const PublicProfileNav = ({
               {/* <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#link">Link</Nav.Link> */}
             </Nav>
-          </Navbar.Collapse>
+          </Navbar>
         </Container>
       </div>
       )}

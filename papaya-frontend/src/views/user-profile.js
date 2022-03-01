@@ -39,15 +39,18 @@ const ProfilePage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
     return <Redirect to="/main" />;
   } else {
     return (
-      <Container fluid id="profile-app" className="mx-0 px-0">
+      <Container fluid className="mx-0 px-0 profile-app">
         <NavBar colour="rgba(255, 255, 255, 0)" />
         <Container fluid id="profile-app-body" className="px-0 mx-0 full-view-height">
           <Row className="full-height mx-0 px-0">
             <Col
-              md={sideMenuState ? 9 : 12}
-              className="px-0 mx-0 scrollNav"
-              id="profile-app-main"
-            >
+             xs={12}
+             sm={12}
+               md={sideMenuState ? 9 : 12}
+               // className="px-0 mx-0 scrollNav"
+               id="profile-app-main"
+               className={`px-0 mx-0 scrollNav ${sideMenuState ? "mainpageSmall" : " "}`}
+             >
               <Container
                 fluid
                 className="px-0 mx-0"
@@ -57,9 +60,10 @@ const ProfilePage = ({ sideMenuState, setMenuState, isLoggedIn }) => {
                 {/* <Footer/> */}
               </Container>
             </Col>
-            <Col md={3} className="px-0 onTop">
-              {sideMenuState && <SideMenu />}
-            </Col>
+            {sideMenuState && <Col xs={12} sm={12} md={3} className="px-0 onTop">
+             <SideMenu />
+          </Col>
+            }
           </Row>
         </Container>
       </Container>

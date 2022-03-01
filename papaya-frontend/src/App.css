@@ -395,7 +395,7 @@ h6 {
 
 /* PROFILE PAGE */
 
-#profile-app {
+.profile-app {
   height: 100vh !important;
   /* overflow-y: scroll; */
   width: 100vw !important;
@@ -954,7 +954,7 @@ div#bus-nav-rating-resp {
     padding-right: 0.5rem !important;
   }
 
-  img#profile-avatar {
+  img.profile-avatar {
     height: 4rem !important;
     width: 4rem !important;
   }
@@ -1136,6 +1136,14 @@ div#bus-nav-rating-resp {
 
   .category-sidebar {
     display: none !important;
+  }
+
+  .form-padding {
+    padding-top: 3rem !important;
+  }
+
+  div.padding-end {
+    padding-left: 0rem !important;
   }
 
   /* .categorySearchButton {
