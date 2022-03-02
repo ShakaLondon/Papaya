@@ -11,6 +11,7 @@ import ReviewNav from "./review-nav";
 import ReviewMain from "./review-main";
 import { colorChangeAction } from "../../redux/actions";
 import LoadingSpinner from "../loading/index.js";
+import businessData from "../../services/business/business-data.js";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -77,7 +78,7 @@ const ReviewContainer = ({
       //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
       // }
     };
-    fetch(`${url}`, options)
+    businessData.getPublicBusiness(searchRequest)
       .then((res) => res.json())
       .then((business) => {
         const busFound = business;

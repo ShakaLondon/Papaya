@@ -12,6 +12,7 @@ import { loginAction } from "../../redux/actions/auth.js";
 import { colorChangeAction, openNavAction } from "../../redux/actions/index.js";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../loading/index.js";
+import appData from "../../services/app-data/app-data.js";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -92,20 +93,26 @@ const MainContainer = ({
       //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
       // }
     };
-    fetch(`${url}`, options)
-      .then((res) => res.json())
-      .then((result) => {
-        const category = result;
+    appData.getAllCategories()
+      .then((res) => {
+        const category = res.data;
         console.log(category);
         // console.log(busFound.reviewIDs)
         // const reviews = busFound.reviewIDs
         setCategories(() => category);
-        // console.log(categories)
-
-        // setCompanyReviews(busFound.reviewIDs)
-
-        // setDataLoading(false)
       })
+      // .then((result) => {
+      //   const category = result;
+      //   console.log(category);
+      //   // console.log(busFound.reviewIDs)
+      //   // const reviews = busFound.reviewIDs
+      //   setCategories(() => category);
+      //   // console.log(categories)
+
+      //   // setCompanyReviews(busFound.reviewIDs)
+
+      //   // setDataLoading(false)
+      // })
       // .then(() => { setCompanyReviews([searchResult.reviewIDs])
 
       //   setDataLoading(false)
@@ -114,17 +121,23 @@ const MainContainer = ({
         console.log(error);
       })
       .then(
-        fetch(`${urlReviews}`, options)
-          .then((res) => res.json())
-          .then((results) => {
-            const review = results;
+        appData.getAllReviews()
+          .then((res) => {
+            const review = res.data;
             console.log(review);
             // console.log(busFound.reviewIDs)
             // const reviews = busFound.reviewIDs
             setReviews(() => review);
-
-            // setDataLoading(false)
           })
+          // .then((results) => {
+          //   const review = results;
+          //   console.log(review);
+          //   // console.log(busFound.reviewIDs)
+          //   // const reviews = busFound.reviewIDs
+          //   setReviews(() => review);
+
+          //   // setDataLoading(false)
+          // })
           // .then(() => { setCompanyReviews([searchResult.reviewIDs])
 
           //   setDataLoading(false)

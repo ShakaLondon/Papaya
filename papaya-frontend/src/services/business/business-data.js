@@ -1,16 +1,17 @@
-import axios from "axios";
-import authHeader from "./header.js";
+
 import api from "../api.js";
 
-const getBusinessReviews = () => {
-  return api.get("/users/business/reviews");
+const getPublicBusiness = (businessName) => {
+  return api.get("business/" + businessName);
 };
 
-const editBusinessReview = (reviewID) => {
-  return api.put(`/users/business/reviews/${reviewID}`);
+const getBusinessReviews = (businessName) => {
+  return api.get(`business/${businessName}/reviews/averages`);
 };
 
-export default {
+const businessData = {
+  getPublicBusiness,
   getBusinessReviews,
-  editBusinessReview,
 };
+
+export default businessData;

@@ -96,52 +96,7 @@ const ThankyouReviewPage = ({
     };
   }, [dispatch]);
 
-
-
-  // useEffect(() => {
-  //     const url = `http://localhost:3005/business/${searchRequest}`
-  //     const options = {
-  //         method: 'GET',
-  //         // headers: {
-  //         //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
-  //         // }
-  //     }
-  //     fetch(`${url}`, options)
-  //     .then(res => res.json())
-  //     .then((business) => {
-  //         const busFound = business
-  //         console.log(busFound)
-  //         setSearchResult(busFound[0])
-  //         // console.log(searchResult)
-  //     })
-  //     .catch((error) => {console.log(error)})
-  // }, [])
-
-  // const [userInfo, setUserInfo] = useState({
-  //     email: "",
-  //     password: "",
-  //     name: "",
-  //     surname: "",
-  //     email: "",
-  //     username: "",
-  //     password: "",
-  //     dateOfBirth: "",
-  //   })
-
-  //   const handleSubmit= (e) => {
-  //     e.preventDefault();
-  //     register(userInfo)
-  //   }
-
-  //   const handleChange= (e) => {
-  //     console.log(e.target.value)
-  //     let name = e.target.name
-  //     setUserInfo({ ...userInfo, [name]: e.target.value});
-  //   }
-
-  //   if (isLoggedIn) {
-  //     return <Redirect to='/main' />
-  // } else {
+  
   return (
     // <>
     <Container

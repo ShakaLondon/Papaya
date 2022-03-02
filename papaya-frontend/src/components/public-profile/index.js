@@ -11,6 +11,7 @@ import PublicProfileNav from "./profile-nav";
 import PublicProfileMain from "./profile-main";
 import LoadingSpinner from "../loading/index";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
+import userData from "../../services/user/user-data.js";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -107,15 +108,24 @@ const PublicProfileContainer = ({
       //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
       // }
     };
-    fetch(`${url}`, options)
-      .then((res) => res.json())
+
+    userData.getPublicUser(searchRequest)
+    // fetch(`${url}`, options)
       .then((user) => {
-        const userFound = user;
+        console.log(user.data);
+        const userFound = user.data;
         console.log(userFound);
-        setSearchResult(user);
+        setSearchResult(user.data);
         setDataLoading(false);
-        // console.log(searchResult)
       })
+      // .then((user) => {
+      //   console.log(user);
+      //   const userFound = user;
+      //   console.log(userFound);
+      //   setSearchResult(user);
+      //   setDataLoading(false);
+      //   // console.log(searchResult)
+      // })
       .catch((error) => {
         console.log(error);
       });

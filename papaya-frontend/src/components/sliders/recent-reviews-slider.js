@@ -11,16 +11,6 @@ export default class RecentSlider extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetch(`http://localhost:3005/reviews`)
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       console.log(result)
-  //       this.setState({
-  //         reviews: result,
-  //       });
-  //     });
-  // }
 
   componentDidUpdate(prevProps) {
     if(this.props.sideMenu !== prevProps.sideMenu){ //<---- see here

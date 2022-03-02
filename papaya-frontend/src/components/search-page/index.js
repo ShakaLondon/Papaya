@@ -11,6 +11,7 @@ import CategorySearchNav from "./search-nav";
 import LoadingSpinner from "../loading/index.js";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
 import CategorySearchMain from "./search-main";
+import appData from "../../services/app-data/app-data.js";
 
 const mapStateToProps = (state) => ({
   error: state.appState.error,
@@ -138,10 +139,9 @@ const SearchContainer = ({
         //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
         // }
       };
-      fetch(`${url}`, options)
-        .then((res) => res.json())
-        .then((result) => {
-          const categoryRes = result;
+      appData.getCategory(searchRequest)
+        .then((res) => {
+          const categoryRes = res.data;
           console.log(categoryRes.category);
           // console.log(busFound.reviewIDs)
           // const reviews = busFound.reviewIDs
@@ -152,6 +152,18 @@ const SearchContainer = ({
 
           setDataLoading(false);
         })
+        // .then((result) => {
+        //   const categoryRes = result;
+        //   console.log(categoryRes.category);
+        //   // console.log(busFound.reviewIDs)
+        //   // const reviews = busFound.reviewIDs
+        //   setSearchResult((searchResult) => categoryRes.category);
+        //   console.log(categoryRes.category);
+
+        //   // setCompanyReviews(busFound.reviewIDs)
+
+        //   setDataLoading(false);
+        // })
         .catch((error) => {
           console.log(error);
         });

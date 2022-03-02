@@ -10,17 +10,6 @@ export default class CategorySlider extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetch(`http://localhost:3005/category?limit=3&columns=8`)
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       console.log(result)
-  //       this.setState({
-  //         categories: result,
-  //       });
-  //     });
-  // }
-
   componentDidUpdate(prevProps) {
     if(this.props.sideMenu !== prevProps.sideMenu){ //<---- see here
        this.setState({ sideMenuState: this.props.sideMenu});//<---- see here

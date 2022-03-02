@@ -254,9 +254,21 @@ export default function CategoryList({ category, categoryData }) {
 
       console.log(catListTotalOne);
 
-      const catFinalTotal = catListTotalOne?.reduce(function (a, b) {
-        return { categoryListNo: a.categoryListNo + b.categoryListNo }; // returns object with property x
-      });
+      let catFinalTotal
+
+      if (catListTotalOne.length > 1) {
+
+        catFinalTotal = catListTotalOne?.reduce(function (a, b) {
+          return { categoryListNo: a.categoryListNo + b.categoryListNo }; // returns object with property x
+        });
+
+      } else {
+
+        catFinalTotal = { categoryListNo: category.categoryListNo }
+        
+      }
+
+      
 
       console.log(catFinalTotal);
 

@@ -1,9 +1,9 @@
 import authHeader from "../header.js";
 import api from "../api.js";
 
-// const getPublicContent = () => {
-//   return axios.get(API_URL + "all");
-// };
+const getPublicUser = (userName) => {
+  return api.get("users/profile/" + userName);
+};
 
 const getUserReviews = () => {
   return api.get("users/me/reviews", { headers: authHeader() });
@@ -52,6 +52,7 @@ const userData = {
   editAvatar,
   editCover,
   addReview,
+  getPublicUser,
 };
 
 export default userData
