@@ -16,3 +16,4 @@ export const ERROR = "ERROR";
 export const UPDATE_USER = "UPDATE_USER";
 export const UPDATE_AVATAR = "UPDATE_AVATAR";
 export const UPDATE_COVER = "UPDATE_COVER";
+export const REDIRECT = "REDIRECT";

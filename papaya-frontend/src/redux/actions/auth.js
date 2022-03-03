@@ -7,6 +7,7 @@ import {
   LOADING,
   ERROR,
   REFRESH_TOKEN,
+  // REDIRECT
 } from "./types.js";
 
 import UserAuth from "../../services/user/user-auth.js";
@@ -171,6 +172,15 @@ export const logoutAction = () => (dispatch) => {
     type: LOGOUT,
   });
 };
+
+// export const redirectAction = () => (link, dispatch) => {
+//   // UserAuth.logout();
+
+//   dispatch({
+//     type: REDIRECT,
+//     payload: link,
+//   });
+// };
 
 // AUTH BUSINESS USER
 

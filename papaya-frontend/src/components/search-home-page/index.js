@@ -101,29 +101,8 @@ const AllCategories = ({
   }, [dispatch]);
 
 
-
-  //   const getLocation = (scroll) =>{
-
-  //  };
-
   useEffect(() => {
-    // const routePath = locationUrl.pathname
-    // console.log(routePath)
 
-    // const categoryNamePath = routePath.replace("/search/category/", '')
-    // console.log(categoryNamePath)
-    // if(categoryNamePath) {
-    // setSearchRequest((state) => (categoryNamePath))
-    // }
-    // if (searchRequest != null){
-    const url = `http://localhost:3005/category?limit=3&columns=8`;
-    // const urlReviews = `http://localhost:3005/business/${searchRequest}/reviews/averages`
-    const options = {
-      method: "GET",
-      // headers: {
-      //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
-      // }
-    };
     appData.getAllCategories()
       .then((res) => {
         const categoryRes = res.data;
@@ -137,38 +116,11 @@ const AllCategories = ({
 
         setDataLoading(false);
       })
-      // .then((result) => {
-      //   const categoryRes = result;
-      //   console.log(categoryRes);
-      //   // console.log(busFound.reviewIDs)
-      //   // const reviews = busFound.reviewIDs
-      //   setAllCategories((allCategories) => categoryRes);
-      //   console.log(categoryRes);
 
-      //   // setCompanyReviews(busFound.reviewIDs)
-
-      //   setDataLoading(false);
-      // })
       .catch((error) => {
         console.log(error);
       });
 
-    // fetch(`${urlReviews}`, options)
-    // .then(res => res.json())
-    // .then((results) => {
-    //     const busResult = results
-    //     console.log(busResult)
-    //     // console.log(busFound.reviewIDs)
-    //     // const reviews = busFound.reviewIDs
-    //     setReviews(busResult)
-
-    // })
-    // .catch((error) => {console.log(error)})
-
-    // }
-    // return () => {
-
-    //   };
   }, []);
 
   return (

@@ -3,10 +3,25 @@ import { Container, Row, Col } from "react-bootstrap";
 import CategoryList from "./profile-cards/category-list";
 import PopularSubcat from "./profile-cards/popular-subcategories";
 import BestCompaniesProducts from "./profile-cards/best-companies-products";
+import { connect, } from "react-redux";
 
-export default function CategorySearchMain({ category, user, isLoggedIn, categoryData }) {
+const mapStateToProps = (state) => ({
+  error: state.appState.error,
+  loading: state.appState.loading,
+  isLoggedIn: state.user.isLoggedIn,
+  userFound: state.user.userFound,
+  userProf: state.user,
+  colorChangeState: state.appState.colorChange,
+  sideMenuState: state.appState.sideMenu,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+const CategorySearchMain = ({ category, user, isLoggedIn, categoryData, sideMenuState }) => {
   return (
-    <Container id="category-search-main-container" className="container-padding category-cont">
+    <Container id="category-search-main-container" className={ `${sideMenuState ? "category-cont" : "container-padding category-cont" }`}>
       <Row className="mx-0 px-0">
         <Col md={4} xs={12} sm={12} className="px-4">
           <CategoryList
@@ -30,3 +45,5 @@ export default function CategorySearchMain({ category, user, isLoggedIn, categor
     </Container>
   );
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategorySearchMain);

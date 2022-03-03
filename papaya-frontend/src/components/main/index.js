@@ -85,14 +85,7 @@ const MainContainer = ({
  
 
   useEffect(() => {
-    const url = `http://localhost:3005/category?limit=3&columns=8`;
-    const urlReviews = `http://localhost:3005/reviews`;
-    const options = {
-      method: "GET",
-      // headers: {
-      //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
-      // }
-    };
+
     appData.getAllCategories()
       .then((res) => {
         const category = res.data;
@@ -101,22 +94,7 @@ const MainContainer = ({
         // const reviews = busFound.reviewIDs
         setCategories(() => category);
       })
-      // .then((result) => {
-      //   const category = result;
-      //   console.log(category);
-      //   // console.log(busFound.reviewIDs)
-      //   // const reviews = busFound.reviewIDs
-      //   setCategories(() => category);
-      //   // console.log(categories)
 
-      //   // setCompanyReviews(busFound.reviewIDs)
-
-      //   // setDataLoading(false)
-      // })
-      // .then(() => { setCompanyReviews([searchResult.reviewIDs])
-
-      //   setDataLoading(false)
-      // })
       .catch((error) => {
         console.log(error);
       })
@@ -129,19 +107,7 @@ const MainContainer = ({
             // const reviews = busFound.reviewIDs
             setReviews(() => review);
           })
-          // .then((results) => {
-          //   const review = results;
-          //   console.log(review);
-          //   // console.log(busFound.reviewIDs)
-          //   // const reviews = busFound.reviewIDs
-          //   setReviews(() => review);
 
-          //   // setDataLoading(false)
-          // })
-          // .then(() => { setCompanyReviews([searchResult.reviewIDs])
-
-          //   setDataLoading(false)
-          // })
 
           .catch((error) => {
             console.log(error);

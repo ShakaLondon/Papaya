@@ -101,13 +101,6 @@ const PublicProfileContainer = ({
 
 
   useEffect(() => {
-    const url = `http://localhost:3005/users/profile/${searchRequest}`;
-    const options = {
-      method: "GET",
-      // headers: {
-      //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
-      // }
-    };
 
     userData.getPublicUser(searchRequest)
     // fetch(`${url}`, options)
@@ -118,14 +111,7 @@ const PublicProfileContainer = ({
         setSearchResult(user.data);
         setDataLoading(false);
       })
-      // .then((user) => {
-      //   console.log(user);
-      //   const userFound = user;
-      //   console.log(userFound);
-      //   setSearchResult(user);
-      //   setDataLoading(false);
-      //   // console.log(searchResult)
-      // })
+
       .catch((error) => {
         console.log(error);
       });

@@ -1,6 +1,9 @@
 import axiosInstance from "./api";
 import TokenService from "./tokenService";
 import { logoutAction, refreshToken } from "../redux/actions/auth.js";
+// import { useHistory } from 'react-router'
+// import { Redirect } from 'react-router-dom'
+
 
 const setup = (store) => {
   axiosInstance.interceptors.request.use(
@@ -31,7 +34,7 @@ const setup = (store) => {
         err.response
       ) {
         // Access Token was expired
-        if (err.response.status === 401 && !originalConfig._retry) {
+        if (err.response.status === 403 && !originalConfig._retry) {
           originalConfig._retry = true;
 
           try {
@@ -52,10 +55,20 @@ const setup = (store) => {
 
             return Promise.reject(err);
           }
-        } else if (err.response.status === 401) {
+        } else 
+        if (err.response.status === 403) 
+        {
           try {
             dispatch(logoutAction());
             TokenService.removeUser();
+
+            // const history = useHistory()
+            // history.push('/login')
+
+            // window.location.replace = '/login'
+
+            // <Redirect to="/somewhere/else" />
+
 
             return Promise.reject(err);
           } catch (err) {

@@ -102,14 +102,7 @@ const BusinessContainer = ({
 
 
   useEffect(() => {
-    const url = `http://localhost:3005/business/${searchRequest}`;
-    const urlReviews = `http://localhost:3005/business/${searchRequest}/reviews/averages`;
-    const options = {
-      method: "GET",
-      // headers: {
-      //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIwZGZiYmRjMTQ1ODAwMTVlNGFlZTUiLCJpYXQiOjE2MzE3NzI3MTIsImV4cCI6MTYzMjk4MjMxMn0.2YWhQrKLUrKnO_spK_yPMr-orqdslBjHVr-zMEUyYPk'
-      // }
-    };
+
     businessData.getPublicBusiness(searchRequest)
       .then((res) => {
         const busFound = res.data[0];
@@ -121,22 +114,7 @@ const BusinessContainer = ({
 
         setCompanyReviews(busFound.reviewIDs);
       })
-      // .then((business) => {
-      //   const busFound = business[0];
-      //   console.log(busFound);
-      //   // console.log(busFound.reviewIDs)
-      //   // const reviews = busFound.reviewIDs
-      //   setSearchResult(busFound);
-      //   // console.log(searchResult);
 
-      //   setCompanyReviews(busFound.reviewIDs);
-
-      //   // setDataLoading(false);
-      // })
-      // .then(() => { setCompanyReviews([searchResult.reviewIDs])
-
-      //   setDataLoading(false)
-      // })
       .catch((error) => {
         console.log(error);
       }).then(
@@ -150,18 +128,6 @@ const BusinessContainer = ({
         setReviews(busResult);
         setDataLoading(false);
       }))
-      // .then((results) => {
-      //   const busResult = results;
-      //   console.log(busResult);
-      //   // console.log(busFound.reviewIDs)
-      //   // const reviews = busFound.reviewIDs
-      //   setReviews(busResult);
-      //   setDataLoading(false);
-      // }))
-      // .then(() => { setCompanyReviews([searchResult.reviewIDs])
-
-      //   setDataLoading(false)
-      // })
       .catch((error) => {
         console.log(error);
       });
