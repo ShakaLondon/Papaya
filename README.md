@@ -13,6 +13,10 @@
 
 I used HTML, CSS, JAVASCRIPT, NODE, REACT, MONGODB, MONGOOSE and EXPRESS to create this app.
 
+## LIVE DEMO
+
+https://papaya-pilot.vercel.app/main
+
 ## SCREENSHOTS
 
 #### Papaya Home Page
@@ -23,6 +27,16 @@ I used HTML, CSS, JAVASCRIPT, NODE, REACT, MONGODB, MONGOOSE and EXPRESS to crea
 
 #### Papaya Category Search Page
 ![Papaya Category Search Screenshot](https://res.cloudinary.com/shakalondon/image/upload/v1646088862/Papaya/Category-Search-Page.png)
+
+
+## BEFORE YOU START
+
+##### - Create .env file in projects root folder.
+##### - In that .env file input variables:
+
+###### REACT_APP_DEVELOPMENT=true
+###### REACT_APP_ENCRYPT_KEY="..."
+###### REACT_APP_API_URL="..."
 
 
 ## AVAILABLE SCRIPTS
