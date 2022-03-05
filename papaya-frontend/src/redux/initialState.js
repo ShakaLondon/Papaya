@@ -4,6 +4,8 @@ const initialState = {
     error: false,
     loading: false,
     colorChange: false,
+    searchBar: false,
+    navSearch: false,
   },
   user: {
     _id: "",

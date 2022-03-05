@@ -114,7 +114,7 @@ const NavBar = ({
         </Navbar.Brand>
         <Navbar.Brand
           href="/"
-          className="d-inline-flex align-items-center mx-auto"
+          className={`d-inline-flex align-items-center ${sideMenuState ? "me-auto" : "mx-auto" }`}
         >
           {routePath !== "/main" &&
             routePath !== "/login" &&

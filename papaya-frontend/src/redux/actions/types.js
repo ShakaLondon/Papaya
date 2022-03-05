@@ -17,3 +17,8 @@ export const UPDATE_USER = "UPDATE_USER";
 export const UPDATE_AVATAR = "UPDATE_AVATAR";
 export const UPDATE_COVER = "UPDATE_COVER";
 export const REDIRECT = "REDIRECT";
+export const USER_REFRESH = "USER_REFRESH";
+export const OPEN_SEARCH = "OPEN_SEARCH";
+export const OPEN_NAV_SEARCH = "OPEN_NAV_SEARCH";
+
+

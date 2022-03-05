@@ -8,6 +8,7 @@ import {
   UPDATE_USER,
   UPDATE_AVATAR,
   UPDATE_COVER,
+  USER_REFRESH
 } from "../actions/types.js";
 import initialState from "../initialState";
 
@@ -64,6 +65,13 @@ const authReducer = (state = initialState.user, action) => {
 
     // USER FUNCTIONS
 
+    case USER_REFRESH:
+      return {
+        ...action.payload.user,
+        isLoggedIn: true,
+        userFound: true,
+      };
+      
     case UPDATE_USER:
       return {
         ...state,

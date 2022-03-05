@@ -1,4 +1,4 @@
-
+import authHeader from "../header.js";
 import api from "../api.js";
 
 const register = (userObject) => {
@@ -42,11 +42,16 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
+const userRefresh = (userName) => {
+  return api.get("users/profile/refresh/" + userName, { headers: authHeader() });
+};
+
 const auth = {
   register,
   login,
   logout,
   getCurrentUser,
+  userRefresh
 };
 
 export default auth;

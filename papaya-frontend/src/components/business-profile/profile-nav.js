@@ -53,6 +53,7 @@ const BusinessNav = ({
   loading,
   colorChange,
   colorChangeState,
+  sideMenuState
 }) => {
 
   const history = useHistory();
@@ -151,15 +152,14 @@ const BusinessNav = ({
     >
       {!loading && (
         <div
-          className={`overlay container-fluid ${
-            colorChangeState ? "py-1" : "py-4"
-          }`}
+          className={`overlay container-fluid ${colorChangeState ? "py-1" : "py-4"}  ${ sideMenuState ? "px-0" : "px-3" }`}
         >
           <Container
             fluid
-            className="d-flex fullopacity padding-top-container container-padding"
+            className={`d-flex fullopacity align-items-center padding-top-container ${ sideMenuState ? "" : "container-padding"}`}
             id="business-profile-container"
-            style={{ paddingTop: `${colorChangeState ? "110px" : "150px"}` }}
+            style={{ paddingTop: `${colorChangeState ? "110px" : "150px"}`,
+            marginRight: `${ sideMenuState ? "25vw" : "0vw" }` }}
           >
             <Navbar.Brand className="d-flex align-items-center justify-content-center">
               <img
@@ -247,7 +247,7 @@ const BusinessNav = ({
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
                 {!colorChangeState ? (
-                  <Container className="responsive-hide">
+                  <Container className="responsive-hide pe-0">
                     <WebsiteContainer website={profile.website} />
                   </Container>
                 ) : (

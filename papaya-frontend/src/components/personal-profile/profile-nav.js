@@ -84,15 +84,14 @@ const ProfileNav = ({
     <Navbar bg="light" expand="lg" className="px-0 py-0 bus-profile-header"  fixed="top" id="profile-header">
       {!loading && (
       <div
-      className={`overlay container-fluid ${
-        colorChangeState ? "py-0" : "py-3"
-      }`}
+      className={`overlay container-fluid ${colorChangeState ? "py-0" : "py-3"}  ${ sideMenuState ? "px-0" : "px-3" }`}
     >
         <Container 
         fluid
-          className="d-flex fullopacity align-items-center padding-top-container container-padding"
+          className={`d-flex fullopacity align-items-center padding-top-container ${ sideMenuState ? "" : "container-padding"}`}
            id="profile-nav-container"
-           style={{ paddingTop: `${colorChangeState ? "110px" : "140px"}` }}>
+           style={{ paddingTop: `${colorChangeState ? "110px" : "140px"}`, 
+           marginRight: `${ sideMenuState ? "25vw" : "0vw" }` }}>
           <Navbar.Brand>
             <img
               src={userProf?.avatar.avatar}

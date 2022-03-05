@@ -1,4 +1,4 @@
-import { OPEN_NAV, ERROR, LOADING, COLOR_CHANGE } from "../actions/types.js";
+import { OPEN_NAV, ERROR, LOADING, COLOR_CHANGE, OPEN_SEARCH, OPEN_NAV_SEARCH, } from "../actions/types.js";
 import initialState from "../initialState";
 
 const appReducer = (state = initialState.appState, action) => {
@@ -22,6 +22,16 @@ const appReducer = (state = initialState.appState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case OPEN_SEARCH:
+      return {
+        ...state,
+        searchBar: action.payload,
+      };
+    case OPEN_NAV_SEARCH:
+      return {
+        ...state,
+        navSearch: action.payload,
       };
     default:
       return state;

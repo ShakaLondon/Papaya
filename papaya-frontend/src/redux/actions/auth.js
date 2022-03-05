@@ -7,6 +7,7 @@ import {
   LOADING,
   ERROR,
   REFRESH_TOKEN,
+  USER_REFRESH
   // REDIRECT
 } from "./types.js";
 
@@ -68,6 +69,8 @@ export const registerAction = (userObject) => {
           dispatch({
             type: REGISTER_FAIL,
           });
+
+          UserAuth.logout()
 
           dispatch({
             type: ERROR,
@@ -327,4 +330,75 @@ export const logoutBusinessUserAction = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
   });
+};
+
+export const refreshUserAction = (userName) => {
+  return (dispatch) => {
+    try {
+      dispatch({
+        type: LOADING,
+        payload: true,
+      });
+
+      dispatch({
+        type: ERROR,
+        payload: false,
+      });
+
+      UserAuth.userRefresh(userName).then(
+        (response) => {
+          console.log(response, "userobject");
+
+          dispatch({
+            type: USER_REFRESH,
+            payload: { user: response.data },
+          });
+
+          dispatch({
+            type: ERROR,
+            payload: false,
+          });
+          dispatch({
+            type: LOADING,
+            payload: false,
+          });
+
+          return Promise.resolve();
+        },
+        (error) => {
+          const message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+
+          dispatch({
+            type: LOGOUT,
+          });
+
+          dispatch({
+            type: ERROR,
+            payload: message,
+          });
+
+          dispatch({
+            type: LOADING,
+            payload: false,
+          });
+
+          return Promise.reject();
+        }
+      );
+    } catch (error) {
+      dispatch({
+        type: ERROR,
+        payload: false,
+      });
+      dispatch({
+        type: LOADING,
+        payload: false,
+      });
+    }
+  };
 };

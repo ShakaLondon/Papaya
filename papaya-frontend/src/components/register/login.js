@@ -65,7 +65,7 @@ const LoginContainer = ({
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/main" />;
+    return <Redirect to="/profile" />;
   } else if (!isLoggedIn && userFound === null) {
     logout();
     return <Redirect to="/register" />;

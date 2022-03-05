@@ -80,6 +80,7 @@ const PublicProfileNav = ({
   }, [dispatch]);
 
   return (
+
     <Navbar 
     bg="light" 
     // expand="lg" 
@@ -88,16 +89,18 @@ const PublicProfileNav = ({
     fixed="top">
             {!loading && (
         <div
-          className={`overlay container-fluid ${
-            colorChangeState ? "py-0" : "py-3"
-          }`}
+          className={`overlay container-fluid ${ colorChangeState ? "py-0" : "py-3" } ${ sideMenuState ? "px-0" : "px-3" }`}
         >
         <Container
           fluid
-          className="d-flex fullopacity align-items-center padding-top-container container-padding"
+          className={`d-flex fullopacity align-items-center padding-top-container ${ sideMenuState ? "" : "container-padding"}`}
           id="public-profile-container"
-          style={{ paddingTop: `${colorChangeState ? "110px" : "140px"}` }}
+          style={{ paddingTop: `${colorChangeState ? "110px" : "140px"}`, 
+          marginRight: `${ sideMenuState ? "25vw" : "0vw" }` 
+        }}
         >
+          {/* <Row>
+            <Col md={12}> */}
           <Navbar.Brand>
             <img
               src={profile.avatar?.avatar}
@@ -173,6 +176,8 @@ const PublicProfileNav = ({
                     <Nav.Link href="#link">Link</Nav.Link> */}
             </Nav>
           </Navbar>
+          {/* </Col>
+          </Row> */}
         </Container>
       </div>
       )}

@@ -5,35 +5,78 @@ import ReviewCard from "./profile-cards/review-card";
 import BusinessTrans from "./profile-cards/business-transparency";
 import BusinessInfo from "./profile-cards/business-information";
 import DropdownSection from "./profile-cards/dropdown-section";
+import { registerAction } from "../../redux/actions/auth";
+import { colorChangeAction, openNavAction } from "../../redux/actions";
+import { connect, } from "react-redux";
 
-export default function BusinessMain(props) {
+
+const mapStateToProps = (state) => ({
+  error: state.appState.error,
+  loading: state.appState.loading,
+  isLoggedIn: state.user.isLoggedIn,
+  userFound: state.user.userFound,
+  userProf: state.user,
+  colorChangeState: state.appState.colorChange,
+  sideMenuState: state.appState.sideMenu,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  //functions
+  register: (userObj) => dispatch(registerAction(userObj)),
+  colorChange: (action) => dispatch(colorChangeAction(action)),
+  setMenuState: (action) => {
+    dispatch(openNavAction(action));
+  },
+});
+
+const BusinessMain = ({
+  login,
+  loading,
+  error,
+  isLoggedIn,
+  userFound,
+  register,
+  userProf,
+  colorChange,
+  colorChangeState,
+  sideMenuState,
+  profile,
+  user,
+  score
+}) => {
   return (
-    <Container id="business-main-container" className="container-padding">
+    <Container id="business-main-container" className={ `${sideMenuState ? "" : "container-padding"}`}>
        <Row className="mx-0 px-0">
         <Col md={12} xs={12} sm={12} className="hide-column dropdown-section-hide">
-          <DropdownSection  profile={props.profile} user={props.user} />
+          <DropdownSection  profile={profile} user={user} />
         </Col>
       </Row>
       <Row className="mx-0 px-0">
         <Col md={8} sm={12} xs={12}>
           <AddRatingContainer
-            profile={props.profile}
-            user={props.user}
-            isLoggedIn={props.sLoggedIn}
+            profile={profile}
+            user={user}
+            isLoggedIn={isLoggedIn}
           />
           <ReviewHeader
-            profile={props.profile}
-            user={props.profile}
-            score={props.score}
-            loading={props.loading}
+            profile={profile}
+            user={profile}
+            score={score}
+            loading={loading}
           />
-          <ReviewCard profile={props.profile} user={props.user} />
+          <ReviewCard profile={profile} user={user} />
         </Col>
         <Col md={4} xs={4} sm={4} className="hide-column">
-          <BusinessTrans profile={props.profile} user={props.user} />
-          <BusinessInfo profile={props.profile} user={props.user} />
+          <BusinessTrans profile={profile} user={user} />
+          <BusinessInfo profile={profile} user={user} />
         </Col>
       </Row>
     </Container>
   );
 }
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BusinessMain);

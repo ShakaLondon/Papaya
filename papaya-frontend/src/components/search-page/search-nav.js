@@ -177,7 +177,7 @@ const CategorySearchNav = ({
         >
           <Container
             fluid
-            className={`d-flex fullopacity padding-top-container ${ sideMenuState? "" : "container-padding"}`}
+            className={`d-flex fullopacity ${ sideMenuState? "" : "container-padding"}`}
             id="search-profile-container"
             style={{ paddingTop: `${colorChangeState ? "110px" : "150px"}` }}
           >
