@@ -13,11 +13,16 @@ const getAllReviews = () => {
     return api.get("reviews");
   };
 
+  const getSearchResult = (searchRequest) => {
+    return api.post(`search?searchQuery=${searchRequest}`);
+  };
+
 
 const appData = {
     getCategory,
     getAllCategories,
     getAllReviews,
+    getSearchResult
 };
 
 export default appData

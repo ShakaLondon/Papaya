@@ -22,3 +22,8 @@ export const openSearchNavAction = (set) => ({
   type: OPEN_NAV_SEARCH,
   payload: set,
 });
+
+// export const searchHistory = () => ({
+//   type: SEARCH_HISTORY,
+//   payload: set,
+// });

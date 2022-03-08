@@ -13,7 +13,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { connect, useDispatch } from "react-redux";
 import { openNavAction, openSearchAction } from "../../redux/actions";
 import SearchBarCard from "./search-card.js"
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import appData from "../../services/app-data/app-data.js";
 
 const mapStateToProps = (state) => ({ 
   sideMenuState: state.appState.sideMenu,
@@ -32,6 +33,9 @@ const SearchBar = ({ sideMenuState, setMenuState, setSearchState, searchState })
 
   const searchNode = useRef();
   const dispatch = useDispatch();
+
+  const [searchRequest, setSearchRequest] = useState("");
+  const [searchResult, setSearchResult] = useState();
 
 
   useEffect(() => {
@@ -60,6 +64,35 @@ const SearchBar = ({ sideMenuState, setMenuState, setSearchState, searchState })
     setSearchState(true)
   };
 
+  const handleRequest = (e) => {
+    e.preventDefault()
+    setSearchRequest(e.target.value)
+  };
+
+  useEffect(() => {
+
+    if (searchRequest.length > 3){
+
+    appData.getSearchResult(searchRequest)
+      .then((res) => {
+        const searchRes = res.data;
+        console.log(searchRes);
+        // console.log(busFound.reviewIDs)
+        // const reviews = busFound.reviewIDs
+        // setAllCategories((allCategories) => categoryRes);
+        // console.log(categoryRes);
+
+        setSearchResult(searchRes)
+
+        // setDataLoading(false);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });}
+
+  }, [searchRequest]);
+
 
 
 
@@ -81,6 +114,8 @@ const SearchBar = ({ sideMenuState, setMenuState, setSearchState, searchState })
                     className={`px-4 ${ searchState ? "search-input-open" : ""}`}
                     id="search-input"
                     onClick={handleClick}
+                    onChange={handleRequest}
+                    value={searchRequest}
                   />
                   <Button id="button-addon3" className="px-4 searchBarButton">
                     <img
@@ -95,7 +130,7 @@ const SearchBar = ({ sideMenuState, setMenuState, setSearchState, searchState })
                   
 
               </InputGroup>
-              {searchState && <SearchBarCard/>}
+              {searchState && <SearchBarCard searchResult={searchResult} />}
             </Form>
           </Col>
         </Row>

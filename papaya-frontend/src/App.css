@@ -794,6 +794,11 @@ div#bus-nav-rating-resp {
   border-radius: 0.25rem 0rem 0rem 0rem !important;
 }
 
+#search-dropdown {
+  height: 300px !important;
+  overflow-y: scroll;
+}
+
 
 
 

@@ -3,11 +3,10 @@ import {
     Container,
     ListGroup,
   } from "react-bootstrap";
-  import { registerAction } from "../../redux/actions/auth";
+  import { registerAction } from "../../../redux/actions/auth";
   import { connect, } from "react-redux";
-  import { colorChangeAction, openNavAction } from "../../redux/actions";
-import CategorySearch from "./search-options/category-search";
-import BusinessSearch from "./search-options/business-search";
+  import { colorChangeAction, openNavAction } from "../../../redux/actions";
+import { useHistory } from "react-router";
   
   const mapStateToProps = (state) => ({
     error: state.appState.error,
@@ -27,7 +26,7 @@ import BusinessSearch from "./search-options/business-search";
     },
   });
   
-  const SearchBarCard = ({
+  const BusinessSearch = ({
     login,
     loading,
     error,
@@ -41,17 +40,24 @@ import BusinessSearch from "./search-options/business-search";
     searchResult
   }) => {
 
+    const history = useHistory()
 
-// if (searchResult){
+
+
     return (
 
         <Container
           fluid
           className="mx-0 px-0 d-flex justify-content-center px-0 scrollNav"
-          id="search-dropdown"
         >
-            {searchResult?.Categories.length > 0 && <CategorySearch searchResult={searchResult}/>}
-            {searchResult?.Businesses.length > 0 && <BusinessSearch searchResult={searchResult}/>}
+            <Card id="search-card-list" style={{ width: '100%' }}>
+                <Card.Header className="text-bold">{Object.keys(searchResult)[1]}</Card.Header>
+                    <ListGroup variant="flush">
+                        {searchResult?.Businesses.map((business) => (
+                            <ListGroup.Item key={business._id} onClick={() => history.push(`/review/${business.website.slice(4)}`)}>{business.businessName}</ListGroup.Item>
+                        ))}
+                    </ListGroup>
+            </Card>
 
         </Container>
     );
@@ -60,5 +66,4 @@ import BusinessSearch from "./search-options/business-search";
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(SearchBarCard);
-  
+  )(BusinessSearch);
