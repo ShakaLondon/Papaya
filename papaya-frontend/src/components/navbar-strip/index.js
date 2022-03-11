@@ -6,13 +6,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { connect, useDispatch } from "react-redux";
 import { colorChangeAction, openNavAction } from "../../redux/actions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,
   colorChangeState: state.appState.colorChange,
   searchState: state.appState.searchBar,
+  loading: state.appState.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,7 +30,8 @@ const NavBar = ({
   setMenuState,
   colorChange,
   colorChangeState,
-  searchState
+  searchState,
+  loading
 }) => {
  
 
@@ -48,6 +50,10 @@ const NavBar = ({
   console.log(currentPath);
 
   const dispatch = useDispatch();
+
+
+  const [barcodeHover, setBarcodeHover] = useState(false);
+
 
   useEffect(() => {
     const appPages = document.getElementsByClassName("scrollNav");
@@ -125,8 +131,9 @@ const NavBar = ({
               <h1 className="brand-heading-h1 mb-0">Papaya.</h1>
             )}
         </Navbar.Brand>
-        <Form
-              className="container-fluid d-block my-4 mx-3 onTop"
+       { !loading && colorChangeState && 
+       <Form
+              className="container-fluid d-block my-4 ms-3 onTop"
               id="search-bar-form"
               // ref={searchNode}
             >
@@ -135,29 +142,29 @@ const NavBar = ({
                     placeholder="Company, Category or Product Type"
                     aria-label="Company, Category or Product Type"
                     aria-describedby="basic-addon2"
-                    className={`px-4 ${ searchState ? "search-input-open" : ""}`}
+                    className={`px-4`}
                     id="search-input"
                     // onClick={handleClick}
                     // onChange={handleRequest}
                     // value={searchRequest}
                   />
-                  <Button id="button-addon3" className="px-4 searchBarButton">
+                  <Button id="button-addon3" className="px-4 searchBarButton" onMouseOver={() => setBarcodeHover(true)}  onMouseOut={() => setBarcodeHover(false)}>
                     <img
-                      src="https://img.icons8.com/pastel-glyph/64/000000/barcode-scanner--v2.png"
-                      id="searchBarcode"
+                      src={ barcodeHover ? "https://img.icons8.com/pastel-glyph/64/EF7C53/barcode-scanner--v2.png" : "https://img.icons8.com/pastel-glyph/64/FFD800/barcode-scanner--v2.png" }
+                      className="searchBarcode"
                       alt="Barcode Icon"
                     />
                   </Button>
-                  <Button id="button-addon2" className={`px-4 searchBarButton ${ searchState ? "search-button-open" : "button-search"}`} >
+                  <Button id="button-addon2" className={`px-4 searchBarButton`} >
                     <FontAwesomeIcon icon={faSearch} className="fa-md"/>
                   </Button>
                   
 
               </InputGroup>
               {/* {searchState && <SearchBarCard searchResult={searchResult} />} */}
-            </Form>
+            </Form>}
         <Navbar.Brand className="d-flex align-items-center">
-          {colorChangeState && (
+          {/* {colorChangeState && (
             <FontAwesomeIcon
               icon={faSearch}
               className="mx-4 my-4 main-nav-bar-icon"
@@ -165,7 +172,7 @@ const NavBar = ({
               style={{ fontSize: `${colorChangeState ? "2rem" : "3rem"}` }}
               onClick={() => setMenuState(true)}
             />
-          )}
+          )} */}
           {!sideMenuState && (
             <FontAwesomeIcon
               icon={faBars}

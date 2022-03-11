@@ -35,7 +35,8 @@ const SearchBar = ({ sideMenuState, setMenuState, setSearchState, searchState })
   const dispatch = useDispatch();
 
   const [searchRequest, setSearchRequest] = useState("");
-  const [searchResult, setSearchResult] = useState();
+  const [searchResult, setSearchResult] = useState(null);
+  const [barcodeHover, setBarcodeHover] = useState(false);
 
 
   useEffect(() => {
@@ -117,10 +118,10 @@ const SearchBar = ({ sideMenuState, setMenuState, setSearchState, searchState })
                     onChange={handleRequest}
                     value={searchRequest}
                   />
-                  <Button id="button-addon3" className="px-4 searchBarButton">
+                  <Button id="button-addon3" className="px-4 searchBarButton"  onMouseOver={() => setBarcodeHover(true)}  onMouseOut={() => setBarcodeHover(false)}>
                     <img
-                      src="https://img.icons8.com/pastel-glyph/64/000000/barcode-scanner--v2.png"
-                      id="searchBarcode"
+                      src={ barcodeHover ? "https://img.icons8.com/pastel-glyph/64/EF7C53/barcode-scanner--v2.png" : "https://img.icons8.com/pastel-glyph/64/FFD800/barcode-scanner--v2.png" }
+                      className="searchBarcode"
                       alt="Barcode Icon"
                     />
                   </Button>

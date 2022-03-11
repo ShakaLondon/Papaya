@@ -173,7 +173,7 @@ a {
   height: 3rem;
 }
 
-#searchBarcode {
+.searchBarcode {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -181,7 +181,7 @@ a {
 .searchBarButton {
   border-color: #ef7c53 !important;
   background-color: #ef7c53 !important;
-  color: #000000 !important;
+  color: #ffd800 !important;
   /* z-index: 0; */
 }
 
@@ -204,11 +204,17 @@ a {
 }
 
 .searchBarButton:hover {
-  border-color: #ffef93 !important;
-  background-color: #ffef93 !important;
-  color: #000000 !important;
+  border-color: #ef7c53 !important;
+  background-color: #ffd800 !important;
+  color: #ef7c53 !important;
   /* z-index: 0; */
 }
+
+/* .searchBarButton:hover {
+img.searchBarcode {
+  content: url(https://img.icons8.com/pastel-glyph/64/EF7C53/barcode-scanner--v2.png);
+}
+} */
 
 #search-input {
   border-color: #ffef93 !important;

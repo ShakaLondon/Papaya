@@ -151,7 +151,7 @@ const SideMenu = ({
               icon={faTimes}
               className="mx-3 my-3"
               id="main-nav-bar-icon-close"
-              style={{ fontSize: `${colorChangeState ? "2rem" : "3rem"}` }}
+              style={{ fontSize: `${colorChangeState ? "2.5rem" : "3rem"}` }}
               onClick={() => openMenu(false)}
             />
           </div>
