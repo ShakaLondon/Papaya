@@ -1,4 +1,4 @@
-import { Navbar, Container } from "react-bootstrap";
+import { Navbar, Container, Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -12,6 +12,7 @@ import { useLocation } from "react-router";
 const mapStateToProps = (state) => ({
   sideMenuState: state.appState.sideMenu,
   colorChangeState: state.appState.colorChange,
+  searchState: state.appState.searchBar,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,6 +29,7 @@ const NavBar = ({
   setMenuState,
   colorChange,
   colorChangeState,
+  searchState
 }) => {
  
 
@@ -123,6 +125,37 @@ const NavBar = ({
               <h1 className="brand-heading-h1 mb-0">Papaya.</h1>
             )}
         </Navbar.Brand>
+        <Form
+              className="container-fluid d-block my-4 mx-3 onTop"
+              id="search-bar-form"
+              // ref={searchNode}
+            >
+              <InputGroup className="input-group-search">
+                  <FormControl
+                    placeholder="Company, Category or Product Type"
+                    aria-label="Company, Category or Product Type"
+                    aria-describedby="basic-addon2"
+                    className={`px-4 ${ searchState ? "search-input-open" : ""}`}
+                    id="search-input"
+                    // onClick={handleClick}
+                    // onChange={handleRequest}
+                    // value={searchRequest}
+                  />
+                  <Button id="button-addon3" className="px-4 searchBarButton">
+                    <img
+                      src="https://img.icons8.com/pastel-glyph/64/000000/barcode-scanner--v2.png"
+                      id="searchBarcode"
+                      alt="Barcode Icon"
+                    />
+                  </Button>
+                  <Button id="button-addon2" className={`px-4 searchBarButton ${ searchState ? "search-button-open" : "button-search"}`} >
+                    <FontAwesomeIcon icon={faSearch} className="fa-md"/>
+                  </Button>
+                  
+
+              </InputGroup>
+              {/* {searchState && <SearchBarCard searchResult={searchResult} />} */}
+            </Form>
         <Navbar.Brand className="d-flex align-items-center">
           {colorChangeState && (
             <FontAwesomeIcon

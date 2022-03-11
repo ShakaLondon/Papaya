@@ -799,6 +799,15 @@ div#bus-nav-rating-resp {
   overflow-y: scroll;
 }
 
+.papaya-logo-small {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.no-radius {
+  border-radius: 0px 0px 0px 0px !important;
+}
+
 
 
 

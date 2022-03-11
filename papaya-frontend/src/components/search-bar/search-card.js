@@ -1,7 +1,9 @@
 import {
     Card,
+  Col,
     Container,
     ListGroup,
+    Row,
   } from "react-bootstrap";
   import { registerAction } from "../../redux/actions/auth";
   import { connect, } from "react-redux";
@@ -47,12 +49,20 @@ import BusinessSearch from "./search-options/business-search";
 
         <Container
           fluid
-          className="mx-0 px-0 d-flex justify-content-center px-0 scrollNav"
+          className="mx-0 px-0 flex-row justify-content-center px-0 scrollNav w-100"
           id="search-dropdown"
         >
-            {searchResult?.Categories.length > 0 && <CategorySearch searchResult={searchResult}/>}
-            {searchResult?.Businesses.length > 0 && <BusinessSearch searchResult={searchResult}/>}
-
+          <Row className="px-0 mx-0">
+            <Col md={12} xs={12} sm={12} className="px-0">
+              {searchResult?.Categories.length > 0 && <CategorySearch searchResult={searchResult}/>}
+            </Col>
+          </Row>
+          <Row className="px-0 mx-0">
+          <Col md={12} xs={12} sm={12} className="px-0">
+              {searchResult?.Businesses.length > 0 && <BusinessSearch searchResult={searchResult}/>}
+            </Col>
+          </Row>
+          
         </Container>
     );
   };
