@@ -7,9 +7,10 @@ import { persistedReducer } from "../reducers/index.js";
 export const configureStore = createStore(
   persistedReducer,
   initialState,
-  process.env.REACT_APP_DEVELOPMENT
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk))
-    : compose(applyMiddleware(thunk))
+  // process.env.REACT_APP_DEVELOPMENT
+  //   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk))
+  //   : 
+    compose(applyMiddleware(thunk))
 );
 
 export const persistor = persistStore(configureStore);
